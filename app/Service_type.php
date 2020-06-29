@@ -2,15 +2,24 @@
 
 namespace App;
 
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
-class Service_type extends Model
+class Service_type extends Model implements TranslatableContract
 {
+    use Translatable;
     protected $table = 'service_types';
-    protected $guarded = [];
 
-    public function services()
+    public $translatedAttributes = ['name', 'description'];
+    protected  $fillable = ['image'];
+
+
+
+    public function getImage()
     {
-        return $this->hasMany(App\Service::class);
+        if (!$this->image)
+            return asset('no_image.png');
+        return asset($this->image);
     }
 
     public function projects()

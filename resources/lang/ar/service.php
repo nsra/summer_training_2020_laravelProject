@@ -10,7 +10,7 @@ return [
      */
     'titles' => [
         'services' => 'الخدمات',
-        'add_service' => 'حدمة جديدة ',
+        'add_service' => 'خدمة جديدة ',
         'edit_service' => 'تعديل خدمة',
     ],
 

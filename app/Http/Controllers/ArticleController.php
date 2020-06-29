@@ -18,23 +18,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-//        $articles = Article::where([]);
-//        $locale=Session::get('locale');
-//        $article_translates = ArticleTranslation::where([]);
-//        $articles_by_user=User::where([]);
-//
-//        if ($request->has('title'))
-//            $articles = $article_translates->where('title', 'like', '%' . $request->input('title') . '%');
-//        if ($request->has('description'))
-//            $articles = $article_translates->where('description', 'like', '%' . $request->input('description') . '%');
-//        if ($request->has('user_id')){
-//            $users= User::leftJoin('articles','articles.user_id', '=', 'users.id');
-//            $articles_by_user= $users->where('name', 'like', '%' . $request->input('user_id') . '%');
-//            $articles= $articles_by_user;
-//        }
-//        $articles = $articles->paginate(15);
-//
-//        return view('articles.index', compact('articles', 'articles_by_user', 'locale'));
+
         $articles = Article::join('article_translations', 'articles.id', '=', 'article_translations.article_id')
             ->join('users', 'articles.user_id', '=', 'users.id')
             ->select('articles.id', 'article_translations.*', 'users.name')

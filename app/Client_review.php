@@ -2,10 +2,16 @@
 
 namespace App;
 
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Client_review extends Model
+class Client_review extends Model implements TranslatableContract
 {
+    use Translatable;
+
     protected $table = 'client_reviews';
-    protected $guarded = [];
+
+    public $translatedAttributes = ['review'];
+    protected  $fillable = ['name', 'image'];
 }

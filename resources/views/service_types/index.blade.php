@@ -10,27 +10,27 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{route('article.index')}}" method="GET">
+                            <form action="{{route('service_types.index')}}" method="GET">
                                 <div class="col-sm-4 form-group">
-                                    <label for="name">@lang('article.fields.title')</label>
+                                    <label for="name">@lang('service_type.fields.title')</label>
                                     <input type="text" name="title" class="form-control"
                                            value="{{app('request')->get('title')}}">
                                 </div>
                                 <div class="col-sm-4 form-group">
-                                    <label for="description">@lang('article.fields.description')</label>
+                                    <label for="description">@lang('service_type.fields.description')</label>
                                     <input type="text" name="description" class="form-control"
                                            value="{{app('request')->get('description')}}">
                                 </div>
 
-                                <div class="col-sm-4 form-group">
-                                    <label for="user_id">@lang('article.fields.user_id')</label>
-                                    <input type="text" name="user_id" class="form-control"
-                                           value="{{app('request')->get('user_id')}}">
-                                </div>
+{{--                                <div class="col-sm-4 form-group">--}}
+{{--                                    <label for="user_id">@lang('service_type.fields.user_id')</label>--}}
+{{--                                    <input type="text" name="user_id" class="form-control"--}}
+{{--                                           value="{{app('request')->get('user_id')}}">--}}
+{{--                                </div>--}}
                                 <div class="form-action col-sm-12 text-right">
                                     <input type="submit" value="{{trans('lang.search')}}" class="btn btn-primary">
                                     <a class="btn btn-default"
-                                       href="{{route('articles.index')}}">@lang('lang.cancel')</a>
+                                       href="{{route('service_types.index')}}">@lang('lang.cancel')</a>
                                 </div>
                             </form>
                         </div>
@@ -42,36 +42,36 @@
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-book"></i>{{__('article.titles.articles')}}</h3>
+                    <h3 class="panel-title"><i class="fa fa-book"></i>{{__('service_type.titles.service_types')}}</h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered table-striped table-condensed flip-content">
                         <thead class="flip-content">
                         <tr>
-                            <th class="text-center">@lang('article.fields.title')</th>
-                            <th class="text-center">@lang('article.fields.description')</th>
-                            <th class="text-center">@lang('article.fields.user_id')</th>
+                            <th class="text-center">@lang('service_type.fields.title')</th>
+                            <th class="text-center">@lang('service_type.fields.description')</th>
+{{--                            <th class="text-center">@lang('service_type.fields.user_id')</th>--}}
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($articles as $article)
+                        @foreach($service_types as $service_type)
                             <tr>
-                                <td class="text-center">{{$article->title}}</td>
-                                <td class="text-center">{{$article->description}}</td>
-                                <td class="text-center">
-                                    {{$article->name}}
+                                <td class="text-center">{{$service_type->title}}</td>
+                                <td class="text-center">{{$service_type->description}}</td>
+{{--                                <td class="text-center">--}}
+{{--                                    {{$article->name}}--}}
 
-                                </td>
+{{--                                </td>--}}
                                 <td class="text-center">
-                                    <a href="{{route('articles.edit', $article->article_id)}}" class="btn btn-primary ">
+                                    <a href="{{route('service_types.edit', $service_type->id)}}" class="btn btn-primary ">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{route('articles.show', $article->article_id)}}" class="btn btn-primary ">
+                                    <a href="{{route('service_types.show', $service_type->id)}}" class="btn btn-primary ">
                                         <i class="fa fa-eye"></i>
                                     </a>
 
-                                    <a class="btn btn-danger delete-article" data-value="{{$article->article_id}}">
+                                    <a class="btn btn-danger delete-service_type" data-value="{{$service_type->id}}">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -80,7 +80,7 @@
                         </tbody>
                     </table>
                     <div class="com-md-12 text-right">
-                        {{$articles->links()}}
+                        {{$service_types->links()}}
                     </div>
                 </div>
             </div>
@@ -89,11 +89,11 @@
 @endsection
 @section('script')
     <script>
-        $('.delete-article').click(function () {
+        $('.delete-service_type').click(function () {
             var id = $(this).data('value')
             swal({
                     title: "@lang('lang.questions.confirm_remove')",
-                    text: "@lang('article.questions.do_remove')",
+                    text: "@lang('service_type.questions.do_remove')",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
@@ -104,11 +104,11 @@
                 function () {
                     /**
                      *
-                     * send ajax request for deleting article
+                     * send ajax request for deleting service_type
                      *
                      */
                     $.ajax({
-                        url: '{{route('article.destroy')}}/' + id,
+                        url: '{{route('service_type.destroy')}}/' + id,
                         method: 'GET',
                         {{--url: "{{url('/destroy')}}",--}}
                         data: {body: '', _token: '{{csrf_token()}}'}

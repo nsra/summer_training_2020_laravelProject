@@ -13,17 +13,12 @@ class Article extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title', 'description'];
     protected  $fillable = ['user_id', 'image'];
-//    protected $guarded = [];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-//    public function article_translations()
-//    {
-//        return $this->hasMany(App\ArticleTranslation::class);
-//    }
 
     public function getImage()
     {

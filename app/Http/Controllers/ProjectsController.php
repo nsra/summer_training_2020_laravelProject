@@ -6,6 +6,7 @@ use App\Service_type;
 use App\Project;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProjectsController extends Controller
 {
@@ -14,13 +15,26 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $service_types= Service_type::get();
+            $projects = Project::join('project_translations', 'projects.id', '=', 'project_translations.project_id')
+            ->join('service_types', 'projects.service_type_id', '=', 'service_types.id')
+//            ->join('service_type_translations', 'service_type_translations.service_type_id', '=', 'service_types.id')
+            ->select('projects.*', 'service_types.*', 'project_translations.*')
+            ->where([]);
 
-//        $projects= Project::get();
-        $projects = Project::with('service_type')->get();
-        return view('projects.index', compact('projects', 'service_types'));
+        $locale= Session::get('locale');
+        if ($request->has('title'))
+            $projects = $projects->where('title', 'like', '%' . $request->input('title') . '%');
+        if ($request->has('description'))
+            $projects = $projects->where('description', 'like', '%' . $request->input('description') . '%');
+        if ($request->has('service_type_id')){
+            $projects= $projects->where('name', 'like', '%' . $request->input('service_type_id') . '%');
+        }
+
+        $projects = $projects->where('project_locale', '=', Session::get('locale'))->paginate(5);
+        return view('projects.index', compact('projects', 'locale'));
+
     }
 
     /**
@@ -42,42 +56,23 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //App::getLocale();
-        //$request->validate($this->rules(), $this->messages());
-//        $project_data = [];
-//        $project_data['en'] = [
-//            'title' => $request->en_title,
-//            'description' => $request->en_description,
-//        ];
-//        $project_data['ar'] = [
-//            'title' => $request->ar_title,
-//            'description' => $request->ar_description,
-//        ];
+        $request->validate($this->rules(), $this->messages());
+        $project_data = [];
+        $project_data['en'] = [
+            'title' => $request->en_title,
+            'description' => $request->en_description,
+            'project_locale'=> 'en',
+        ];
+        $project_data['ar'] = [
+            'title' => $request->ar_title,
+            'description' => $request->ar_description,
+            'project_locale'=> 'ar',
+        ];
 
-        $project= Project::create([
-            'en' => [
-                'title' => $request->en_title,
-                'description' => $request->en_description,
-            ],
-            'ar' => [
-                'title' =>  $request->ar_title,
-                'description' =>  $request->ar_description,
-            ]
-        ]);
+        $project= Project::create($project_data);
+        $project->image= parent::uploadImage($request->file('project_image'));
+        $project->service_type_id= $request->project_service_type;
 
-//dd($project_data);
-//        $project= Project::create($project_data);
-//        $project = new Project;
-        if($request->file('article_image')) {
-            $project->image = parent::uploadImage($request->file('project_image'));
-        }
-//        $project->service_type_id= $request->project_service_type_en;
-//        $project
-//            ->setTranslation('title', 'en', $request->en_title)
-//            ->setTranslation('title', 'ar', $request->ar_title)
-//            ->setTranslation('description', 'en', $request->en_description)
-//            ->setTranslation('description', 'ar', $request->ar_description);
-////            ->save();
 
 
         if ($project->save()){
@@ -137,5 +132,38 @@ class ProjectsController extends Controller
         } catch (ModelNotFoundException $modelNotFoundException) {
             return response()->json(['status' => 200, 'message' => trans('project.error.deleted')]);
         }
+    }
+
+    private function rules($id = null)
+    {
+        $rules = [
+            'en_title' => 'required|max:100',
+            'ar_title' => 'required|max:100',
+            'en_description' => 'required',
+            'ar_description' => 'required',
+            'article_image' => 'image',
+        ];
+        if (!$id) {
+            $rules['project_image'] = 'required|image';
+        }
+        return $rules;
+    }
+
+    /**
+     *
+     * validation's messages
+     *
+     * @return array
+     */
+    private function messages()
+    {
+        return [
+            'en_title.required' => trans('project.validations.title_required'),
+            'en_title.max' => trans('project.validations.title_max'),
+            'en_description.required' => trans('project.validations.description_required'),
+            'ar_title.required' => trans('project.validations.title_required'),
+            'ar_title.max' => trans('project.validations.title_max'),
+            'ar_description.required' => trans('project.validations.description_required'),
+        ];
     }
 }

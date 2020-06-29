@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectTranslationsTable extends Migration
+class CreateTeamTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateProjectTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_translations', function (Blueprint $table) {
+        Schema::create('team_translations', function (Blueprint $table) {
             $table->id();
             $table->string('locale')->index();
             // Actual fields you want to translate
-            $table->string('title');
-            $table->string('description');
-            $table->string('project_locale');
-            $table->foreignId('project_id');
-            $table->foreign('project_id')
+            $table->string('name');
+            $table->string('pio');
+            $table->foreignId('team_id');
+            $table->foreign('team_id')
                 ->references('id')
-                ->on('projects')
+                ->on('teams')
                 ->onDelete('cascade');
 
-            $table->unique(['project_id', 'locale']);
+            $table->unique(['team_id', 'locale']);
             $table->timestamps();
         });
     }
@@ -38,6 +37,6 @@ class CreateProjectTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_translations');
+        Schema::dropIfExists('team_translations');
     }
 }

@@ -126,18 +126,18 @@
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-archive"></i>
-                <span class="title">@lang('service.titles.services')</span>
+                <span class="title">@lang('company_feature.titles.company_features')</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li class="nav-item start ">
-                    <a href="{{route('teams.index')}}" class="nav-link ">
+                    <a href="{{route('company_features.index')}}" class="nav-link ">
                         <i class="fa fa-list"></i>
                         <span class="title">@lang('lang.show')</span>
                     </a>
                 </li>
                 <li class="nav-item start">
-                    <a href="{{route('teams.create')}}" class="nav-link ">
+                    <a href="{{route('company_features.create')}}" class="nav-link ">
                         <i class="fa fa-plus"></i>
                         <span class="title">@lang('lang.add')</span>
                     </a>

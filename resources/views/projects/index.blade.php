@@ -57,20 +57,21 @@
                         <tbody>
                         @foreach($projects as $project)
                             <tr>
+
                                 <td class="text-center">{{$project->title}}</td>
                                 <td class="text-center">{{$project->description}}</td>
                                 <td class="text-center">
-                                    {{$project->service_type_id}}
+                                    {{$project->name}}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{route('projects.edit', $project->id)}}" class="btn btn-primary ">
+                                    <a href="{{route('projects.edit', $project->project_id)}}" class="btn btn-primary ">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{route('projects.show', $project->id)}}" class="btn btn-primary ">
+                                    <a href="{{route('projects.show', $project->project_id)}}" class="btn btn-primary ">
                                         <i class="fa fa-eye"></i>
                                     </a>
 
-                                    <a class="btn btn-danger delete-project" data-value="{{$project->id}}">
+                                    <a class="btn btn-danger delete-project" data-value="{{$project->project_id}}">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -79,7 +80,7 @@
                         </tbody>
                     </table>
                     <div class="com-md-12 text-right">
-{{--                                                {{$projects->links()}}--}}
+                                                {{$projects->links()}}
                     </div>
                 </div>
             </div>
