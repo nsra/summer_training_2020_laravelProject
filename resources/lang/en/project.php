@@ -12,6 +12,8 @@ return [
         'projects' => 'Projects',
         'add_project' => 'New Project',
         'edit_project' => 'Edit Project',
+        'show_project' => 'Show Project',
+
     ],
 
     /**

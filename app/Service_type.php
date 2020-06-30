@@ -10,7 +10,7 @@ class Service_type extends Model implements TranslatableContract
     use Translatable;
     protected $table = 'service_types';
 
-    public $translatedAttributes = ['name', 'description'];
+    public $translatedAttributes = ['name', 'about_service'];
     protected  $fillable = ['image'];
 
 

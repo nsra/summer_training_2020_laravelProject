@@ -7,7 +7,7 @@ use App\Project;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use DB;
 class ProjectsController extends Controller
 {
     /**
@@ -17,10 +17,16 @@ class ProjectsController extends Controller
      */
     public function index(Request $request)
     {
-            $projects = Project::join('project_translations', 'projects.id', '=', 'project_translations.project_id')
+        $projects = DB::table('projects')
+            ->join('project_translations', 'projects.id', '=', 'project_translations.project_id')
             ->join('service_types', 'projects.service_type_id', '=', 'service_types.id')
-//            ->join('service_type_translations', 'service_type_translations.service_type_id', '=', 'service_types.id')
-            ->select('projects.*', 'service_types.*', 'project_translations.*')
+            ->join('service_type_translations', 'service_type_translations.service_type_id', '=', 'service_types.id')
+            ->select('project_translations.title',
+                'project_translations.project_locale',
+                'project_translations.description',
+                'project_translations.project_id',
+                'service_type_translations.name',
+                'service_type_translations.service_type_locale')
             ->where([]);
 
         $locale= Session::get('locale');
@@ -32,7 +38,9 @@ class ProjectsController extends Controller
             $projects= $projects->where('name', 'like', '%' . $request->input('service_type_id') . '%');
         }
 
-        $projects = $projects->where('project_locale', '=', Session::get('locale'))->paginate(5);
+        $projects = $projects->whereRaw("(project_locale like ? and service_type_locale like ? )",["%$locale%","%$locale%"])
+            ->paginate(5);
+
         return view('projects.index', compact('projects', 'locale'));
 
     }

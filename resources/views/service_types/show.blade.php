@@ -11,29 +11,31 @@
                 </div>
                 <div class="card-body">
                         <div class="form-group " style="text-align: center">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                    <img src="{{$service_type->getImage()}}" alt="">
+                                        <img src="{{$service_type->getImage()}}" alt="">
                                 </div>
+                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="en_title">{{__('lang.service_type_title_en')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="en_title" value="{{ $service_type->translate('en')->title }}">
-                            <span class="error">{{$errors->first('en_title')}}</span>
+                            <label for="en_name">{{__('lang.service_type_name_en')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="en_name" value="{{ $service_type->translate('en')->name }}">
+                            <span class="error">{{$errors->first('en_name')}}</span>
                         </div>
                         <div class="form-group">
-                            <label for="ar_title">{{__('lang.service_type_title_ar')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="ar_title" value="{{ $service_type->translate('ar')->title }}">
-                            <span class="error">{{$errors->first('ar_title')}}</span>
+                            <label for="ar_name">{{__('lang.service_type_name_ar')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="ar_name" value="{{ $service_type->translate('ar')->name }}">
+                            <span class="error">{{$errors->first('ar_name')}}</span>
                         </div>
                         <div class="form-group">
-                            <label for="en_description">{{__('lang.service_type_description_en')}} <span class="required">*</span></label>
-                            <textarea type="text" class="form-control" name="en_description" >{{ $service_type->translate('en')->description }}</textarea>
-                            <span class="error">{{$errors->first('en_description')}}</span>
+                            <label for="en_about_service">{{__('lang.service_type_about_service_en')}} <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="en_about_service" >{{ $service_type->translate('en')->about_service }}</textarea>
+                            <span class="error">{{$errors->first('en_about_service')}}</span>
                         </div>
                         <div class="form-group">
-                            <label for="ar_description">{{__('lang.service_type_description_ar')}} <span class="required">*</span></label>
-                            <textarea type="text" class="form-control" name="ar_description" >{{ $service_type->translate('ar')->description }}</textarea>
-                            <span class="error">{{$errors->first('ar_description')}}</span>
+                            <label for="ar_about_service">{{__('lang.service_type_about_service_ar')}} <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" name="ar_about_service" >{{ $service_type->translate('ar')->about_service }}</textarea>
+                            <span class="error">{{$errors->first('ar_about_service')}}</span>
                         </div>
                     <div class="form-action text-center">
                         <a href="{{route('service_types.index')}}" type="reset" name="cancel"

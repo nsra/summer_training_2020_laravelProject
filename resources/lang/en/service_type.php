@@ -12,6 +12,8 @@ return [
         'service_types' => 'Parts',
         'add_service_type' => 'New Part',
         'edit_service_type' => 'Edit Part',
+        'show_service_type' => 'Show Part',
+
     ],
 
     /**
@@ -20,7 +22,7 @@ return [
      *
      */
     'fields' => [
-        'title' => 'Part title',
+        'name' => 'Part name',
         'description' => 'part description',
     ],
 
@@ -30,8 +32,8 @@ return [
      *
      */
     'validations' => [
-        'title_required' => 'Part title Required',
-        'title_max' => 'Part title max shouldn\'t be over 50 letter',
+        'name_required' => 'Part title Required',
+        'name_max' => 'Part title max shouldn\'t be over 50 letter',
         'image_required' => 'Image part required',
 
     ],

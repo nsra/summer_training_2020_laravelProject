@@ -18,7 +18,7 @@ class CreateServiceTypeTranslationsTable extends Migration
             $table->string('locale')->index();
             // Actual fields you want to translate
             $table->string('name');
-            $table->string('description');
+            $table->string('about_service');
             $table->foreignId('service_type_id');
             $table->foreign('service_type_id')
                 ->references('id')

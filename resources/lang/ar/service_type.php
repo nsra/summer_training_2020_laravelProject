@@ -12,6 +12,8 @@ return [
         'service_types' => 'الأقسام',
         'add_service_type' => 'قسم جديد',
         'edit_service_type' => 'تعديل قسم',
+        'show_service_type' => 'عرض قسم',
+
     ],
 
     /**
@@ -20,7 +22,7 @@ return [
      *
      */
     'fields' => [
-        'title' => 'عنوان القسم',
+        'name' => 'اسم القسم',
         'description' => 'وصف القسم',
     ],
 
@@ -30,8 +32,8 @@ return [
      *
      */
     'validations' => [
-        'title_required' => 'عنوان القسم مطلوب',
-        'title_max' => 'عنوان القسم يجب أن لا يزيد عن 50 حرف',
+        'name_required' => 'اسم القسم مطلوب',
+        'name_max' => 'اسم القسم يجب أن لا يزيد عن 50 حرف',
         'image_required' => 'صورة القسم مطلوبة',
 
     ],

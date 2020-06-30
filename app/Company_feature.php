@@ -14,4 +14,11 @@ class Company_feature extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title', 'description'];
     protected  $fillable = [ 'image'];
+
+    public function getImage()
+    {
+        if (!$this->image)
+            return asset('no_image.png');
+        return asset($this->image);
+    }
 }

@@ -12,6 +12,8 @@ return [
         'users' => 'Users',
         'add_user' => 'New User',
         'edit_user' => 'Edit User',
+        'show_user' => 'Show User',
+
     ],
 
     /**

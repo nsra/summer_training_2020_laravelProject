@@ -11,9 +11,12 @@
                 </div>
                 <div class="card-body">
                         <div class="form-group " style="text-align: center">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                    <img src="{{$article->getImage()}}" alt="">
-                                </div>
+                                        <img src="{{$article->getImage()}}" alt="">
+                                    </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="en_title">{{__('lang.article_title_en')}} <span class="required">*</span></label>

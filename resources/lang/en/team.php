@@ -12,6 +12,8 @@ return [
         'teams' => 'Working Team',
         'add_team' => 'New Member',
         'edit_team' => 'Edit Member',
+        'show_team' => 'Show Member',
+
     ],
 
     /**
@@ -21,7 +23,7 @@ return [
      */
     'fields' => [
         'name' => 'member name',
-        'pio' => 'about member',
+        'bio' => 'about member',
     ],
 
     /**

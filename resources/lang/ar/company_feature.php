@@ -12,6 +12,8 @@ return [
         'company_features' => 'مميزات الشركة',
         'add_feature' => 'ميزة جديدة ',
         'edit_feature' => 'تعديل ميزة',
+        'show_feature' => 'عرض ميزة',
+
     ],
 
     /**

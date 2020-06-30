@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service_type;
+use App\Service_typeTranslation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -17,13 +18,13 @@ class Service_typesController extends Controller
     public function index(Request $request)
     {
 
-        $service_types = Service_type::where([]);
-        if ($request->has('title'))
-            $service_types = $service_types->where('title', 'like', '%' . $request->input('title') . '%');
+        $service_types = Service_typeTranslation::where([]);
+        if ($request->has('name'))
+            $service_types = $service_types->where('name', 'like', '%' . $request->input('name') . '%');
         if ($request->has('description'))
             $service_types = $service_types->where('description', 'like', '%' . $request->input('description') . '%');
 
-        $service_types = $service_types->paginate(5);
+        $service_types = $service_types->where('locale', '=', Session::get('locale'))->paginate(5);
         return view('service_types.index', compact('service_types'));
 
     }
@@ -49,12 +50,14 @@ class Service_typesController extends Controller
         $request->validate($this->rules(), $this->messages());
         $service_type_data = [];
         $service_type_data['en'] = [
-            'title' => $request->en_title,
+            'name' => $request->en_title,
             'description' => $request->en_description,
+            'service_type_locale' => 'en'
         ];
         $service_type_data['ar'] = [
-            'title' => $request->ar_title,
+            'name' => $request->ar_title,
             'description' => $request->ar_description,
+            'service_type_locale' => 'ar'
         ];
 
         $service_type= Service_type::create($service_type_data);
@@ -107,11 +110,11 @@ class Service_typesController extends Controller
 
             $service_type_data = [];
             $service_type_data['en'] = [
-                'title' => $request->en_title,
+                'name' => $request->en_title,
                 'description' => $request->en_description,
             ];
             $service_type_data['ar'] = [
-                'title' => $request->ar_title,
+                'name' => $request->ar_title,
                 'description' => $request->ar_description,
             ];
             if($request->file('service_type_image')){
@@ -146,8 +149,8 @@ class Service_typesController extends Controller
     private function rules($id = null)
     {
         $rules = [
-            'en_title' => 'required|max:100',
-            'ar_title' => 'required|max:100',
+            'en_name' => 'required|max:100',
+            'ar_name' => 'required|max:100',
             'en_description' => 'required',
             'ar_description' => 'required',
             'service_type_image' => 'image',
@@ -167,11 +170,11 @@ class Service_typesController extends Controller
     private function messages()
     {
         return [
-            'en_title.required' => trans('service_type.validations.title_required'),
-            'en_title.max' => trans('service_type.validations.title_max'),
+            'en_name.required' => trans('service_type.validations.title_required'),
+            'en_name.max' => trans('service_type.validations.title_max'),
             'en_description.required' => trans('service_type.validations.description_required'),
-            'ar_title.required' => trans('service_type.validations.title_required'),
-            'ar_title.max' => trans('service_type.validations.title_max'),
+            'ar_name.required' => trans('service_type.validations.title_required'),
+            'ar_name.max' => trans('service_type.validations.title_max'),
             'ar_description.required' => trans('service_type.validations.description_required'),
         ];
     }

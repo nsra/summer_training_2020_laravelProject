@@ -12,6 +12,8 @@ return [
         'projects' => 'الأعمال',
         'add_project' => 'عمل جديد',
         'edit_project' => 'تعديل عمل',
+        'show_project' => 'عرض عمل',
+
     ],
 
     /**

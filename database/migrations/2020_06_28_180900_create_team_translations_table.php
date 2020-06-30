@@ -18,7 +18,7 @@ class CreateTeamTranslationsTable extends Migration
             $table->string('locale')->index();
             // Actual fields you want to translate
             $table->string('name');
-            $table->string('pio');
+            $table->string('bio');
             $table->foreignId('team_id');
             $table->foreign('team_id')
                 ->references('id')

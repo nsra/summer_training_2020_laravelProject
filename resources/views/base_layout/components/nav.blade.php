@@ -116,7 +116,7 @@
                     </a>
                 </li>
                 <li class="nav-item start">
-                    <a href="{{route('teams.create')}}" class="nav-link "> fa-user-circle
+                    <a href="{{route('teams.create')}}" class="nav-link ">
                         <i class="fa fa-plus"></i>
                         <span class="title">@lang('lang.add')</span>
                     </a>

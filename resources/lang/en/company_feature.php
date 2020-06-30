@@ -12,6 +12,8 @@ return [
         'company_features' => 'Company Features',
         'add_feature' => 'New Feature ',
         'edit_feature' => 'Edit Feature',
+        'show_feature' => 'Show Feature',
+
     ],
 
     /**

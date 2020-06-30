@@ -11,7 +11,8 @@ return [
     'titles' => [
         'client_reviews' => 'آراء العملاء',
         'add_client_review' => 'رأي جديد',
-        'edit_cliet_review' => 'تعديل رأي',
+        'edit_client_review' => 'تعديل رأي',
+        'show_client_review' => 'عرض رأي',
     ],
 
     /**
@@ -21,7 +22,7 @@ return [
      */
     'fields' => [
         'name' => 'اسم العميل',
-        'view' => 'رأي العميل',
+        'review' => 'رأي العميل',
     ],
 
     /**
@@ -32,7 +33,7 @@ return [
     'validations' => [
         'name_required' => 'اسم العميل مطلوب',
         'name_max' => 'اسم العميل يجب أن لا يزيد عن 50 حرف',
-        'view_required' => 'رأي العميل مطلوب',
+        'review_required' => 'رأي العميل مطلوب',
         'image_required' => 'صورة العميل مطلوبة',
 
     ],

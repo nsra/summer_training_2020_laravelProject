@@ -11,7 +11,9 @@ return [
     'titles' => [
         'client_reviews' => 'Client Reviews',
         'add_client_review' => 'New Review',
-        'edit_cliet_review' => 'Edit Review',
+        'edit_client_review' => 'Edit Review',
+        'show_client_review' => 'Show Review',
+
     ],
 
     /**
@@ -21,7 +23,7 @@ return [
      */
     'fields' => [
         'name' => 'Client Name',
-        'view' => 'Client Review',
+        'review' => 'Client Review',
     ],
 
     /**
@@ -32,7 +34,7 @@ return [
     'validations' => [
         'name_required' => 'Client name required',
         'name_max' => 'Client name max shouldn\'t be over 50 letter',
-        'view_required' => 'Client Review required',
+        'review_required' => 'Client Review required',
         'image_required' => 'Client Image required',
 
     ],

@@ -10,7 +10,7 @@ class Team extends Model implements TranslatableContract
 {
     use Translatable;
     protected $table = 'teams';
-    public $translatedAttributes = ['name', 'pio'];
+    public $translatedAttributes = ['name', 'bio'];
     protected  $fillable = ['image'];
 
 
