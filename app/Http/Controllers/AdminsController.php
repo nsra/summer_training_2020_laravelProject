@@ -26,6 +26,12 @@ class AdminsController extends Controller
 //        $this->permission = $permission;
 //    }
 
+    public function __construct()
+    {
+//        $this->middleware('auth:admin');
+    }
+
+
     public function index(Request $request)
     {
         $admins = Admin::where([]);
@@ -44,8 +50,9 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        return view('admins.create');
+        return view('admins.create', ['url' => 'admin']);
     }
+
 
     public function view_permissions()
     {

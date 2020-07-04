@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'admin/';
 
     /**
      * Create a new controller instance.
@@ -39,7 +40,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:admin');
+//        $this->middleware('guest:admin');
+
 
     }
 
@@ -72,6 +74,30 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+//    public function showAdminRegisterForm()
+//    {
+//        return view('admins.create');
+//    }
 
+//    protected function createAdmin(Request $request)
+//    {
+//        die();
+//        $request->validate($this->rules(), $this->messages());
+//
+//        $request['image'] = parent::uploadImage($request->file('admin_image'));
+//
+//        $admin= Admin::create([
+//            'name' => $request['name'],
+//            'email' => $request['email'],
+//            'password' => Hash::make($request['password']),
+//            'image' => $request['image'],
+//        ]);
+//
+////        $admin->givePermissions($request->permissions);
+//        if ($admin->save() === TRUE)
+//            return redirect()->route('admins.create')->with('success', trans('admin.success.stored'));
+//        return redirect()->route('admins.create')->with('error', trans('admin.error.stored'));
+//
+//    }
 
 }
