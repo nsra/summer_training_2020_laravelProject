@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
@@ -14,9 +15,14 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        return view('user.index', [
-            'users' => User::get(),
-        ]);
+        $users = User::where([]);
+        if ($request->has('name'))
+            $users = $users->where('name', 'like', '%' . $request->input('name') . '%');
+        if ($request->has('description'))
+            $users = $users->where('email', 'like', '%' . $request->input('email') . '%');
+        $users = $users->paginate(5);
+        return view('users.index', compact('users'));
+
     }
 
     /**
@@ -82,6 +88,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $use = User::findOrFail($id);
+            $use->delete();
+
+            return response()->json(['status' => 200, 'message' => trans('user.success.deleted')]);
+        } catch (ModelNotFoundException $modelNotFoundException) {
+            return response()->json(['status' => 200, 'message' => trans('user.error.deleted')]);
+        }
     }
 }

@@ -157,13 +157,56 @@
                     <span class="title">@lang('lang.show')</span>
                     </a>
                 </li>
+            </ul>
+        </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-wrench  "></i>
+                <span class="title">@lang('admin.titles.admins')</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item start ">
+                    <a href="{{route('admins.index')}}" class="nav-link ">
+                        <i class="fa fa-list"></i>
+                        <span class="title">@lang('lang.show')</span>
+                    </a>
+                </li>
                 <li class="nav-item start">
-                        <a href="{{route('users.create')}}" class="nav-link ">
-                    <i class="fa fa-plus"></i>
+                    <a href="{{route('admins.create')}}" class="nav-link ">
+                        <i class="fa fa-plus"></i>
                         <span class="title">@lang('lang.add')</span>
                     </a>
                 </li>
-
+                <li class="nav-item start">
+                    <a href="{{route('admin.view_permissions')}}" class="nav-link ">
+                        <i class="fa fa-lock"></i>
+                        <span class="title">@lang('lang.permissions')</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-lock  "></i>
+                <span class="title">@lang('permission.titles.permissions')</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item start ">
+                    <a href="{{route('permissions.index')}}" class="nav-link ">
+                        <i class="fa fa-list"></i>
+                        <span class="title">@lang('lang.show')</span>
+                    </a>
+                </li>
+                <li class="nav-item start">
+                    <a href="{{route('permissions.create')}}" class="nav-link ">
+                        <i class="fa fa-plus"></i>
+                        <span class="title">@lang('lang.add')</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
     <!-- END SIDEBAR MENU -->
     <!-- END SIDEBAR MENU -->

@@ -100,18 +100,18 @@
                 <input type="text" class="form-control" name="ar_description" value="{{old('ar_description')}}">
                 <span class="error">{{$errors->first('title_required')}}</span>
             </div>
-{{--            <div class="form-action">--}}
-{{--                <input type="submit" name="store" value="{{__('lang.store')}}" class="btn btn-primary">--}}
-{{--                <input type="reset" name="cancel" value="{{__('lang.cancel')}}" class="btn btn-default">--}}
+{{--<div class="form-action " >--}}
+{{--                <button type="submit"  value="" class="btn btn-primary">{{__('lang.store')}}</button>--}}
+{{--                <button type="reset"  value="" class="btn btn-default">{{__('lang.cancel')}}</button>--}}
 {{--            </div>--}}
 
 
                 </div>
 
-            <div class="form-action " >
-                <input type="submit" name="store" value="{{__('lang.store')}}" class="btn btn-primary">
-                <input type="reset" name="cancel" value="{{__('lang.cancel')}}" class="btn btn-default">
-            </div>
+                <div class="form-action " >
+                    <button type="submit"  value="" class="btn btn-primary">{{__('lang.store')}}</button>
+                    <button type="reset"  value="" class="btn btn-default">{{__('lang.cancel')}}</button>
+                </div>
         </div>
     </form>
     <br>

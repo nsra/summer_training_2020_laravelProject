@@ -55,15 +55,11 @@
 
                 </div>
 
-                <div class="form-action " >
-{{--                    <input type="submit" value="{{__('lang.store')}}" class="btn btn-primary">--}}
-{{--                    <input type="reset" name="cancel" value="{{__('lang.cancel')}}" class="btn btn-default">--}}
 
-                    <div class="form-action text-center">
-                        <input type="submit" name="store" value="@lang('lang.edit')" class="btn btn-primary">
-                        <a href="{{route('articles.index')}}" type="reset" name="cancel"
-                           class="btn btn-default">@lang('lang.cancel')</a>
-                    </div>
+                <div class="form-action text-center">
+                    <button type="submit"  class="btn btn-primary">@lang('lang.edit')</button>
+                    <button href="{{route('articles.index')}}" type="reset"
+                            class="btn btn-default">@lang('lang.cancel')</button>
                 </div>
             </div>
             </form>

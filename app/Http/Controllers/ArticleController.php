@@ -155,6 +155,7 @@ class ArticleController extends Controller
 
     private function rules($id = null)
     {
+        //the best rules structure
         $rules = [
             'en_title' => 'required|max:100',
             'ar_title' => 'required|max:100',

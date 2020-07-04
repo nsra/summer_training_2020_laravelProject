@@ -23,7 +23,7 @@ return [
      */
     'fields' => [
         'name' => 'Part name',
-        'description' => 'part description',
+        'about_service' => 'part description',
     ],
 
     /**

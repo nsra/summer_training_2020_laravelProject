@@ -17,9 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@admin_index')->name('admin');
 
 Route::get('/app', function () {
     return view('layouts.main_layout');
@@ -42,7 +44,11 @@ Route::get('/language/{lang?}', [
     'uses' => 'LocalizationController@change'
 ]);
 
-Route::middleware('auth')->group(function () {
+
+
+
+
+Route::group(['middelware' => 'auth:admin'], function () {
     Route::resource('articles', 'ArticleController');
     Route::resource('service_types', 'Service_typesController');
     Route::resource('projects', 'ProjectsController');
@@ -50,6 +56,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('teams', 'TeamsController');
     Route::resource('users', 'UsersController');
     Route::resource('company_features', 'company_featuresController');
+    Route::resource('admins', 'AdminsController');
+    Route::resource('permissions', 'PermissionsController');
+
 
     Route::get('/logout/custom', ['as' => 'logout.custom', 'uses' => 'Controller@userLogout']);
     Route::get('/destroy/{id?}', ['as' => 'article.destroy', 'uses' => 'ArticleController@destroy']);
@@ -59,8 +68,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/client_review/{id?}', ['as' => 'client_review.destroy', 'uses' => 'Client_reviewsController@destroy']);
     Route::get('/company_feature/{id?}', ['as' => 'company_feature.destroy', 'uses' => 'Company_featuresController@destroy']);
     Route::get('/user/{id?}', ['as' => 'user.destroy', 'uses' => 'UsersController@destroy']);
-
-
+    Route::get('/admin/{id?}', ['as' => 'admin.destroy', 'uses' => 'AdminsController@destroy']);
+    Route::get('/permission/{id?}', ['as' => 'permission.destroy', 'uses' => 'PermissionsController@destroy']);
+    Route::get('cms/admins/permissions', ['as' => 'admin.view_permissions', 'uses' => 'AdminsController@view_permissions']);
+    Route::post('cms/permission/byRole', ['as'=>'permission_byRole','uses'=>'admin\RoleController@getByRole']);
 
 });
 

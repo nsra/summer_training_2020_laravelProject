@@ -23,7 +23,7 @@ return [
      */
     'fields' => [
         'name' => 'اسم القسم',
-        'description' => 'وصف القسم',
+        'about_service' => 'وصف القسم',
     ],
 
     /**
