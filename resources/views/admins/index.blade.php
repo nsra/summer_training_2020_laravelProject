@@ -64,7 +64,7 @@
 
 {{--                                </td>--}}
                                 <td class="text-center">
-                                    <a href="{{route('admin.view_permissions')}}" class="btn btn-primary ">
+                                    <a href="{{route('admin.view_permissions', $admin->id)}}" class="btn btn-primary ">
                                         <i class="fa fa-lock"></i>
                                     </a>
                                     <a href="{{route('admins.edit', $admin->id)}}" class="btn btn-default ">

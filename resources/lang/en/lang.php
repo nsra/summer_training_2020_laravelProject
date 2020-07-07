@@ -9,7 +9,9 @@ return [
      */
     'language' => 'language',
     'search' => 'Search',
+    'select' => 'Choose',
     'arabic' => 'Arabic',
+    'create_role' => 'Create Role',
     'english' => 'English',
     'store' => 'Store',
     'cancel' => 'Cancel',
@@ -73,6 +75,8 @@ return [
     'edit_permission' => 'Edit Permission',
     'permission_name_ar' => 'Permission name - arabic',
     'permission_name_en' => 'Permission name - english',
+    'edit_role' => 'Edit Role',
+
 
 
     /**

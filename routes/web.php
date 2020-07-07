@@ -51,17 +51,17 @@ Route::get('/language/{lang?}', [
 //Route::post('/login/admin', ['as' => 'postadminlogin', 'uses' => 'Auth\LoginController@adminLogin']);
 //
 
-Route::group(['namespace' => 'Admin'] , function(){
+//Route::group(['namespace' => 'Admin'] , function(){
+//
+//    /****Admin Login Route*****/
+//    Route::get('backend/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+//    Route::post('backend/login', 'Auth\LoginController@login')->name('postadmin.login');
+//    Route::post('backend/logout', 'Auth\LoginController@logout')->name('logout');
+//
+//});
 
-    /****Admin Login Route*****/
-    Route::get('backend/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-    Route::post('backend/login', 'Auth\LoginController@login')->name('postadmin.login');
-    Route::post('backend/logout', 'Auth\LoginController@logout')->name('logout');
 
-});
-
-
-//Route::group(['middelware' => 'auth:admin'], function () {
+Route::group(['middelware' => 'auth:admin'], function () {
     Route::resource('articles', 'ArticleController');
     Route::resource('service_types', 'Service_typesController');
     Route::resource('projects', 'ProjectsController');
@@ -71,10 +71,12 @@ Route::group(['namespace' => 'Admin'] , function(){
     Route::resource('company_features', 'company_featuresController');
     Route::resource('admins', 'AdminsController');
     Route::resource('permissions', 'PermissionsController');
-
+    Route::resource('roles', 'RolesController');
 
     Route::get('/logout/custom', ['as' => 'logout.custom', 'uses' => 'Controller@userLogout']);
     Route::get('/destroy/{id?}', ['as' => 'article.destroy', 'uses' => 'ArticleController@destroy']);
+    Route::get('/role/{id?}', ['as' => 'role.destroy', 'uses' => 'RolesController@destroy']);
+    Route::get('/permission/{id?}', ['as' => 'permission.destroy', 'uses' => 'PermissionsController@destroy']);
     Route::get('/project/{id?}', ['as' => 'project.destroy', 'uses' => 'ProjectsController@destroy']);
     Route::get('/service_type/{id?}', ['as' => 'service_type.destroy', 'uses' => 'Service_typesController@destroy']);
     Route::get('/team/{id?}', ['as' => 'team.destroy', 'uses' => 'TeamsController@destroy']);
@@ -83,8 +85,14 @@ Route::group(['namespace' => 'Admin'] , function(){
     Route::get('/user/{id?}', ['as' => 'user.destroy', 'uses' => 'UsersController@destroy']);
     Route::get('/admin/{id?}', ['as' => 'admin.destroy', 'uses' => 'AdminsController@destroy']);
     Route::get('/permission/{id?}', ['as' => 'permission.destroy', 'uses' => 'PermissionsController@destroy']);
-    Route::get('cms/admins/permissions', ['as' => 'admin.view_permissions', 'uses' => 'AdminsController@view_permissions']);
-//    Route::post('cms/permission/byRole', ['as'=>'permission_byRole','uses'=>'admin\RoleController@getByRole']);
+    Route::get('cms/admins/permissions/{id}', ['as' => 'admin.view_permissions', 'uses' => 'AdminsController@view_permissions']);
+    Route::post('cms/permission/byRole', ['as'=>'permission_byRole','uses'=>'admin\RoleController@getByRole']);
+    Route::post('/update/admin/permissions', ['as'=>'update_admin_permissions','uses'=>'AdminsController@update_admin_permissions']);
+    Route::post('/permissionbyrole', ['as'=>'get_permissions_by_role','uses'=>'AdminsController@get_permissions_by_role']);
+    Route::get('/viewpermissions/role/{id}', ['as'=>'role.view_permissions','uses'=>'RolesController@view_permissions']);
+    Route::post('/update_permissions', ['as'=>'update_permissions','uses'=>'RolesController@update_permissions']);
 
-//});
+
+
+});
 

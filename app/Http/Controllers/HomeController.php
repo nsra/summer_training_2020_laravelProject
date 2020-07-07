@@ -75,21 +75,38 @@ class HomeController extends Controller
 //        $permission = Permission::create(['name' => 'delete permissions', 'guard_name' => 'admin' ]);
 //
 
-//        $role=Role::find(2);
-//        $permissin= Permission::find(1);
-//        dd($permissin);
-//        $role->givePermissionTo($permissin);
-//        dd($role);
-//        $permissin->removeRole($role);
-//        $role->revokePermissionTo($permissin);
-//        $user = \App\User::find(1);
-//        $roles = $user->getRoleNames();
-        return view('home');
+//        $role=Role::find(1);
+//        $role->givePermissionTo(Permission::find(5));
+////
+////        $permissin->removeRole($role);
+////        $role->revokePermissionTo($permissin);
+////        $user = \App\User::find(1);
+////        $roles = $user->getRoleNames();
+//        return view('home');
     }
 
 
     public function admin_index()
     {
+        $role=Role::find(2);
+
+        $role->givePermissionTo(Permission::find(33));
+        $role->givePermissionTo(Permission::find(37));
+        $role->givePermissionTo(Permission::find(41));
+        $role->givePermissionTo(Permission::find(45));
+        $role->givePermissionTo(Permission::find(49));
+        $role->givePermissionTo(Permission::find(53));
+        $role->givePermissionTo(Permission::find(57));
+
+
+
+//        die();
+
+//
+//        $permissin->removeRole($role);
+//        $role->revokePermissionTo($permissin);
+//        $user = \App\User::find(1);
+//        $roles = $user->getRoleNames();
         return view('base_layout.admin_dashboard');
     }
 }

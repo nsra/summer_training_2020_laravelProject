@@ -6,10 +6,13 @@ Use App\Article;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-//use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasRoles;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
 
     /**

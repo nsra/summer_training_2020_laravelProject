@@ -178,12 +178,12 @@
                         <span class="title">@lang('lang.add')</span>
                     </a>
                 </li>
-                <li class="nav-item start">
-                    <a href="{{route('admin.view_permissions')}}" class="nav-link ">
-                        <i class="fa fa-lock"></i>
-                        <span class="title">@lang('lang.permissions')</span>
-                    </a>
-                </li>
+{{--                <li class="nav-item start">--}}
+{{--                    <a href="{{route('admin.view_permissions')}}" class="nav-link ">--}}
+{{--                        <i class="fa fa-lock"></i>--}}
+{{--                        <span class="title">@lang('lang.permissions')</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
             </ul>
         </li>
         <li class="nav-item ">
@@ -201,6 +201,27 @@
                 </li>
                 <li class="nav-item start">
                     <a href="{{route('permissions.create')}}" class="nav-link ">
+                        <i class="fa fa-plus"></i>
+                        <span class="title">@lang('lang.add')</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa  fa-caret-square-o-down  "></i>
+                <span class="title">@lang('role.titles.roles')</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item start ">
+                    <a href="{{route('roles.index')}}" class="nav-link ">
+                        <i class="fa fa-list"></i>
+                        <span class="title">@lang('lang.show')</span>
+                    </a>
+                </li>
+                <li class="nav-item start">
+                    <a href="{{route('roles.create')}}" class="nav-link ">
                         <i class="fa fa-plus"></i>
                         <span class="title">@lang('lang.add')</span>
                     </a>

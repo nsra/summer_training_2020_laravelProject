@@ -1,10 +1,9 @@
 <meta charset="utf-8"/>
 <title>Metronic Admin Theme #1 | Bootstrap Form Controls</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Preview page of Metronic Admin Theme #1 for bootstrap inputs, input groups, custom checkboxes and radio controls and more"
-      name="description"/>
-<meta content="" name="author"/>
+
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
       type="text/css"/>

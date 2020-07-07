@@ -78,7 +78,7 @@
             var id = $(this).data('value')
             swal({
                     title: "@lang('lang.questions.confirm_remove')",
-                    text: "@lang('team.questions.do_remove')",
+                    text: "@lang('permission.questions.do_remove')",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
@@ -93,7 +93,7 @@
                      *
                      */
                     $.ajax({
-                        url: '{{route('team.destroy')}}/' + id,
+                        url: '{{route('permission.destroy')}}/' + id,
                         method: 'GET',
                         {{--url: "{{url('/destroy')}}",--}}
                         data: {body: '', _token: '{{csrf_token()}}'}

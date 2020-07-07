@@ -34,6 +34,18 @@ class AdminsController extends Controller
 
     public function index(Request $request)
     {
+//        $admin= Admin::find(2);
+//        $admin->assignRole('reader');
+//        $admin->givePermissionTo('read articles');
+//        $admin->givePermissionTo('read parts');
+//        $admin->givePermissionTo('read projects');
+//        $admin->givePermissionTo('read client reviews');
+//        $admin->givePermissionTo('read working teams');
+//        $admin->givePermissionTo('read company features');
+//        $admin->givePermissionTo('read admins');
+//        $admin->givePermissionTo('read permissions');
+
+
         $admins = Admin::where([]);
         if ($request->has('name'))
             $admins = $admins->where('name', 'like', '%' . $request->input('name') . '%');
@@ -54,13 +66,31 @@ class AdminsController extends Controller
     }
 
 
-    public function view_permissions()
+    public function view_permissions($id)
     {
-
+        $admin = Admin::find($id);
         $roles = Role::all();
         $permissions = Permission::all();
+        $admin_roles = $admin->getRoleNames();
+        $admin_permissions = $admin->getPermissionNames();
+//dd($admin_permissions);
+        return view('admins.permissions',compact('permissions', 'roles', 'admin', 'admin_permissions'));
+    }
 
-        return view('admins.permissions',compact('permissions', 'roles'));
+    public function update_admin_permissions(Request $request){
+        try{
+            $role=Role::find($request->role_id);
+            $role->syncPermissions($request->permissions);
+            return redirect()->back()->with('success', trans('permission.success.updated'));
+        } catch (ModelNotFoundException $modelNotFoundException) {
+            return redirect()->back()->with('error', trans('permission.error.updated'));
+        }
+    }
+
+    public function get_permissions_by_role(Request $request){
+            $permissions=Role::find($request->id)->permissions()->pluck('id');
+//            return $permissions;
+            return redirect()->back();
     }
     /**
      * Store a newly created resource in storage.

@@ -26,7 +26,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- HEADER META STARTS->
     @include('base_layout.components.header.header_meta')
         <!-- HEADER META ENDS-->
-
+    @yield('header')
     @yield('style')
 </head>
 <!-- END HEAD -->

@@ -1,4 +1,7 @@
 @extends('base_layout._layout')
+@section('header')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('style')
     <style>
         .permission>li{
@@ -15,34 +18,76 @@
             <h3>{{ __('lang.permissions') }}</h3>
         </div>
         <div class="card-body">
-            <br method="post" action="">
-                @csrf
-                <div class="form-group" style="width:50%; margin-left:23%; margin-right:23%">
-                        <label for="role_id" class="panel-title ">{{__('lang.choose_role')}} </label>
-                        <select name="role_id" id="role_id" class="form-control">
-                            <option value=""> {{__('lang.options')}} </option>
-                            @foreach($roles as $role)
-                                <option value="{{$role->id}}"> {{$role->name}} </option>
-                            @endforeach
-                        </select>
-                    </div>
+{{--            <form method="post" action="{{route('get_permissions_by_role')}}">--}}
+{{--                @csrf--}}
+{{--                <div class="form-group" style="width:50%; margin-left:23%; margin-right:23%">--}}
+{{--                        <label for="role_id" class="panel-title ">{{__('lang.choose_role')}} </label>--}}
+{{--                        <select name="role_id" id="role_id" class="form-control">--}}
+{{--                            <option value=""> {{__('lang.options')}} </option>--}}
+{{--                            @foreach($roles as $role)--}}
+{{--                                <option value="{{$role->id}}" {{ $role->id == $admin->role_id ? "selected" : "" }}> {{$role->name}} </option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--            </form>--}}
 
-                    </br></br></br></br>
-                <div class=" form-group">
-                    @foreach($permissions as $permission)
-                        <div class="form-group col-lg-3">
-                            <label for="permission">
-                                <input type="checkbox" class="" name="permissions[]" value="{{$permission->id}}" {{$permission->roles()->find(2)? 'checked' : ''}}>
-                                {{$permission->name}}
-                            </label>
-                        </div>
-                    @endforeach
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="{{route('update_admin_permissions')}}" method="POST">
+                            @csrf
+                            <div class="col-sm-6 form-group">
+                                <label for="role_id" class="panel-title ">{{__('lang.choose_role')}} </label>
+                                    <select name="role_id" id="role_id" class="form-control">
+                                        <option value=""> {{__('lang.options')}} </option>
+{{--                                        @foreach($admin_roles as $admin_role)--}}
+{{--                                            <option value="{{$role->id}}" {{ $role->id == $admin->role_id ? "selected" : "" }}> {{$role->name}} </option>--}}
+{{--                                            <option value="{{$admin_role}}" {{ $role->id == $admin->role_id ? "selected" : "" }}> {{$role->name}} </option>--}}
+
+{{--                                        @endforeach--}}
+                                    </select>
+                            </div>
+{{--                            <div class="col-sm-6 form-group " style="margin-top:2%">--}}
+{{--                                <input type="submit" value="{{trans('lang.select')}}" class="btn btn-primary">--}}
+
+{{--                            </div>--}}
+
+                            </br></br></br></br>
+                                <div class=" form-group">
+{{--                                    @foreach($permissions as $permission)--}}
+                                    @foreach($permissions as $premission)
+                                        <div class="form-group col-lg-3">
+                                            <label for="permission">
+                                                {{--                                                <input type="checkbox" class="" name="permissions[]" value="{{$admin_permission->id}}" {{$admin_permission->roles()->find($admin_permission->role_id)? 'checked' : ''}}>--}}
+                                                <input type="checkbox" class="" name="permissions[]" value="{{$premission->id}}" {{ $premission->id == $admin->permissions->pluck('premissions.id') ? 'checked' : '' }}>
+
+                                                {{--                                                {{$permission->name}}--}}
+                                                {{$premission->name}}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                    @foreach($admin_permissions as $admin_permission)
+
+                                        <div class="form-group col-lg-3">
+                                            <label for="permission">
+{{--                                                <input type="checkbox" class="" name="permissions[]" value="{{$admin_permission->id}}" {{$admin_permission->roles()->find($admin_permission->role_id)? 'checked' : ''}}>--}}
+                                                <input type="checkbox" class="" name="permissions[]" value="{{$admin_permission}}" checked>
+
+                                                {{--                                                {{$permission->name}}--}}
+                                                {{$admin_permission}}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </br></br>
+                                <div class="form-action text-center">
+                                    <input type="submit" class="btn btn-primary" name=""  value="{{__('lang.store')}}" >
+                                </div>
+                        </form>
+                    </div>
                 </div>
-            </br></br>
-                <div class="form-action text-center">
-                    <input type="submit" class="btn btn-primary" name=""  value="{{__('lang.store')}}" >
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 @endsection
@@ -52,19 +97,21 @@
     <script>
         $('#role_id').on('change', function(event){
             var role_id = $(this).val();
+            // console.log(role_id);
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '{{ route("permission_byRole") }}',
+                url: '{{ route("get_permissions_by_role", ) }}',
                 type: 'post',
                 data: {
                     'id': role_id
                 },
                 success: function(data)
                 {
+                    // console.log('done');
                     $('input[type=checkbox]').each(function () {
-                        var ThisVal =parseInt(this.value) ;
+                        var ThisVal =parseInt(this.value);
                         if(data.includes(ThisVal))
                             this.checked = true;
                         else
