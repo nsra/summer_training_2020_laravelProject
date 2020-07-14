@@ -13,6 +13,11 @@ class Client_reviewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index(Request $request )
     {
         $client_reviews = Client_review::join('client_review_translations', 'client_reviews.id', '=', 'client_review_translations.client_review_id')

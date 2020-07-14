@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -53,22 +53,19 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 
-//    public function handle($request, Closure $next, $guard = null) {
-//
-//        switch ($guard) {
-//            case 'admin':
-//                if (Auth::guard($guard)->check()) {
-//                    return redirect('/admin');
-//                }
-//                break;
-//
-//            default:
-//                if (Auth::guard($guard)->check()) {
-//                    return redirect('/');
-//                }
-//                break;
-//        }
-//
-//        return $next($request);
-//    }
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+        if ($request->is('admin') || $request->is('admin/*')) {
+            return redirect()->guest('/multiguard_login');
+        }
+
+        if ($request->is('user') || $request->is('user/*')) {
+            return redirect()->guest('/multiguard_login');
+        }
+
+        return redirect()->guest(route('multiguard_login'));
+    }
 }

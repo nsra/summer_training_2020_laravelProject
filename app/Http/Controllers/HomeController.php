@@ -88,15 +88,15 @@ class HomeController extends Controller
 
     public function admin_index()
     {
-        $role=Role::find(2);
-
-        $role->givePermissionTo(Permission::find(33));
-        $role->givePermissionTo(Permission::find(37));
-        $role->givePermissionTo(Permission::find(41));
-        $role->givePermissionTo(Permission::find(45));
-        $role->givePermissionTo(Permission::find(49));
-        $role->givePermissionTo(Permission::find(53));
-        $role->givePermissionTo(Permission::find(57));
+//        $role=Role::find(3);
+//
+//        $role->givePermissionTo(Permission::find(61));
+//        $role->givePermissionTo(Permission::find(62));
+//        $role->givePermissionTo(Permission::find(63));
+//        $role->givePermissionTo(Permission::find(64));
+//        $role->givePermissionTo(Permission::find(65));
+//        $role->givePermissionTo(Permission::find(66));
+//        $role->givePermissionTo(Permission::find(67));
 
 
 

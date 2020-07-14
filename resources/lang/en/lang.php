@@ -27,6 +27,9 @@ return [
     'no' => 'No',
     'edit' => 'Edit',
     'show' => 'Show',
+    'role' => 'Role',
+    'change_password' => 'Change Password',
+    'profile' => 'Profile',
     'create_article' => 'Create article',
     'edit_article' => 'Edit article',
     'article_title_ar' => 'title - arabic',
@@ -67,8 +70,10 @@ return [
     'email' => 'email',
     'create_admin' => 'Create Admin',
     'edit_admin' => 'Edit Admin',
+    'old_password' => 'Old Password',
     'password' => 'Password',
-    'confirm_password' => 'Confirm Password',
+    'new_password' => 'New Password',
+    'confirm_new_password' => 'Confirm New Password',
     'permissions' => 'Permissions',
     'choose_role' => 'Choose Role',
     'create_permission' => 'Add Permission',
@@ -76,6 +81,7 @@ return [
     'permission_name_ar' => 'Permission name - arabic',
     'permission_name_en' => 'Permission name - english',
     'edit_role' => 'Edit Role',
+    'changepassword_done' => 'Password changed successfully',
 
 
 

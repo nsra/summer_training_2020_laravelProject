@@ -13,6 +13,11 @@ class Company_featuresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index(Request $request)
     {
         $company_features = Company_featureTranslation::where([]);

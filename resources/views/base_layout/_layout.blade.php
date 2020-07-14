@@ -44,7 +44,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN SIDEBAR -->
         <div class="page-sidebar-wrapper">
             <!-- BEGIN SIDEBAR -->
-        @includeIf('base_layout.components.nav')
+{{--        @if ( auth()->user()->role == '3')--}}
+
+            @includeIf('base_layout.components.nav')
+{{--        @endif--}}
         <!-- END SIDEBAR -->
         </div>
         <!-- END SIDEBAR -->

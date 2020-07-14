@@ -338,12 +338,17 @@
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                         <img alt="" class="img-circle" src="../assets/layouts/layout/img/avatar3_small.jpg"/>
-                        <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
+                        @auth('admin')
+                        <span class="username username-hide-on-mobile"> {{ Auth::guard('admin')->user()->name }} </span>
+                        @endauth
+                        @auth('web')
+                            <span class="username username-hide-on-mobile"> {{ Auth::guard('web')->user()->name }} </span>
+                        @endauth
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="page_user_profile_1.html">
+                            <a href="{{route('profile.edit')}}">
                                 <i class="icon-user"></i> My Profile </a>
                         </li>
                         <li>

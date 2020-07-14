@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 class UsersController extends Controller
 {
     /**
@@ -13,6 +16,11 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index(Request $request)
     {
         $users = User::where([]);

@@ -67,6 +67,17 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+
+                        <div class="form-group ">
+                            <label for="role">@lang('lang.role') </label>
+                            <select name="role" id="role" class="form-control">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->id}}" {{ $role->name == 'reader' ? "selected" : "" }}> {{$role->name}} </option>
+                                @endforeach
+                            </select>
+                            <span class="error">{{$errors->first('role')}}</span>
+                        </div>
                 </div>
 
             <div class="form-action " >

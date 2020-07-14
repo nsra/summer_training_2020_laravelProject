@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\User;
 use Illuminate\Http\Request;
 use App\Admin;
 Use App\Team;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -19,23 +18,17 @@ class AdminsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public $permission;
-//
-//    public function __construct(Permission $permission)
-//    {
-//        $this->permission = $permission;
-//    }
 
     public function __construct()
     {
-//        $this->middleware('auth:admin');
+        $this->middleware('auth:admin');
     }
 
 
     public function index(Request $request)
     {
-//        $admin= Admin::find(2);
-//        $admin->assignRole('reader');
+//        $admin= Admin::find(4);
+//        $admin->assignRole('writer');
 //        $admin->givePermissionTo('read articles');
 //        $admin->givePermissionTo('read parts');
 //        $admin->givePermissionTo('read projects');
@@ -62,7 +55,8 @@ class AdminsController extends Controller
      */
     public function create()
     {
-        return view('admins.create', ['url' => 'admin']);
+        $roles=Role::all();
+        return view('admins.create', ['url' => 'admin', 'roles'=> $roles]);
     }
 
 
@@ -73,8 +67,10 @@ class AdminsController extends Controller
         $permissions = Permission::all();
         $admin_roles = $admin->getRoleNames();
         $admin_permissions = $admin->getPermissionNames();
-//dd($admin_permissions);
-        return view('admins.permissions',compact('permissions', 'roles', 'admin', 'admin_permissions'));
+        $auth_user=Auth::user();
+//        if($auth_user->can('read permissions'))
+            return view('admins.permissions',compact('permissions', 'roles', 'admin', 'admin_permissions', 'admin_roles'));
+//        else abort(403, 'Unauthorized action.');
     }
 
     public function update_admin_permissions(Request $request){
@@ -111,11 +107,13 @@ class AdminsController extends Controller
             'image' => $request['image'],
         ]);
 
-//        $admin->givePermissions($request->permissions);
-        if ($admin->save() === TRUE)
+        if ($admin->save() === TRUE){
+            $admin->assignRole($request['role']);
+            $role_permissions=Role::find($request['role'])->permissions;
+            $admin->syncPermissions($role_permissions);
             return redirect()->back()->with('success', trans('admin.success.stored'));
+        }
         return redirect()->back()->with('error', trans('admin.error.stored'));
-
     }
 
     /**
@@ -126,7 +124,7 @@ class AdminsController extends Controller
      */
     public function show($id)
     {
-        return view('admins.show', [
+            return view('admins.show', [
             'admin' => Admin::find($id),
         ]);
     }

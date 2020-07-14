@@ -1,6 +1,9 @@
 @extends('base_layout._layout')
 
 @section('body')
+    <?php
+        use App\User;
+    ?>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-primary">
@@ -46,6 +49,7 @@
                         <tr>
                             <th class="text-center">@lang('user.fields.name')</th>
                             <th class="text-center">@lang('user.fields.email')</th>
+                            <th class="text-center">@lang('lang.role')</th>
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>
@@ -54,10 +58,9 @@
                             <tr>
                                 <td class="text-center">{{$user->name}}</td>
                                 <td class="text-center">{{$user->email}}</td>
-
                                 <td class="text-center">
-
-
+                                    @foreach(User::find($user->id)->getRoleNames() as $user_role)   {{$user_role}} @endforeach                                </td>
+                                <td class="text-center">
                                     <a class="btn btn-danger delete-user" data-value="{{$user->id}}">
                                         <i class="fa fa-trash"></i>
                                     </a>

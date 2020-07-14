@@ -14,8 +14,11 @@ return [
     'english' => 'الانجليزية',
     'store' => 'حفظ',
     'cancel' => 'الغاء',
+    'change_password' => 'تغيير كلمة المرور',
+    'profile' => 'الملف الشخصي',
     'select_image' => 'ارفق صورة',
     'select' => 'اختر',
+    'role' => 'دور',
     'choose_language' => 'اختر لغة',
     'change' => 'تغيير',
     'remove' => 'حذف',
@@ -81,10 +84,13 @@ return [
     'email' => 'الإيميل',
     'create_admin' => 'إضافة مدير',
     'edit_admin' => 'تعديل مدير',
+    'old_password' => 'كلمة المرور السابقة',
     'password' => 'كلمة المرور',
-    'confirm_password' => 'تأكيد كلمة المرور',
+    'new_password' => 'كلمة المرور الجديدة',
+    'confirm_new_password' => 'تأكيد كلمة المرور',
     'permissions' => 'الصلاحيات',
     'choose_role' => 'اختر دور',
+    'changepassword_done' => 'تم تغيير كلمة المرور بنجاح',
 
 
     /**

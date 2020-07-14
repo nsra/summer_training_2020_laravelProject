@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Http\Request;
 use App\Admin;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 
 class RegisterController extends Controller
 {
@@ -30,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -39,10 +41,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
-//        $this->middleware('guest:admin');
-
-
+        $this->middleware('guest:admin');
+        $this->middleware('guest:web');
     }
 
     /**
@@ -60,44 +60,48 @@ class RegisterController extends Controller
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
-//    public function showAdminRegisterForm()
+//    protected function create(array $data)
 //    {
-//        return view('admins.create');
-//    }
-
-//    protected function createAdmin(Request $request)
-//    {
-//        die();
-//        $request->validate($this->rules(), $this->messages());
-//
-//        $request['image'] = parent::uploadImage($request->file('admin_image'));
-//
-//        $admin= Admin::create([
-//            'name' => $request['name'],
-//            'email' => $request['email'],
-//            'password' => Hash::make($request['password']),
-//            'image' => $request['image'],
+//        $user= User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'password' => Hash::make($data['password']),
 //        ]);
-//
-////        $admin->givePermissions($request->permissions);
-//        if ($admin->save() === TRUE)
-//            return redirect()->route('admins.create')->with('success', trans('admin.success.stored'));
-//        return redirect()->route('admins.create')->with('error', trans('admin.error.stored'));
+//        if($user->save()){
+//            $user->assignRole('user');
+//            $role_permissions=Role::findByName('user')->permissions;
+//            $user->syncPermissions($role_permissions);
+//            return $user;
+//        }
+//        return redirect()->back()->with('error', trans('user.error.stored'));
 //
 //    }
 
+    public function showUserRegisterForm()
+    {
+        return view('auth.user_register', ['url' => 'user']);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    protected function createUser(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route('multiguard_login');
+    }
 }

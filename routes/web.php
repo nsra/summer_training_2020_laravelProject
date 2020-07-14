@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -35,30 +34,18 @@ Route::get('/profile/show', function () {
     return view('profile.show');
 });
 
-Route::get('/profile/edit', function () {
-    return view('profile.edit');
-});
+//Route::get('/profile/edit', function () {
+//    return view('profile.edit');
+//});
 
 Route::get('/language/{lang?}', [
     'as' => 'language.change',
     'uses' => 'LocalizationController@change'
 ]);
+Route::get('/user', function () {
+    return view('user');
+});
 
-
-
-//Route::get('/login/admin', ['as' => 'getadminlogin', 'uses' =>'Auth\LoginController@showAdminLoginForm']);
-//
-//Route::post('/login/admin', ['as' => 'postadminlogin', 'uses' => 'Auth\LoginController@adminLogin']);
-//
-
-//Route::group(['namespace' => 'Admin'] , function(){
-//
-//    /****Admin Login Route*****/
-//    Route::get('backend/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-//    Route::post('backend/login', 'Auth\LoginController@login')->name('postadmin.login');
-//    Route::post('backend/logout', 'Auth\LoginController@logout')->name('logout');
-//
-//});
 
 
 Route::group(['middelware' => 'auth:admin'], function () {
@@ -71,7 +58,10 @@ Route::group(['middelware' => 'auth:admin'], function () {
     Route::resource('company_features', 'company_featuresController');
     Route::resource('admins', 'AdminsController');
     Route::resource('permissions', 'PermissionsController');
+        //->middleware('can: write permissions');
     Route::resource('roles', 'RolesController');
+    Route::get('/editprofile', ['as' => 'profile.edit', 'uses' => 'ProfileController@editprofile']);
+    Route::get('/changepassword', ['as' => 'password.change', 'uses' => 'ProfileController@changepassword']);
 
     Route::get('/logout/custom', ['as' => 'logout.custom', 'uses' => 'Controller@userLogout']);
     Route::get('/destroy/{id?}', ['as' => 'article.destroy', 'uses' => 'ArticleController@destroy']);
@@ -91,8 +81,31 @@ Route::group(['middelware' => 'auth:admin'], function () {
     Route::post('/permissionbyrole', ['as'=>'get_permissions_by_role','uses'=>'AdminsController@get_permissions_by_role']);
     Route::get('/viewpermissions/role/{id}', ['as'=>'role.view_permissions','uses'=>'RolesController@view_permissions']);
     Route::post('/update_permissions', ['as'=>'update_permissions','uses'=>'RolesController@update_permissions']);
-
-
-
+    Route::post('/changepassword', ['as'=>'password.update','uses'=>'ProfileController@updatepassword']);
+    Route::post('/editprofile', ['as'=>'profile.update','uses'=>'ProfileController@updateprofile']);
 });
+
+Route::get('/multiguard_login', 'Auth\LoginController@showLoginForm')->name('show.multiguard_login');
+
+//RegisterController
+//Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm')->name('admin_register');
+Route::get('/register/user', 'Auth\RegisterController@showUserRegisterForm')->name('user_register');
+
+//UserController
+Route::get('/user', 'UserController@userDashboard')->name('user_dashboard');
+
+//AdminController
+Route::get('/admin', 'AdminController@adminDashboard')->name('admin_dashboard');
+
+//HomeController
+Route::get('/home', 'HomeController@index')->name('home');
+
+//********************************POST********************************
+//LoginController
+Route::post('/multiguard_login', 'Auth\LoginController@multiguardLogin')->name('multiguard_login');
+// Route::post('/login/user', 'Auth\LoginController@userLogin')->name('multiguardLogin');
+
+//RegisterController
+Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('admin_register');
+Route::post('/register/user', 'Auth\RegisterController@createUser')->name('user_register');
 
