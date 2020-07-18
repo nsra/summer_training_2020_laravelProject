@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 use App\Article;
 use App\Service_type;
+use App\Image;
 use App\Project;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use DB;
+use Illuminate\Support\Facades\Validator;
 class ProjectsController extends Controller
 {
     /**
@@ -81,11 +83,26 @@ class ProjectsController extends Controller
             'description' => $request->ar_description,
             'project_locale'=> 'ar',
         ];
-
         $project= Project::create($project_data);
-        $project->image= parent::uploadImage($request->file('project_image'));
         $project->service_type_id= $request->project_service_type;
 
+//        $imageRules= ['image' => 'image|required'];
+
+        if ($request->file('project_images') !== null ) {
+            $images = $request->file('project_images');
+            foreach($images as $image) {
+//                $image->validate(['image' => 'image|required'],
+//                    ['project_images.required' => trans('lang.required_valid_image'), 'project_images.image' => trans('lang.required_valid_image')]);
+//                $imageValidator = Validator::make($image, ['image' => 'image|required']);
+                $path = parent::uploadImage($image);
+                $project_image = new Image();
+                $project_image->project_id = $project->id;
+                $project_image->name = $path;
+                $project_image->save();
+            }
+        } else {
+            return redirect()->back()->with('errors', ' Image file not found!');
+        }
 
 
         if ($project->save()){
@@ -154,10 +171,11 @@ class ProjectsController extends Controller
             'ar_title' => 'required|max:100',
             'en_description' => 'required',
             'ar_description' => 'required',
-            'article_image' => 'image',
+            'project_images.*.file' => 'mimes:jpeg,jpg,png'
         ];
         if (!$id) {
-            $rules['project_image'] = 'required|image';
+            $rules['project_images.*.file'] = 'image';
+
         }
         return $rules;
     }
@@ -177,6 +195,13 @@ class ProjectsController extends Controller
             'ar_title.required' => trans('project.validations.title_required'),
             'ar_title.max' => trans('project.validations.title_max'),
             'ar_description.required' => trans('project.validations.description_required'),
+            'project_images.image' => trans('lang.required_valid_image'),
+            'project_images.required' => trans('lang.required_valid_image'),
+
         ];
+    }
+
+    private function isValid(){
+
     }
 }

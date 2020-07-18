@@ -92,6 +92,7 @@ return [
     'choose_role' => 'اختر دور',
     'changepassword_done' => 'تم تغيير كلمة المرور بنجاح',
     'updateprofile_done' => 'تم تعديل الحساب بنجاح',
+    'required_valid_image' => 'مطلوب صور صالحة',
 
 
     /**

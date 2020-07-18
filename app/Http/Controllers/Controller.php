@@ -20,8 +20,9 @@ class Controller extends BaseController
         return redirect()->route('show.multiguard_login');
     }
 
-    public function uploadImage($image, $dir = 'image')
+    public function uploadImage($image)
     {
+        $dir= 'image';
         $uploadedImage = $image;
         $imageName = time() . '.' . $uploadedImage->getClientOriginalExtension();
         $direction = public_path($dir . '/');

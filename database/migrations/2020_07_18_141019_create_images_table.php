@@ -17,10 +17,6 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->foreignId('article_id')
-                ->nullable()
-                ->references('id')
-                ->on('articles');
             $table->foreignId('project_id')
                 ->nullable()
                 ->references('id')

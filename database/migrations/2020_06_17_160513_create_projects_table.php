@@ -21,7 +21,6 @@ class CreateProjectsTable extends Migration
             $table->foreign('service_type_id')
             ->references('id')
             ->on('service_types');
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

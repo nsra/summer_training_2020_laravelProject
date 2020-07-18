@@ -12,7 +12,7 @@ class Project extends Model implements TranslatableContract
     use Translatable;
     protected $table = 'projects';
     public $translatedAttributes = ['title', 'description'];
-    protected  $fillable = ['service_type_id', 'image'];
+    protected  $fillable = ['service_type_id'];
 
     public function service_type()
     {
@@ -24,5 +24,10 @@ class Project extends Model implements TranslatableContract
         if (!$this->image)
             return asset('no_image.png');
         return asset($this->image);
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image');
     }
 }
