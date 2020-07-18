@@ -26,10 +26,14 @@ class Service_typesController extends Controller
     {
 
         $service_types = Service_typeTranslation::where([]);
-        if ($request->has('name'))
+
+        if ($request->has('name')){
             $service_types = $service_types->where('name', 'like', '%' . $request->input('name') . '%');
-        if ($request->has('description'))
-            $service_types = $service_types->where('description', 'like', '%' . $request->input('description') . '%');
+        }
+
+        if ($request->has('about_service')){
+            $service_types = $service_types->where('about_service', 'like', '%' . $request->input('about_service') . '%');
+        }
 
         $service_types = $service_types->where('locale', '=', Session::get('locale'))->paginate(5);
         return view('service_types.index', compact('service_types'));

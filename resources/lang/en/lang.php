@@ -82,6 +82,8 @@ return [
     'permission_name_en' => 'Permission name - english',
     'edit_role' => 'Edit Role',
     'changepassword_done' => 'Password changed successfully',
+    'updateprofile_done' => 'Profile edited successfully',
+
 
 
 

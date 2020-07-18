@@ -40,7 +40,8 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        return view('permissions.create');
+        $roles=Role::all();
+        return view('permissions.create', ['roles'=> $roles]);
     }
 
 
@@ -57,8 +58,11 @@ class PermissionsController extends Controller
             'name' => $request['name'],
         ]);
 
-        if ($permission->save() === TRUE)
+        if ($permission->save() === TRUE){
+            $permission->assignRole($request->role);
             return redirect()->back()->with('success', trans('permission.success.stored'));
+
+        }
         return redirect()->back()->with('error', trans('permission.error.stored'));
     }
 

@@ -10,7 +10,8 @@
 
                 </div>
                 <div class="card-body">
-                    <form action="{{route('password.update', $user->id)}}" method="PUT" enctype="multipart/form-data">
+                    <form action="{{route('admin_password.update', $user->id)}}" method="POST" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
 
                         <div class="form-group">
@@ -32,11 +33,10 @@
 
 
                         <div class="form-action text-center">
-                            <button type="submit"  class="btn btn-primary">@lang('lang.edit')</button>
-                            <a href="/admin" type="reset"
+                            <a href="{{route('admin_dashboard')}}" type="reset"
                                class="btn btn-default">@lang('lang.cancel')</a>
-                            <a href="{{route('password.change')}}"
-                               class="btn btn-default">@lang('lang.change_password')</a>
+                            <button type="submit" href="{{route('admin_password.change')}}"
+                               class="btn btn-default">@lang('lang.change_password')</button>
                         </div>
                 </div>
                 </form>

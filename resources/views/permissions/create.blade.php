@@ -10,30 +10,29 @@
                 </div>
                 <div class="card-body">
                     <form action="{{route('permissions.store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-{{--                        <div class="form-group">--}}
-{{--                            <label for="en_name">{{__('lang.permission_name_en')}} <span class="required">*</span></label>--}}
-{{--                            <input type="text" class="form-control" name="en_name" value="{{old('en_name')}}">--}}
-{{--                            <span class="error">{{$errors->first('en_name')}}</span>--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label for="ar_name">{{__('lang.permission_name_ar')}} <span class="required">*</span></label>--}}
-{{--                            <input type="text" class="form-control" name="ar_name" value="{{old('ar_name')}}">--}}
-{{--                            <span class="error">{{$errors->first('ar_name')}}</span>--}}
-{{--                        </div>--}}
+                                @csrf
+                        <div class="form-group ">
+                            <label for="role">@lang('lang.role') </label>
+                            <select name="role" id="role" class="form-control">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->id}}" {{ $role->name == 'writer' ? "selected" : "" }}> {{$role->name}} </option>
+                                @endforeach
+                            </select>
+                            <span class="error">{{$errors->first('role')}}</span>
+                        </div>
 
-             <div class="form-group">
-                    <label for="name">{{__('lang.name')}} <span class="required">*</span></label>
-                    <input type="text" class="form-control" name="name" value="{{old('name')}}">
-                    <span class="error">{{$errors->first('name')}}</span>
-             </div>
+                         <div class="form-group">
+                                <label for="name">{{__('lang.name')}} <span class="required">*</span></label>
+                                <input type="text" class="form-control" name="name" value="{{old('name')}}">
+                                <span class="error">{{$errors->first('name')}}</span>
+                         </div>
 
                         <div class="form-action " >
                             <button type="submit"  value="" class="btn btn-primary">{{__('lang.store')}}</button>
                             <button type="reset"  value="" class="btn btn-default">{{__('lang.cancel')}}</button>
                         </div>
-        </div>
-    </form>
+                    </form>
+                </div>
     <br>
     <br>
 </div>

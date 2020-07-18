@@ -17,7 +17,7 @@ class Controller extends BaseController
     {
         Auth::logout();
         Session::flush();
-        return redirect()->route('login');
+        return redirect()->route('show.multiguard_login');
     }
 
     public function uploadImage($image, $dir = 'image')

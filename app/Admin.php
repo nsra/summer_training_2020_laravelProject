@@ -16,7 +16,7 @@ class Admin extends Authenticatable
     use HasRoles, HasPermissions;
     protected $guard = 'admin';
 
-    protected  $fillable = ['name', 'email', 'password', 'image', 'role_id'];
+    protected  $fillable = ['name', 'email', 'password', 'image'];
 
     public function getImage()
     {

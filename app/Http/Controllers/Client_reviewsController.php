@@ -23,11 +23,16 @@ class Client_reviewsController extends Controller
         $client_reviews = Client_review::join('client_review_translations', 'client_reviews.id', '=', 'client_review_translations.client_review_id')
             ->select('client_reviews.name', 'client_review_translations.*')
             ->where([]);
-        if ($request->has('name'))
+
+        if ($request->has('name')){
             $client_reviews = $client_reviews->where('name', 'like', '%' . $request->input('name') . '%');
-        if ($request->has('review'))
+        }
+
+        if ($request->has('review')){
             $client_reviews = $client_reviews->where('review', 'like', '%' . $request->input('review') . '%');
-        $client_reviews = $client_reviews->where('locale', '=', Session::get('locale'))->paginate(5);
+        }
+
+        $client_reviews = $client_reviews->where('locale', Session::get('locale'))->paginate(5);
         return view('client_reviews.index', compact('client_reviews'));
     }
 

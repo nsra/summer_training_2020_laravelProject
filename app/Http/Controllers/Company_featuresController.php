@@ -20,13 +20,17 @@ class Company_featuresController extends Controller
 
     public function index(Request $request)
     {
-        $company_features = Company_featureTranslation::where([]);
-        if ($request->has('title'))
-            $company_features = $company_features->where('title', 'like', '%' . $request->input('title') . '%');
-        if ($request->has('description'))
-            $company_features = $company_features->where('description', 'like', '%' . $request->input('description') . '%');
-        $company_features = $company_features->where('locale', '=', Session::get('locale'))->paginate(5);
-        return view('company_features.index', compact('company_features'));
+        $items = Company_featureTranslation::query();
+        if ($request->has('title')){
+            $company_features = $items->where('title', 'like', '%' . $request->input('title') . '%');
+        }
+
+        if ($request->has('description')){
+            $company_features = $items->where('description', 'like', '%' . $request->input('description') . '%');
+        }
+
+        $items = $items->where('locale', Session::get('locale'))->paginate(5);
+        return view('company_features.index', compact('items'));
     }
 
     /**

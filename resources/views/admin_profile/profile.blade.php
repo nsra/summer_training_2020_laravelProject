@@ -13,20 +13,21 @@
 
                 </div>
                 <div class="card-body">
-                    <form action="{{route('profile.update', $user->id)}}" method="PUT" enctype="multipart/form-data">
+                    <form action="{{route('admin_profile.update', $user->id)}}" method="POST" enctype="multipart/form-data">
+                        @method('PUT')
                         @csrf
                         <div class="form-group " style="text-align: center">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-{{--                                    <img src="{{$user->getImage()}}" alt="">--}}
+                                    <img src="{{$user->getImage()}}" alt="">
                                 </div>
                                 <div>
                                     <span class="btn red btn-outline btn-file">
                                     <span class="fileinput-new"> {{__('lang.select_image')}} </span>
                                     <span class="fileinput-exists"> {{__('lang.change')}} </span>
-                                    <input type="file" name="user_image"> </span>
+                                    <input type="file" name="admin_image"> </span>
                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> {{__('lang.remove')}} </a>
-                                    <span class="error col-md-12">{{$errors->first('user_image')}}</span>
+                                    <span class="error col-md-12">{{$errors->first('admin_image')}}</span>
                                 </div>
                             </div>
                         </div>
@@ -44,17 +45,17 @@
                         </div>
 
 
-                <div class="form-action text-center">
-                    <button type="submit"  class="btn btn-primary">@lang('lang.edit')</button>
-                    <a href="/admin" type="reset"
-                            class="btn btn-default">@lang('lang.cancel')</a>
-                    <a href="{{route('password.change')}}"
-                       class="btn btn-default">@lang('lang.change_password')</a>
+                        <div class="form-action text-center">
+                            <button type="submit"  class="btn btn-primary">@lang('lang.edit')</button>
+                            <a  href="{{route('admin_dashboard')}}" type="reset"
+                               class="btn btn-default">@lang('lang.cancel')</a>
+                            <a href="{{route('admin_password.change')}}"
+                               class="btn btn-default">@lang('lang.change_password')</a>
+                        </div>
                 </div>
+                </form>
+                <br>
+                <br>
             </div>
-            </form>
-            <br>
-            <br>
         </div>
-    </div>
 @endsection

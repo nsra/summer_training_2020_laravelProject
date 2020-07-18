@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class ArticleController extends Controller
+class ArticlesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,8 +30,10 @@ class ArticleController extends Controller
             ->where([]);
         if ($request->has('title'))
             $articles = $articles->where('title', 'like', '%' . $request->input('title') . '%');
+
         if ($request->has('description'))
             $articles = $articles->where('description', 'like', '%' . $request->input('description') . '%');
+
         if ($request->has('user_id')){
             $articles= $articles->where('name', 'like', '%' . $request->input('user_id') . '%');
         }

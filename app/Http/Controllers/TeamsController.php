@@ -21,10 +21,13 @@ class TeamsController extends Controller
     public function index(Request $request)
     {
         $teams = TeamTranslation::where([]);
-        if ($request->has('name'))
+
+        if ($request->has('name')){
             $teams = $teams->where('name', 'like', '%' . $request->input('name') . '%');
-        if ($request->has('bio'))
+        }
+        if ($request->has('bio')){
             $teams = $teams->where('bio', 'like', '%' . $request->input('bio') . '%');
+        }
         $teams = $teams->where('locale', '=', Session::get('locale'))->paginate(5);
         return view('teams.index', compact('teams'));
     }

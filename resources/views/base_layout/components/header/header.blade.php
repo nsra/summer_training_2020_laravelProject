@@ -348,7 +348,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="{{route('profile.edit')}}">
+                            <a href="{{route('admin_profile.edit')}}">
                                 <i class="icon-user"></i> My Profile </a>
                         </li>
                         <li>

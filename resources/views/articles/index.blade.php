@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form action="{{route('article.index')}}" method="GET">
+                            <form action="{{route('articles.index')}}" method="GET">
                                 <div class="col-sm-4 form-group">
                                     <label for="name">@lang('article.fields.title')</label>
                                     <input type="text" name="title" class="form-control"

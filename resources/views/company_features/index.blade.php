@@ -50,7 +50,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($company_features as $company_feature)
+                        @foreach($items as $company_feature)
                             <tr>
                                 <td class="text-center">{{$company_feature->title}}</td>
                                 <td class="text-center">{{$company_feature->description}}</td>
@@ -72,7 +72,7 @@
                         </tbody>
                     </table>
                     <div class="com-md-12 text-right">
-                        {{$company_features->links()}}
+                        {{$items->links()}}
                     </div>
                 </div>
             </div>

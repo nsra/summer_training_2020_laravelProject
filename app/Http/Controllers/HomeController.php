@@ -24,89 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $role = Role::create(['name' => 'reader']);
-//        $permission = PermissionTranslation::create(['name' => 'read articles', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create articles', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit articles', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete articles', 'guard_name' => 'admin' ]);
-
-//        PermissionTranslation::create([
-//            'en' => [ 'locale' =>'en', 'name' => 'read parts', 'permission_id' => '5' ],
-//            'ar' => [ 'locale' =>'ar', 'name' => 'قراءة الأقسام', 'permission_id' => '5' ],
-//        ]);
-//        PermissionTranslation::save();
-//        $permission = Permission::create(['name' => 'create parts', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit parts', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete parts', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read parts', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create parts', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit parts', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete parts', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read projects' , 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create projects', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit projects', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete projects', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read client reviews', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create client reviews', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit client reviews', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete client reviews', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read working team', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create working team', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit working team', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete working team', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read company features', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create company features', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit company features', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete company features', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read admins', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create admins', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit admins', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete admins', 'guard_name' => 'admin' ]);
-//
-//        $permission = Permission::create(['name' => 'read permissions', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'create permissions', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'edit permissions', 'guard_name' => 'admin' ]);
-//        $permission = Permission::create(['name' => 'delete permissions', 'guard_name' => 'admin' ]);
-//
-
-//        $role=Role::find(1);
-//        $role->givePermissionTo(Permission::find(5));
-////
-////        $permissin->removeRole($role);
-////        $role->revokePermissionTo($permissin);
-////        $user = \App\User::find(1);
-////        $roles = $user->getRoleNames();
-//        return view('home');
+        return view('home');
     }
 
 
     public function admin_index()
     {
-//        $role=Role::find(3);
-//
-//        $role->givePermissionTo(Permission::find(61));
-//        $role->givePermissionTo(Permission::find(62));
-//        $role->givePermissionTo(Permission::find(63));
-//        $role->givePermissionTo(Permission::find(64));
-//        $role->givePermissionTo(Permission::find(65));
-//        $role->givePermissionTo(Permission::find(66));
-//        $role->givePermissionTo(Permission::find(67));
-
-
-
-//        die();
-
-//
-//        $permissin->removeRole($role);
-//        $role->revokePermissionTo($permissin);
-//        $user = \App\User::find(1);
-//        $roles = $user->getRoleNames();
         return view('base_layout.admin_dashboard');
     }
 }

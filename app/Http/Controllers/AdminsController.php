@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use Illuminate\Http\Request;
 use App\Admin;
@@ -27,18 +28,6 @@ class AdminsController extends Controller
 
     public function index(Request $request)
     {
-//        $admin= Admin::find(4);
-//        $admin->assignRole('writer');
-//        $admin->givePermissionTo('read articles');
-//        $admin->givePermissionTo('read parts');
-//        $admin->givePermissionTo('read projects');
-//        $admin->givePermissionTo('read client reviews');
-//        $admin->givePermissionTo('read working teams');
-//        $admin->givePermissionTo('read company features');
-//        $admin->givePermissionTo('read admins');
-//        $admin->givePermissionTo('read permissions');
-
-
         $admins = Admin::where([]);
         if ($request->has('name'))
             $admins = $admins->where('name', 'like', '%' . $request->input('name') . '%');
@@ -56,7 +45,7 @@ class AdminsController extends Controller
     public function create()
     {
         $roles=Role::all();
-        return view('admins.create', ['url' => 'admin', 'roles'=> $roles]);
+        return view('admins.create', ['roles'=> $roles]);
     }
 
 
@@ -68,9 +57,7 @@ class AdminsController extends Controller
         $admin_roles = $admin->getRoleNames();
         $admin_permissions = $admin->getPermissionNames();
         $auth_user=Auth::user();
-//        if($auth_user->can('read permissions'))
-            return view('admins.permissions',compact('permissions', 'roles', 'admin', 'admin_permissions', 'admin_roles'));
-//        else abort(403, 'Unauthorized action.');
+        return view('admins.permissions',compact('permissions', 'roles', 'admin', 'admin_permissions', 'admin_roles'));
     }
 
     public function update_admin_permissions(Request $request){
@@ -85,7 +72,6 @@ class AdminsController extends Controller
 
     public function get_permissions_by_role(Request $request){
             $permissions=Role::find($request->id)->permissions()->pluck('id');
-//            return $permissions;
             return redirect()->back();
     }
     /**
@@ -94,8 +80,7 @@ class AdminsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate($this->rules(), $this->messages());
 
         $request['image'] = parent::uploadImage($request->file('admin_image'));
@@ -176,8 +161,7 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         try {
             $admin = Admin::findOrFail($id);
             $admin->delete();
