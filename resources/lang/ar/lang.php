@@ -93,6 +93,10 @@ return [
     'changepassword_done' => 'تم تغيير كلمة المرور بنجاح',
     'updateprofile_done' => 'تم تعديل الحساب بنجاح',
     'required_valid_image' => 'مطلوب صور صالحة',
+    'choose_service_type' => 'اختر قسم',
+    'register' => 'إنشاء حساب',
+    'login' => 'تسجيل دخول',
+    'show_more' => 'عرض المزيد',
 
 
     /**

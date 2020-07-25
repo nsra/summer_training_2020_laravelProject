@@ -12,4 +12,11 @@ class Image extends Model
     {
         return $this->belongsTo('App\Project');
     }
+
+    public function getImage()
+    {
+        if (!$this->image)
+            return asset('no_image.png');
+        return asset($this->name);
+    }
 }

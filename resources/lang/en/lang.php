@@ -84,8 +84,10 @@ return [
     'changepassword_done' => 'Password changed successfully',
     'updateprofile_done' => 'Profile edited successfully',
     'required_valid_image' => 'Required valid image ',
-
-
+    'choose_service_type' => 'Choose Part',
+    'register' => 'Register',
+    'login' => 'Login',
+    'show_more' => 'Show More',
 
 
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Article;
-Use App\User;
+Use App\Admin;
 use App\ArticleTranslation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\Rule;
@@ -25,8 +25,8 @@ class ArticlesController extends Controller
     {
 
         $articles = Article::join('article_translations', 'articles.id', '=', 'article_translations.article_id')
-            ->join('users', 'articles.user_id', '=', 'users.id')
-            ->select('articles.id', 'article_translations.*', 'users.name')
+            ->join('admins', 'articles.admin_id', '=', 'admins.id')
+            ->select('articles.id', 'article_translations.*', 'admins.name')
             ->where([]);
         if ($request->has('title'))
             $articles = $articles->where('title', 'like', '%' . $request->input('title') . '%');
@@ -34,8 +34,8 @@ class ArticlesController extends Controller
         if ($request->has('description'))
             $articles = $articles->where('description', 'like', '%' . $request->input('description') . '%');
 
-        if ($request->has('user_id')){
-            $articles= $articles->where('name', 'like', '%' . $request->input('user_id') . '%');
+        if ($request->has('admin_id')){
+            $articles= $articles->where('name', 'like', '%' . $request->input('admin_id') . '%');
         }
         $articles = $articles->where('locale', '=', Session::get('locale'))->paginate(5);
         return view('articles.index', compact('articles'));
@@ -74,7 +74,7 @@ class ArticlesController extends Controller
 
         $article= Article::create($article_data);
         $article->image= parent::uploadImage($request->file('article_image'));
-        $article->user_id= auth()->user()->id;
+        $article->admin_id= auth()->user()->id;
 
         if ($article->save()){
             return redirect()->back()->with('success', trans('article.success.stored'));
@@ -104,7 +104,6 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-//        dd($article);
         return view('articles.edit', compact('article'));
     }
 

@@ -61,13 +61,13 @@ class Service_typesController extends Controller
         $request->validate($this->rules(), $this->messages());
         $service_type_data = [];
         $service_type_data['en'] = [
-            'name' => $request->en_title,
-            'description' => $request->en_description,
+            'name' => $request->en_name,
+            'about_service' => $request->en_about_service,
             'service_type_locale' => 'en'
         ];
         $service_type_data['ar'] = [
-            'name' => $request->ar_title,
-            'description' => $request->ar_description,
+            'name' => $request->ar_name,
+            'about_service' => $request->ar_about_service,
             'service_type_locale' => 'ar'
         ];
 
@@ -115,19 +115,23 @@ class Service_typesController extends Controller
     public function update(Request $request, $id)
     {
 
+
         try{
             $service_type = Service_type::findOrFail($id);
             $request->validate($this->rules($id), $this->messages());
 
             $service_type_data = [];
             $service_type_data['en'] = [
-                'name' => $request->en_title,
-                'description' => $request->en_description,
+                'name' => $request->en_name,
+                'about_service' => $request->en_about_service,
+                'service_type_locale' => 'en',
             ];
             $service_type_data['ar'] = [
-                'name' => $request->ar_title,
-                'description' => $request->ar_description,
+                'name' => $request->ar_name,
+                'about_service' => $request->ar_about_service,
+                'service_type_locale' => 'ar'
             ];
+
             if($request->file('service_type_image')){
                 $service_type->image= parent::uploadImage($request->file('service_type_image'));
             }
@@ -159,11 +163,12 @@ class Service_typesController extends Controller
 
     private function rules($id = null)
     {
+
         $rules = [
             'en_name' => 'required|max:100',
             'ar_name' => 'required|max:100',
-            'en_description' => 'required',
-            'ar_description' => 'required',
+            'en_about_service' => 'required',
+            'ar_about_service' => 'required',
             'service_type_image' => 'image',
         ];
         if (!$id) {

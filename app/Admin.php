@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Article;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -23,5 +24,10 @@ class Admin extends Authenticatable
         if (!$this->image)
             return asset('no_image.png');
         return asset($this->image);
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
     }
 }

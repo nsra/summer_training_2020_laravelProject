@@ -10,7 +10,7 @@
                     <h3>{{ __('article.titles.show_article') }}</h3>
                 </div>
                 <div class="card-body">
-                        <div class="form-group " style="text-align: center">
+                        <div class="form-group" style="text-align: center">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                                         <img src="{{$article->getImage()}}" alt="">

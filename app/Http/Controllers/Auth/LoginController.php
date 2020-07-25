@@ -60,7 +60,7 @@ class LoginController extends Controller
         }
 
         else if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))){
-            return redirect()->route('user_dashboard');
+            return redirect()->route('home');
         }
 
         else

@@ -86,8 +86,6 @@ class ProjectsController extends Controller
         $project= Project::create($project_data);
         $project->service_type_id= $request->project_service_type;
 
-//        $imageRules= ['image' => 'image|required'];
-
         if ($request->file('project_images') !== null ) {
             $images = $request->file('project_images');
             foreach($images as $image) {
@@ -120,7 +118,9 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $project= Project::find($id);
+        $service_type= Service_type::where('id', $project->service_type_id)->first();
+        return view('projects.show', compact('project', 'service_type'));
     }
 
     /**
@@ -129,9 +129,10 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        $service_types= Service_type::get();
+        return view('projects.edit', compact('project', 'service_types'));
     }
 
     /**
@@ -143,7 +144,50 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+        $request->validate($this->rules($id), $this->messages());
+
+        $project_data = [];
+        $project_data['en'] = [
+            'title' => $request->en_title,
+            'description' => $request->en_description,
+            'project_locale'=> 'en',
+        ];
+
+        $project_data['ar'] = [
+            'title' => $request->ar_title,
+            'description' => $request->ar_description,
+            'project_locale'=> 'ar',
+        ];
+        // dd($request);
+        $project->service_type_id= $request->project_service_type_id;
+        //$project->update($project_data);
+
+        // if ($request->file('project_images') !== null ) {
+        //     $old_project_images= Image::where('project_id', $id)->delete();;
+        //     $images = $request->file('project_images');
+        //     foreach($images as $image) {
+        //         $path = parent::uploadImage($image);
+        //         $project_image = new Image();
+        //         $project_image->project_id = $project->id;
+        //         $project_image->name = $path;
+        //         $project_image->save();
+        //     }
+
+        $project->update($project_data);
+
+        if($request->file('project_image')){
+            $path= parent::uploadImage($request->file('project_image'));
+            $project_image = new Image();
+            $project_image->project_id = $project->id;
+            $project_image->name = $path;
+            $project_image->save();
+
+        } 
+        
+        return redirect()->back()->with('success', trans('project.success.updated'));
+      
+            // return redirect()->back()->with('error', trans('project.error.updated'));
     }
 
     /**
@@ -171,10 +215,13 @@ class ProjectsController extends Controller
             'ar_title' => 'required|max:100',
             'en_description' => 'required',
             'ar_description' => 'required',
-            'project_images.*.file' => 'mimes:jpeg,jpg,png'
+            'project_images' => 'array|image',
+            'project_images*' => 'required',
         ];
         if (!$id) {
-            $rules['project_images.*.file'] = 'image';
+            die();
+            $rules['project_images.*'] = '';
+            $rules['project_images'] = 'array|image';
 
         }
         return $rules;

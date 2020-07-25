@@ -4,7 +4,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
-use App\User;
+use App\Admin;
 class Article extends Model implements TranslatableContract
 {
 //    use SoftDeletes;
@@ -14,9 +14,9 @@ class Article extends Model implements TranslatableContract
     public $translatedAttributes = ['title', 'description'];
     protected  $fillable = ['user_id', 'image'];
 
-    public function user()
+    public function admin()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Admin::class);
     }
 
 

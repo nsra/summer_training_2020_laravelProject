@@ -23,9 +23,9 @@
                                 </div>
 
                                 <div class="col-sm-4 form-group">
-                                    <label for="user_id">@lang('article.fields.user_id')</label>
-                                    <input type="text" name="user_id" class="form-control"
-                                           value="{{app('request')->get('user_id')}}">
+                                    <label for="admin_id">@lang('article.fields.admin_id')</label>
+                                    <input type="text" name="admin_id" class="form-control"
+                                           value="{{app('request')->get('admin_id')}}">
                                 </div>
                                 <div class="form-action col-sm-12 text-right">
                                     <input type="submit" value="{{trans('lang.search')}}" class="btn btn-primary">
@@ -50,7 +50,7 @@
                         <tr>
                             <th class="text-center">@lang('article.fields.title')</th>
                             <th class="text-center">@lang('article.fields.description')</th>
-                            <th class="text-center">@lang('article.fields.user_id')</th>
+                            <th class="text-center">@lang('article.fields.admin_id')</th>
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>

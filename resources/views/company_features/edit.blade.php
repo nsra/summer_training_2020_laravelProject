@@ -31,12 +31,12 @@
 
                         <div class="form-group">
                             <label for="en_title">{{__('lang.company_feature_title_en')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="en_title" value="{{ old('en_title', optional($company_feature->translate('en'))->name) }}">
+                            <input type="text" class="form-control" name="en_title" value="{{ old('en_title', optional($company_feature->translate('en'))->title) }}">
                             <span class="error">{{$errors->first('en_title')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="ar_title">{{__('lang.company_feature_title_ar')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="ar_title" value="{{ old('ar_title', optional($company_feature->translate('ar'))->name) }}">
+                            <input type="text" class="form-control" name="ar_title" value="{{ old('ar_title', optional($company_feature->translate('ar'))->title) }}">
                             <span class="error">{{$errors->first('ar_title')}}</span>
                         </div>
 

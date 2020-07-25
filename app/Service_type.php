@@ -22,6 +22,10 @@ class Service_type extends Model implements TranslatableContract
         return asset($this->image);
     }
 
+    public function getImageLinkAttribute(){
+        return $this->image ? url('/') . '/' . $this->image : url('/') . '';
+    }
+
     public function projects()
     {
         return $this->hasMany(App\Project::class);

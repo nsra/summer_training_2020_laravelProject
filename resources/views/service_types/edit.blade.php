@@ -57,7 +57,7 @@
 
                 <div class="form-action text-center">
                     <button type="submit"  class="btn btn-primary">@lang('lang.edit')</button>
-                    <button href="{{route('srvice_types.index')}}" type="reset"
+                    <button href="{{route('service_types.index')}}" type="reset"
                             class="btn btn-default">@lang('lang.cancel')</button>
                 </div>
             </div>

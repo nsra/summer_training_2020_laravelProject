@@ -43,9 +43,6 @@
                             <span class="error">{{$errors->first('ar_review')}}</span>
                         </div>
 
-
-
-
                 </div>
 
                 <div class="form-action " >

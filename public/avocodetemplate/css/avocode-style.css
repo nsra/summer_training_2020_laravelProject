@@ -1,0 +1,493 @@
+body{ background-color:#F8F8FA;}
+.upper-nav .bg-light{
+     background-color: #173460 !important;
+}
+.upper-nav .navbar-light .navbar-nav .nav-link{
+    color: #fff;
+    font:  18px/34px Noto Kufi Arabic;
+    
+}
+
+/*start avocode*/
+.avc{
+
+  
+    padding-top: 10px;
+    padding-bottom:  10px;
+    background: #fff;    
+}
+.avc img{
+     width: 120px;
+     height: 45px;
+}
+
+/* end avocode*/
+
+
+/*start sec nav*/
+.container-fluid{
+  background-color:#0079C2;
+}
+.container-fluid{padding-right: 105px;}
+.sec-nav .navbar-light .navbar-nav .nav-link{
+    color: #FFFFFF;
+    font-style: Regular;
+    font-family: Noto Kufi Arabic;
+    font-size: 16px;
+    line-height: 31px;  
+/*    font: Regular 16px/31px 'Noto Kufi Arabic';*/
+}
+@media(max-width:576px){
+    .upper-nav .navbar-toggler-icon{
+      background-color: #fff;
+
+}
+.sec-nav .navbar-toggler-icon{
+       margin-right: -170px;
+      background-color: #fff;
+
+}
+}
+.upper-nav .navbar-light .navbar-nav .nav-link:hover{
+ background-color:#0079C2;
+    font-weight: bold;
+    border-radius:10px;
+ 
+}
+.sec-nav .navbar-light .navbar-nav .nav-link:hover{
+ background-color:#173460;
+    font-weight: bold;
+    border-radius:10px;
+}
+/*end sec nav*/
+/*start slider*/
+.slider{
+  background-image: url('../image/BG.png');
+    background-size: cover;
+    height:460px;
+    display: flex;
+    align-items: center;
+}
+.slider h1{
+    font: Bold 40px/76px Noto Kufi Arabic;
+    color: #fff;
+   
+    
+}
+.slider h4{
+    font:  30px/56px Noto Kufi Arabic;
+    color: #fff;
+    align-items: center;
+    
+}
+.slider button{
+    border-radius: 30px;
+    font: Bold 20px/35px Noto Kufi Arabic;
+    color: #0C0F23;
+    padding: 5px 50px;
+    margin-right: 100px;
+    
+}
+/*start services*/
+.our-service h2{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 20px;
+}
+.our-service .services{
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 10px 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.our-service .services img{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+/*end services*/
+/*start feature*/
+.Feature .our-feature{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+}
+.Feature h2{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.Feature .our-feat h3{
+    font: Bold 20px/38px Noto Kufi Arabic;
+    color: #009EE1;
+}
+.Feature .our-feature p{
+    font: 16px/31px Noto Kufi Arabic;
+    color: #292D33;
+}
+@media(max-width:576px){
+    .Feature .our-feature{
+        margin-bottom: 15px;
+    }
+}
+/*end feature*/
+/*start require project*/
+.Req-project h2{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.Req-project  .req-pro2{
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 5px;
+}
+.Req-project  .req-pro2 h4{
+    font: Bold 20px/38px Noto Kufi Arabic;
+    color: #009EE1;
+}
+.Req-project  .req-pro2 h4 span{
+    background:#009EE1;
+    color: #fff;
+    
+}
+.Req-project  .req-pro2 p{
+    font: 20px/38px Noto Kufi Arabic;
+    color: #292D33;
+}
+.Req-project  .req-pro img{
+    width: 535px;
+    height: 512px;
+}
+@media(max-width:576px){
+    .Req-project  div:last-of-type{
+        margin-bottom: 15px;
+    }
+    .Req-project  .req-pro img{
+        width: 342px;
+    height: 329px;
+}
+}
+/*end require project*/
+/*start Business*/
+.Business h2{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.Business img{
+    width: 350px;
+    height:309px ;
+    margin-bottom: 30px;
+}
+.sec-slider{
+    background-image: url('../image/sec-slider.png');
+     background-size: cover;
+    height:250px;
+    display: flex;
+     align-items: center;
+}
+.sec-slider h1{
+    color: #fff;
+    font: Bold 25px/35px Noto Kufi Arabic;
+}
+.sec-slider h5{
+   color: #FFFFFF;
+   font:18px/35px Noto Kufi Arabic;
+    opacity: .9;
+}
+.sec-slider button{
+     border-radius: 30px;
+    font: Bold 17px/30px Noto Kufi Arabic;
+    color: #0C0F23;
+    padding: 3px 40px;
+    margin-right: 70px;
+}
+/*end Business*/
+/*start we*/
+.we h2{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.we .one-we,.we .two-we{
+    border-radius: 15px; 
+}
+.we .one-we h4,.two-we h4{
+ font: Bold 25px/47px Noto Kufi Arabic;
+color: #009EE1;
+}
+.we .two-we{
+   height: 506px;
+}
+.we .one-we p,.we .two-we p{
+font:16px/35px Noto Kufi Arabic;
+color: #292D33;
+}
+.we .we-img img{
+  width: 538px;
+  height: 506px;
+}
+@media(max-width:576px){
+    
+    .we .we-img img{
+        width: 342px;
+    height: 329px;
+}
+    .we .one-we {
+margin-bottom: 20px;
+}
+       .we .two-we {
+margin-top: 20px;
+}
+}
+/*end we*/
+/*start blog*/
+.blog .h-blog{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.blog .h-blog a{
+    font: 25px/47px Noto Kufi Arabic;
+    color: #B4B4B4;
+}
+.blog .card{
+    border-radius: 15px;
+    
+}
+.blog .card h5{
+font: Bold 16px/10px Noto Kufi Arabic;
+color: #292D33;
+}
+.blog .card p{
+font:14px/30px Noto Kufi Arabic;
+color: #B4B4B4;
+}
+.blog .card span{
+font: 15px/28px Noto Kufi Arabic;
+color: #B4B4B4;
+}
+.blog .card h6 a{
+font:12px/22px Noto Kufi Arabic;
+color: #292D33;
+}
+@media(max-width:576px){
+    .blog .card{
+        margin-bottom: 20px;
+}
+}
+/*end blog*/
+/*start other-many-blog*/
+.other-upper-nav .bg-light{
+     background-color:#BC264F !important;
+}
+.other-upper-nav .navbar-light .navbar-nav .nav-link {
+    color: #fff;
+font: 18px/34px Noto Kufi Arabic;
+}
+/*end other many blog*/
+/* start other slider*/
+.other-slider{
+  background-image: url('../image/other-slider.png');
+    background-size: cover;
+    height:400px;
+
+}
+.other-slider h4{
+        font: Bold 35px/37px Noto Kufi Arabic;
+    color: #FFFFFF;
+    margin-top: 250px;
+    margin-bottom: 50px;
+        
+    
+}
+.other-slider span{
+    font: 20px/13px Noto Kufi Arabic;
+    color: #FFFFFF;   
+}
+.content .our-content-one{
+     padding: 30px 0px;
+}
+.content .our-content-one p{
+    font:  22px/40px Noto Kufi Arabic;
+color: #000000;
+    margin-bottom: 30px;
+}
+.content .our-content-one h3{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+}
+.content .our-content-one ol li span{
+    font: Bold 22px/60px Noto Kufi Arabic;
+letter-spacing: 0px;
+color: #000000;
+}
+.content .our-content-one ol li{
+   font:  20px/40px Noto Kufi Arabic;
+color: #000000
+}
+.content .our-content-two h4 {
+    font: Bold 25px/47px Noto Kufi Arabic;
+color: #292D33;
+    padding-top: 30px;
+    margin-bottom: -20px;
+}
+.content .our-content-two hr {
+    background-color: #BC264F;
+    width: 225px;
+        float: right;
+}
+.content .our-content-two img{
+     width: 225px;
+}
+.content .our-content-two h6{
+     font: Bold 20px/38px Noto Kufi Arabic;
+     color: #292D33;
+     line-height: 20px;
+     margin-top: 5px;
+
+}
+.content .our-content-two p{
+ font: 12px/20px Noto Kufi Arabic;
+color: #A5A6AD;
+     white-space: nowrap;
+     overflow: hidden;
+text-overflow: ellipsis;
+        width: 205px;
+    height: 36px;
+}
+.relation h4 {
+    font: Bold 25px/47px Noto Kufi Arabic;
+color: #292D33;
+    margin-bottom: -20px;
+}
+.relation hr {
+    background-color: #BC264F;
+    margin-right: 0px;
+        
+}
+.relation img{
+        width: 270px;
+        margin-bottom: 5px;
+}
+.relation p{
+font: Bold 19px/36px Noto Kufi Arabic;
+
+color: #292D33;
+}
+
+@media(max-width:576px){
+    .content .our-content-two img{
+    display: flex;
+       justify-content: center;
+        margin-bottom: 15px;
+           width: 300px
+}
+    .relation img{
+       display: flex;
+       justify-content: center;
+        margin-bottom: 15px;
+         
+}
+ 
+    
+}
+.other-upper-nav .navbar-light .navbar-nav .nav-link:hover{
+ background-color:#e83e8c;
+    font-weight: bold;
+    border-radius:10px;
+ 
+}
+
+/*end other slider*/
+
+/*start client*/
+.client h2{
+    font: Bold 30px/56px Noto Kufi Arabic;
+    color: #292D33;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    padding: 3px 5%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.client .client-img img{
+        width: 260px;
+        height: 180px;
+}
+.client .our-client{
+     border-radius: 15px;
+}
+.client .our-client h6{
+font: Bold 20px/38px Noto Kufi Arabic;
+color: #009EE1;
+}
+.client .our-client span{
+font: 16px/31px Noto Kufi Arabic;
+color: #B4B4B4;
+}
+.client .our-client p{
+font: 16px/35px Noto Kufi Arabic;
+color: #292D33;
+}
+.pagination .page-item a{
+    border-radius: 8px;
+}
+@media(max-width:576px){
+    .client .client-img{
+       display: flex;
+       justify-content: center;
+        margin-bottom: 15px;
+}
+    .pagination{
+       display: flex;
+       justify-content: center;
+}
+}
+/*end client*/
+
+/*start footer*/
+.footer{
+    background-color: #292D33;
+    color: #fff;
+}
+.footer h6{
+    color: #fff;
+    font: Bold 20px/47px Noto Kufi Arabic;
+}
+.footer p:first-of-type{
+    color: #fff;
+    font:18px/37px Noto Kufi Arabic;
+}
+.footer a{
+    color: #fff;
+    font:20px/30px Noto Kufi Arabic;
+}
+.footer hr{
+  background-color: #fff;
+}
+/*end footer*/
