@@ -158,8 +158,12 @@ use Illuminate\Support\Facades\Route;
 
 //Route::resource('articles', 'ArticlesController');
 
-    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@show_service_types']);
+    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@home']);
 
+    Route::get('/blogs', ['as' => 'blogs', 'uses' => 'HomeController@blogs']);
+    Route::get('/clientreviews', ['as' => 'clientreviews', 'uses' => 'HomeController@client_reviews']);
+    Route::get('/workingteam', ['as' => 'workingteam', 'uses' => 'HomeController@working_team']);
+    Route::get('/about_us', ['as' => 'about_us', 'uses' => 'HomeController@about_us']);
 
     Route::get('/articles', ['as' => 'articles.index', 'uses' => 'ArticlesController@index']);
     Route::post('/articles', ['as' => 'articles.store', 'uses' => 'ArticlesController@store']);
@@ -253,6 +257,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/user/{id?}', ['as' => 'user.destroy', 'uses' => 'UsersController@destroy']);
     Route::get('/admin/{id?}', ['as' => 'admin.destroy', 'uses' => 'AdminsController@destroy']);
     Route::get('/permission/{id?}', ['as' => 'permission.destroy', 'uses' => 'PermissionsController@destroy']);
+    Route::get('/order_step/{id?}', ['as' => 'order_step.destroy', 'uses' => 'Order_stepsController@destroy']);
+
 
     Route::get('cms/admins/permissions/{id}', ['as' => 'admin.view_permissions', 'uses' => 'AdminsController@view_permissions']);
     Route::post('/update/admin/permissions', ['as'=>'update_admin_permissions','uses'=>'AdminsController@update_admin_permissions']);
@@ -271,3 +277,16 @@ use Illuminate\Support\Facades\Route;
     Route::get('/user_editprofile', ['as' => 'user_profile.edit', 'uses' => 'UserController@edit_user_profile']);
     Route::get('/user_changepassword', ['as' => 'user_password.change', 'uses' => 'UserController@change_user_password']);
 
+
+    Route::put('/company/{id}/update', ['as'=>'company.update','uses'=>'CompanyController@update']);
+
+    Route::put('/company', ['as'=>'company.index','uses'=>'CompanyController@index']);
+
+      //Route::resource('order_steps', 'Order_stepsController');
+      Route::get('/order_steps', ['as' => 'order_steps.index', 'uses' => 'Order_stepsController@index']);
+      Route::post('/order_steps', ['as' => 'order_steps.store', 'uses' => 'Order_stepsController@store']);
+      Route::get('/order_steps/create', ['as' => 'order_steps.create', 'uses' => 'Order_stepsController@create']);
+      Route::put('/order_steps/{order_step}', ['as' => 'order_steps.update', 'uses' => 'Order_stepsController@update']);
+      Route::get('/order_steps/{order_step}', ['as' => 'order_steps.show', 'uses' => 'Order_stepsController@show']);
+      Route::get('/order_steps/{order_step}/edit', ['as' => 'order_steps.edit', 'uses' => 'Order_stepsController@edit']);
+  

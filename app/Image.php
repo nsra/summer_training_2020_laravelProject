@@ -15,7 +15,7 @@ class Image extends Model
 
     public function getImage()
     {
-        if (!$this->image)
+        if (!$this->name)
             return asset('no_image.png');
         return asset($this->name);
     }

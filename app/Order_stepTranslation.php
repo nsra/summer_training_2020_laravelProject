@@ -1,11 +1,12 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 
-class ArticleTranslation extends Model
+class Order_stepTranslation extends Model
 {
-    protected $table = 'article_translations';
+    protected $table = 'order_step_translations';
     protected $fillable = ['title', 'description'];
     public $timestamps = false;
 }

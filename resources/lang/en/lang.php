@@ -88,6 +88,24 @@ return [
     'register' => 'Register',
     'login' => 'Login',
     'show_more' => 'Show More',
+    'about_site' => 'about site',
+    'about_us' => 'about us',
+    'contact_us' => 'contact us',
+    'important_links' => 'important links ',
+    'how_we_are' => 'how we are',
+    'laws_and_provisions' => 'laws and provisions',
+    'privacy_policy' => 'privacy policy',
+    'working_team' => 'working team',
+    'home' => 'Home',
+    'ar_title' => 'arabic - title',
+    'ar_description' => 'arabic - description',
+    'en_title' => 'english - title',
+    'en_description' => 'english - description',
+    'blog' => 'Blog',
+    'client_reviews' => 'Client Reviews',
+
+
+    
 
 
 

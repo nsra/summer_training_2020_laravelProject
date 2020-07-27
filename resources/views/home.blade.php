@@ -1,5 +1,6 @@
 @extends('layouts.main_layout')
 
+
 @section('content')
   <!--        start slider-->
                 
@@ -21,6 +22,7 @@
 
 <div class="our-service">
 <div class="container ">
+
     <h2 class="mt-5">{{__('service_type.titles.service_types')}}</h2>
 </div>
 <div class="container">
@@ -34,56 +36,7 @@
             </div>
         </div>
     @endforeach
-        
-        <!-- <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="services text-center" data-aos="zoom-in-up">
-            <img src="{{asset('/avocodetemplate/image/icons2.svg')}}" />
-            <p>تطوير وبرمجة التطبيقات</p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="services text-center" data-aos="zoom-in-up">
-            <img src="{{asset('/avocodetemplate/image/icons3.svg')}}" />
-            <p>التصميم والمونتاج</p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="services text-center" data-aos="zoom-in-up">
-           <img src="{{asset('/avocodetemplate/image/icons4.svg')}}" />
-                 <p>التسويق الإلكتروني</p>
-          </div>
-        </div>
-
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="services text-center" data-aos="zoom-in-up">
-                <img src="{{asset('/avocodetemplate/image/icons5.svg')}}"/>
-                <p>دراسات الجدوى</p>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="services text-center" data-aos="zoom-in-up">
-                <img src="{{asset('/avocodetemplate/image/icons6.svg')}}" />
-                <p>استضافة المواقع</p>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="services text-center" data-aos="zoom-in-up">
-            <img src="{{asset('/avocodetemplate/image/icons7.svg')}}"/>
-            <p>سيرفرات خاصة</p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-          <div class="services text-center" data-aos="zoom-in-up">
-           <img src="{{asset('/avocodetemplate/image/icons8.svg')}}"/>
-           <p>متجر التطبيقات</p>
-          </div>
-        </div>
-  </div>
-</div> -->
+      
 </div>    
 
 <!--        end service-->
@@ -102,7 +55,6 @@
                     <img src="{{$company_feature->getImage()}}"/>
             </div>     
                    <p>{{$company_feature->description}}</p>
-            
             </div>
         </div>
         @endforeach
@@ -117,29 +69,20 @@
 <!--        start Require a project-->
 <div class="Req-project">
      <div class="container ">
-         <h2>كيف تطلب مشروعك</h2>
+         <h2>{{__('order_step.titles.order_steps')}}</h2>
      <div class="row">
          <div class="col-lg">
+          @foreach($order_steps as $order_step)
                 <div class="req-pro2 mb-4" data-aos="fade-left">  
-                     <h4 class="pr-3"><span class="rounded-circle ml-2 p-2">1</span> تقديم الطلب</h4>
-                     <p class="mr-5">عن طريق الضغط على زر طلب خدمة وكتابة كافة تفاصيل مشروعك</p>
+                     <h4 class="pr-3"><span class="rounded-circle ml-2 p-2">{{$order_step->number}}</span>{{$order_step->title}}</h4>
+                     <p class="mr-5">{{ \Illuminate\Support\Str::limit($order_step->description, 50, '...') }}</p>
                 </div>
-                <div class="req-pro2 mb-4" data-aos="fade-left">  
-                     <h4 class="pr-3"><span class="rounded-circle ml-2 p-2">2</span> تقديم الطلب</h4>
-                     <p class="mr-5">عن طريق الضغط على زر طلب خدمة وكتابة كافة تفاصيل مشروعك</p>
-                </div>
-                <div class="req-pro2 mb-4" data-aos="fade-left">  
-                     <h4 class="pr-3"><span class="rounded-circle ml-2 p-2">3</span> تقديم الطلب</h4>
-                     <p class="mr-5">عن طريق الضغط على زر طلب خدمة وكتابة كافة تفاصيل مشروعك</p>
-                </div>
-                   <div class="req-pro2" data-aos="fade-left">  
-                     <h4 class="pr-3"><span class="rounded-circle ml-2 p-2">4</span> تقديم الطلب</h4>
-                     <p class="mr-5">عن طريق الضغط على زر طلب خدمة وكتابة كافة تفاصيل مشروعك</p>
-                   </div>
+          @endforeach
+            
           </div>
           <div class="col-lg">
              <div class="req-pro" data-aos="fade-up-right">
-                <img src="{{asset('/avocodetemplate/image/req-pro.png')}}" />
+                <img src="{{$order_steps->first()->getImage()}}" />
              </div>
           </div>
     </div>
@@ -154,39 +97,10 @@
        <div class="row">
         @foreach($projects as $project)
             <div class="col-4" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
-            @foreach($images as $image)
-                <img src="{{$image->project_id','project')}}"/>
-                <!-- <img src="{{asset('/avocodetemplate/image/2.png')}}"/> -->
+                <img src="{{$project->images->first()->getImage()}}"/>
             </div>
         @endforeach
-            <!-- <div class="col-sm" data-aos="flip-left"
-data-aos-easing="ease-out-cubic"
-data-aos-duration="2000">
-                    <img src="{{asset('/avocodetemplate/image/2.png')}}"/>
-            </div>  
-            <div class="col-sm" data-aos="flip-left"
-data-aos-easing="ease-out-cubic"
-data-aos-duration="2000">
-                    <img src="{{asset('/avocodetemplate/image/3.png')}}"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm" data-aos="flip-left"
-data-aos-easing="ease-out-cubic"
-data-aos-duration="2000">
-                    <img src="{{asset('/avocodetemplate/image/4.png')}}"/>
-            </div>
-
-            <div class="col-sm" data-aos="flip-left"
-data-aos-easing="ease-out-cubic"
-data-aos-duration="2000">
-                    <img src="{{asset('/avocodetemplate/image/5.png')}}"/>
-            </div>  
-            <div class="col-sm" data-aos="flip-left"
-data-aos-easing="ease-out-cubic"
-data-aos-duration="2000">
-                    <img src="{{asset('/avocodetemplate/image/6.png')}}"/>
-            </div> -->
+         
         </div>
     </div>
         

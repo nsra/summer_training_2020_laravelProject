@@ -7,26 +7,29 @@
            <div class="collapse navbar-collapse" id="main-nav">    
            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">الرئيسية</a>
+                    <a class="nav-link" href="{{route('home')}}">{{__('lang.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">سياسة الخصوصية</a>
+                    <a class="nav-link" href="#">{{__('lang.privacy_policy')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">القوانين والأحكام</a>
+                    <a class="nav-link" href="#">{{__('lang.laws_and_provisions')}}</a>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog-avocode.html">المدونة</a>
+                    <a class="nav-link" href="{{route('blogs')}}">{{__('lang.blog')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">عن الموقع</a>
+                    <a class="nav-link" href="#">{{__('lang.about_site')}}</a>
                 <li class="nav-item">
-                    <a class="nav-link" href="client-avocode.html">فريق التحرير</a>
+                    <a class="nav-link" href="{{route('workingteam')}}">{{__('lang.working_team')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="we-avocode.html">من نحن</a>    
+                    <a class="nav-link" href="{{route('about_us')}}">{{__('lang.how_we_are')}}</a>    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">اتصل بنا</a>    
+                    <a class="nav-link" href="{{route('clientreviews')}}">{{__('lang.client_reviews')}}</a>    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{__('lang.contact_us')}} </a>    
                 </li>
             </ul>
           </div>
@@ -109,11 +112,20 @@
 <!--        end upper navbar-->
 <!--         start avocode -->
        <div class="avc">
-         <div class="container">   
-            <img src="{{asset('/avocodetemplate/image/Group%20649.png')}}" data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"/>
-         </div>
+        
+         @if(app()->getLocale() == 'ar')
+        <div class="d-flex flex-nowrap">
+            <img src="{{asset('/avocodetemplate/image/Layer-0.png')}}" style="width:40px" class="mr-5"/> 
+            <h6 class="mr-2 mt-2">{{$company->name}}</h6>
+        </div>
+        @else
+
+        <div class="d-flex flex-nowrap">
+            <img src="{{asset('/avocodetemplate/image/Layer-0.png')}}" style="width:40px" class="ml-5"/> 
+            <h6 class="mr-2 mt-2">{{$company->name}}</h6>
+        </div>
+        @endif
+
        </div>
     
     <!-- end avocode--> 
@@ -126,10 +138,10 @@
               </button>
           <div class="collapse navbar-collapse" id="main-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="#">الرئيسية</a>
                 </li>
-                
+                 -->
                 @foreach($service_types as $service_type)
                     <li class="nav-item">
                         <a class="nav-link" href="#">{{$service_type->name}}</a>

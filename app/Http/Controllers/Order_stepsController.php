@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Company_feature;
-    use App\Company_featureTranslation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class Company_featuresController extends Controller
+use Illuminate\Http\Request;
+
+class Order_stepsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,17 +18,17 @@ class Company_featuresController extends Controller
 
     public function index(Request $request)
     {
-        $items = Company_featureTranslation::query();
+        $items = Order_stepsTranslation::query();
         if ($request->has('title')){
-            $company_features = $items->where('title', 'like', '%' . $request->input('title') . '%');
+            $order_steps = $items->where('title', 'like', '%' . $request->input('title') . '%');
         }
 
         if ($request->has('description')){
-            $company_features = $items->where('description', 'like', '%' . $request->input('description') . '%');
+            $order_steps = $items->where('description', 'like', '%' . $request->input('description') . '%');
         }
 
         $items = $items->where('locale', Session::get('locale'))->paginate(5);
-        return view('company_features.index', compact('items'));
+        return view('order_steps.index', compact('items'));
     }
 
     /**
@@ -40,7 +38,7 @@ class Company_featuresController extends Controller
      */
     public function create()
     {
-        return view('company_features.create');
+        return view('order_steps.create');
 
     }
 
@@ -54,24 +52,24 @@ class Company_featuresController extends Controller
     {
         //App::getLocale();
         $request->validate($this->rules(), $this->messages());
-        $company_feature_data = [];
-        $company_feature_data['en'] = [
+        $order_step_data = [];
+        $order_step_data['en'] = [
             'title' => $request->en_title,
             'description' => $request->en_description,
         ];
-        $company_feature_data['ar'] = [
+        $order_step_data['ar'] = [
             'title' => $request->ar_title,
             'description' => $request->ar_description,
         ];
 
-        $company_feature= Company_feature::create($company_feature_data);
-        $company_feature->image= parent::uploadImage($request->file('company_feature_image'));
+        $order_step= order_steps::create($order_step);
+        $order_step->image= parent::uploadImage($request->file('order_step_image'));
 
-        if ($company_feature->save()){
-            return redirect()->back()->with('success', trans('company_feature.success.stored'));
+        if ($order_step->save()){
+            return redirect()->back()->with('success', trans('order_step.success.stored'));
         }
         else
-            return redirect()->back()->with('error', trans('company_feature.error.stored'));
+            return redirect()->back()->with('error', trans('order_step.error.stored'));
     }
 
     /**
@@ -82,8 +80,8 @@ class Company_featuresController extends Controller
      */
     public function show($id)
     {
-        return view('company_features.show', [
-            'company_feature' => Company_feature::find($id),
+        return view('order_steps.show', [
+            'order_step' => Order_step::find($id),
         ]);
     }
 
@@ -93,9 +91,9 @@ class Company_featuresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company_feature $company_feature)
+    public function edit(Order_step $order_step)
     {
-        return view('company_features.edit', compact('company_feature'));
+        return view('order_steps.edit', compact('order_step'));
     }
 
     /**
@@ -108,25 +106,25 @@ class Company_featuresController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $company_feature = Company_feature::findOrFail($id);
+            $order_step = Order_step::findOrFail($id);
             $request->validate($this->rules($id), $this->messages());
 
-            $company_feature_data = [];
-            $company_feature_data['en'] = [
+            $order_step_data = [];
+            $order_step_data['en'] = [
                 'title' => $request->en_title,
                 'description' => $request->en_description,
             ];
-            $company_feature_data['ar'] = [
+            $order_step_data['ar'] = [
                 'title' => $request->ar_title,
                 'description' => $request->ar_description,
             ];
-            if($request->file('company_feature_image')){
-                $company_feature->image= parent::uploadImage($request->file('company_feature_image'));
+            if($request->file('order_step_image')){
+                $order_step->image= parent::uploadImage($request->file('order_step_image'));
             }
-            $company_feature->update($company_feature_data);
-            return redirect()->back()->with('success', trans('company_feature.success.updated'));
+            $order_step->update($order_step_data);
+            return redirect()->back()->with('success', trans('order_step.success.updated'));
         } catch (ModelNotFoundException $modelNotFoundException) {
-            return redirect()->back()->with('error', trans('company_feature.error.updated'));
+            return redirect()->back()->with('error', trans('order_step.error.updated'));
         }
     }
 
@@ -139,12 +137,12 @@ class Company_featuresController extends Controller
     public function destroy($id)
     {
         try {
-            $company_feature = Company_feature::findOrFail($id);
-            $company_feature->delete();
+            $order_step = Order_step::findOrFail($id);
+            $order_step->delete();
 
-            return response()->json(['status' => 200, 'message' => trans('company_feature.success.deleted')]);
+            return response()->json(['status' => 200, 'message' => trans('Order_step.success.deleted')]);
         } catch (ModelNotFoundException $modelNotFoundException) {
-            return response()->json(['status' => 200, 'message' => trans('company_feature.error.deleted')]);
+            return response()->json(['status' => 200, 'message' => trans('Order_step.error.deleted')]);
         }
     }
 
@@ -155,10 +153,10 @@ class Company_featuresController extends Controller
             'ar_title' => 'required|max:100',
             'en_description' => 'required',
             'ar_description' => 'required',
-            'company_feature_image' => 'image',
+            'order_step_image' => 'image',
         ];
         if (!$id) {
-            $rules['company_feature_image'] = 'image';
+            $rules['order_step_image'] = 'required|image';
         }
         return $rules;
     }
@@ -172,12 +170,12 @@ class Company_featuresController extends Controller
     private function messages()
     {
         return [
-            'en_title.required' => trans('company_feature.validations.title_required'),
-            'en_title.max' => trans('company_feature.validations.title_max'),
-            'en_description.required' => trans('company_feature.validations.description_required'),
-            'ar_title.required' => trans('company_feature.validations.title_required'),
-            'ar_title.max' => trans('company_feature.validations.title_max'),
-            'ar_description.required' => trans('company_feature.validations.description_required'),
+            'en_title.required' => trans('order_step.validations.title_required'),
+            'en_title.max' => trans('order_step.validations.title_max'),
+            'en_description.required' => trans('order_step.validations.description_required'),
+            'ar_title.required' => trans('order_step.validations.title_required'),
+            'ar_title.max' => trans('order_step.validations.title_max'),
+            'ar_description.required' => trans('order_step.validations.description_required'),
         ];
     }
 }

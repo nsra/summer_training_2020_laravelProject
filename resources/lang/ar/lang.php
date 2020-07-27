@@ -97,7 +97,21 @@ return [
     'register' => 'إنشاء حساب',
     'login' => 'تسجيل دخول',
     'show_more' => 'عرض المزيد',
-
+    'about_site' => 'عن الموقع',
+    'about_us' => 'عنا',
+    'contact_us' => 'اتصل بنا',
+    'important_links' => 'روابط هامة ',
+    'how_we_are' => 'من نحن',
+    'laws_and_provisions' => 'القوانين والأحكام',
+    'privacy_policy' => 'سياسة الخصوصية',
+    'working_team' => 'فريق التحرير',
+    'home' => 'الرئيسية',
+    'ar_title' => 'العنوان - عربي',
+    'ar_description' => 'الوصف - عربي',
+    'en_title' => 'العنوان - انجليزي',
+    'en_description' => 'الوصف - انجليزي',
+    'blog' => 'المدونة',
+    'client_reviews' => 'آراء العملاء',
 
     /**
      *
