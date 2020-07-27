@@ -6,7 +6,7 @@
         <div class="col-md-11">
             <div class="card">
                 <div class="card-header">
-                    <h3>{{ __('lang.edit_order_step') }}</h3>
+                    <h3>{{ __('order_step.titles.edit_order_step') }}</h3>
 
                 </div>
                 <div class="card-body">
@@ -27,6 +27,12 @@
                                     <span class="error col-md-12">{{$errors->first('order_step_image')}}</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="number">{{__('lang.number')}} <span class="required">*</span></label>
+                            <input type="number" class="form-control" name="number" value="{{old('number', optional($order_step)->number)}}">
+                            <span class="error">{{$errors->first('number')}}</span>
                         </div>
 
                         <div class="form-group">

@@ -18,6 +18,12 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="number">{{__('lang.number')}} <span class="required">*</span></label>
+                            <input type="number" class="form-control" name="number" value="{{$order_step->number}}">
+                            <span class="error">{{$errors->first('number')}}</span>
+                        </div>
                         <div class="form-group">
                             <label for="en_title">{{__('lang.en_title')}} <span class="required">*</span></label>
                             <input type="text" class="form-control" name="en_title" value="{{ $order_step->translate('en')->title }}">

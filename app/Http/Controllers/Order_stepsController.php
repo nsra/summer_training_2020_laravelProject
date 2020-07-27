@@ -1,7 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Order_stepTranslation; 
+use App\Order_step;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 
 class Order_stepsController extends Controller
@@ -18,17 +24,17 @@ class Order_stepsController extends Controller
 
     public function index(Request $request)
     {
-        $items = Order_stepsTranslation::query();
+        $order_steps = Order_stepTranslation::query();
         if ($request->has('title')){
-            $order_steps = $items->where('title', 'like', '%' . $request->input('title') . '%');
+            $order_steps = $order_steps->where('title', 'like', '%' . $request->input('title') . '%');
         }
 
         if ($request->has('description')){
-            $order_steps = $items->where('description', 'like', '%' . $request->input('description') . '%');
+            $order_steps = $order_steps->where('description', 'like', '%' . $request->input('description') . '%');
         }
 
-        $items = $items->where('locale', Session::get('locale'))->paginate(5);
-        return view('order_steps.index', compact('items'));
+        $order_steps = $order_steps->where('locale', Session::get('locale'))->paginate(5);
+        return view('order_steps.index', compact('order_steps'));
     }
 
     /**
@@ -62,9 +68,9 @@ class Order_stepsController extends Controller
             'description' => $request->ar_description,
         ];
 
-        $order_step= order_steps::create($order_step);
+        $order_step= Order_step::create($order_step_data);
         $order_step->image= parent::uploadImage($request->file('order_step_image'));
-
+        $order_step->number= $request->number;
         if ($order_step->save()){
             return redirect()->back()->with('success', trans('order_step.success.stored'));
         }
@@ -121,6 +127,7 @@ class Order_stepsController extends Controller
             if($request->file('order_step_image')){
                 $order_step->image= parent::uploadImage($request->file('order_step_image'));
             }
+            $order_step->number=$request->number;
             $order_step->update($order_step_data);
             return redirect()->back()->with('success', trans('order_step.success.updated'));
         } catch (ModelNotFoundException $modelNotFoundException) {
@@ -140,9 +147,9 @@ class Order_stepsController extends Controller
             $order_step = Order_step::findOrFail($id);
             $order_step->delete();
 
-            return response()->json(['status' => 200, 'message' => trans('Order_step.success.deleted')]);
+            return response()->json(['status' => 200, 'message' => trans('order_step.success.deleted')]);
         } catch (ModelNotFoundException $modelNotFoundException) {
-            return response()->json(['status' => 200, 'message' => trans('Order_step.error.deleted')]);
+            return response()->json(['status' => 200, 'message' => trans('order_step.error.deleted')]);
         }
     }
 

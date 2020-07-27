@@ -54,28 +54,32 @@
                     <a class="nav-link " href="#"><i class="fa fa-bell" ></i></a>
                 </li>
                
-                @if(!(Auth::guard('admin')&&Auth::guard('web')))
+                @if(Auth::guard('admin')->check() || Auth::guard('web')->check())
+                    @auth('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin_profile.edit')}}"><i class="fa fa-user"><span>{{ Auth::guard('admin')->user()->name }}</span></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('logout.custom')}}"><i class="fas fa-sign-out-alt" ></i></a>
+                        </li>
+                    @elseauth('web')
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-user"><span>{{ Auth::guard('web')->user()->name }}</span></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('logout.custom')}}"><i class="fas fa-sign-out-alt" ></i></a>
+                        </li>
+                    @endauth
+                   
+                @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('multiguard_login')}}">{{__('lang.login')}}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('lang.register') }}</a>
                         </li>
                     @endif
-                @else
-                    @auth('admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin_profile.edit')}}"><i class="fa fa-user"><span>{{ Auth::guard('admin')->user()->name }}</span></i></a>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-user"><span>{{ Auth::guard('web')->user()->name }}</span></i></a>
-                        </li>
-                    @endauth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('logout.custom')}}"><i class="fas fa-sign-out-alt" ></i></a>
-                    </li>
                 @endif
                 <li class="dropdown" style="margin-top:3%">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"

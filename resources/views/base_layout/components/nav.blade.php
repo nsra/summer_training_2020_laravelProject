@@ -143,6 +143,70 @@
                     </a>
                 </li>
             </ul>
+            
+        </li>
+
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-tv"></i>
+                <span class="title">@lang('order_step.titles.order_steps')</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item start ">
+                    <a href="{{route('order_steps.index')}}" class="nav-link ">
+                        <i class="fa fa-list"></i>
+                        <span class="title">@lang('lang.show')</span>
+                    </a>
+                </li>
+                <li class="nav-item start">
+                    <a href="{{route('order_steps.create')}}" class="nav-link ">
+                        <i class="fa fa-plus"></i>
+                        <span class="title">@lang('lang.add')</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </li>
+
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-building"></i>
+                <span class="title">@lang('company.titles.company')</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item start ">
+                    <a href="{{route('company.index')}}" class="nav-link ">
+                        <i class="fa fa-list"></i>
+                        <span class="title">@lang('lang.show')</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </li>
+
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-bullhorn"></i>
+                <span class="title">@lang('ad.titles.ads')</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item start ">
+                    <a href="{{route('ads.index')}}" class="nav-link ">
+                        <i class="fa fa-list"></i>
+                        <span class="title">@lang('lang.show')</span>
+                    </a>
+                </li>
+                <li class="nav-item start">
+                    <a href="{{route('ads.create')}}" class="nav-link ">
+                        <i class="fa fa-plus"></i>
+                        <span class="title">@lang('lang.add')</span>
+                    </a>
+                </li>
+            </ul>
+            
         </li>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">

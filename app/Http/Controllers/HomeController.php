@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\PermissionTranslation;
 use App\Service_type;
+use App\Ad;
 use App\Client_review;
 use App\Company_feature;
 use App\Article;
@@ -24,7 +25,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // 
+        // $this->middleware('guest:admin')->except('logout');
+        // $this->middleware('guest:web')->except('logout');
     }
 
     /**
@@ -53,12 +55,13 @@ class HomeController extends Controller
         $projects = $projects;
 
         $images = Image::all();
-
+        $first_ad = Ad::where('number','=','1')->first();
+        $second_ad = Ad::where('number','=','2')->first();
         $company = Company::first();
 
         $order_steps = Order_step::all();
 
-        return view('home', compact('projects', 'service_types', 'company_features', 'articles', 'projects', 'images', 'company', 'order_steps'));
+        return view('home', compact('projects', 'service_types', 'company_features', 'articles', 'projects', 'images', 'company', 'order_steps', 'first_ad', 'second_ad'));
 
     }
 
@@ -87,7 +90,6 @@ class HomeController extends Controller
         $service_types = Service_type::all();
         $abouts = About::all();
         return view('about_us', compact('abouts', 'company', 'service_types'));
-
     }
 
     public function blogs(){
@@ -98,6 +100,15 @@ class HomeController extends Controller
 
         return view('blogs', compact('blogs', 'company', 'service_types'));
 
+    }
+
+    public function show_blog($id){
+        $company = Company::first();
+        $service_types = Service_type::all();
+        $blog = Article::find($id);
+        $related_blogs= Article::where('id', '!=', $id)->get();
+        // dd($related_blogs);
+        return view('blog_description', compact('blog', 'company', 'service_types', 'related_blogs'));
     }
 
     

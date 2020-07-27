@@ -9,9 +9,10 @@ return [
      *
      */
     'titles' => [
-        'order_steps' => 'How to order your project',
+        'order_steps' => 'Steps to order project',
         'add_order_step' => 'Add Step',
         'edit_order_step' => 'Edit Step',
+        'create_order_step' => 'Create Step',
         'show_order_step' => 'Show Step',
     ],
 
@@ -23,6 +24,7 @@ return [
     'fields' => [
         'title' => 'title',
         'description' => 'description',
+        'number' => 'Order',
     ],
 
     /**

@@ -7,7 +7,6 @@
 
             <div class="h-blog d-flex justify-content-between mb-5">
                  <h2>{{__('lang.blog')}}</h2>
-                 <h5><a href="#">{{__('lang.show_more')}}</a></h5>
             </div>
             <div class="row mb-5 ">
             @foreach($blogs as $blog)
@@ -19,7 +18,7 @@
                                  <p class="card-text">{{ \Illuminate\Support\Str::limit($blog->description, 100, '...') }}</p>
                             <div class="d-flex justify-content-between">   
                                  <span class="card-subtitle pr-2"><i class="fas fa-calendar-alt ml-2"></i>{{$blog->updated_at}}</span>
-                                 <h6><a href="many-other-blog.html" class="card-link pl-2">{{__('lang.show_more')}}</a></h6>
+                                 <h6><a href="{{route('blog.show', $blog->id)}}" class="card-link pl-2">{{__('lang.show_more')}}</a></h6>
                             </div>       
                       </div>
                     </div>      

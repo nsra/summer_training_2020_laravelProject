@@ -22,7 +22,7 @@ return [
     'fields' => [
         'title' => 'Title',
         'description' => 'Description',
-        'user_id' => 'User',
+        'admin_id' => 'Admin',
     ],
     /**
      *

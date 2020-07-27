@@ -23,7 +23,7 @@ return [
     'fields' => [
         'title' => 'العنوان',
         'description' => 'نص المقال',
-        'user_id' => 'المستخدم',
+        'admin_id' => 'المدير',
     ],
 
     /**

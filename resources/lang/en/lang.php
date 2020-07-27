@@ -101,8 +101,17 @@ return [
     'ar_description' => 'arabic - description',
     'en_title' => 'english - title',
     'en_description' => 'english - description',
+
+    'en_button' => 'english - button text',
+    'ar_button' => 'arabic - button text',
     'blog' => 'Blog',
+    'link' => 'Link',
+    'edit_company' => 'Edit Company',
     'client_reviews' => 'Client Reviews',
+    'related_articles' => 'Related Blogs',
+    'confirm_password' => 'confirm password' ,
+
+    'number' => 'Order',
 
 
     

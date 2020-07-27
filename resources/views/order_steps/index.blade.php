@@ -12,7 +12,7 @@
                         <div class="col-md-12">
                             <form action="{{route('order_steps.index')}}" method="GET">
                                 <div class="col-sm-4 form-group">
-                                    <label for="name">@lang('order_steps.title')</label>
+                                    <label for="name">@lang('order_step.fields.title')</label>
                                     <input type="text" name="title" class="form-control"
                                            value="{{app('request')->get('title')}}">
                                 </div>
@@ -46,6 +46,7 @@
                         <tr>
                             <th class="text-center">@lang('order_step.fields.title')</th>
                             <th class="text-center">@lang('order_step.fields.description')</th>
+                            <th class="text-center">@lang('order_step.fields.number')</th>
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>
@@ -54,6 +55,7 @@
                             <tr>
                                 <td class="text-center">{{$order_step->title}}</td>
                                 <td class="text-center">{{$order_step->description}}</td>
+                                <td class="text-center">{{$order_step->number}}</td>
 
                                 <td class="text-center">
                                     <a href="{{route('order_steps.edit', $order_step->order_step_id)}}" class="btn btn-primary ">
@@ -72,7 +74,7 @@
                         </tbody>
                     </table>
                     <div class="com-md-12 text-right">
-                        {{$items->links()}}
+                        {{$order_steps->links()}}
                     </div>
                 </div>
             </div>

@@ -32,13 +32,13 @@
 
                         <div class="form-group">
                             <label for="en_name">{{__('company.fields.name')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="en_name" value="{{ old('en_name', optional($company)->name) }}">
+                            <input type="text" class="form-control" name="en_name" value="{{ old('en_name', optional($company->translate('en'))->name) }}">
                             <span class="error">{{$errors->first('en_name')}}</span>
                         </div>
 
                         <div class="form-group">
                             <label for="ar_name">{{__('company.fields.name')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="ar_name" value="{{ old('ar_name', optional($company)->name) }}">
+                            <input type="text" class="form-control" name="ar_name" value="{{ old('ar_name', optional($company->translate('ar'))->name) }}">
                             <span class="error">{{$errors->first('ar_name')}}</span>
                         </div>
 
@@ -56,25 +56,25 @@
 
                         <div class="form-group">
                             <label for="en_address">{{__('company.fields.address')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="en_address" value="{{ old('en_address', optional($company)->address) }}">
+                            <input type="text" class="form-control" name="en_address" value="{{ old('en_address', optional($company->translate('en'))->address) }}">
                             <span class="error">{{$errors->first('en_address')}}</span>
                         </div>
 
                         <div class="form-group">
                             <label for="ar_address">{{__('company.fields.address')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="ar_address" value="{{ old('ar_address', optional($company)->address) }}">
+                            <input type="text" class="form-control" name="ar_address" value="{{ old('ar_address', optional($company->translate('ar'))->address) }}">
                             <span class="error">{{$errors->first('ar_address')}}</span>
                         </div>
 
                         <div class="form-group">
                             <label for="en_description">{{__('company.fields.description')}} <span class="required">*</span></label>
-                            <textarea type="text" class="form-control" name="en_review" >{{ old('en_description', optional($company->translate('en'))->description) }}</textarea>
-                            <span class="error">{{$errors->first('en_review')}}</span>
+                            <textarea type="text" class="form-control" name="en_description" >{{ old('en_description', optional($company->translate('en'))->description) }}</textarea>
+                            <span class="error">{{$errors->first('en_description')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="ar_description">{{__('company.fields.description')}} <span class="required">*</span></label>
-                            <textarea type="text" class="form-control" name="ar_review" >{{ old('ar_review', optional($company->translate('ar'))->description) }}</textarea>
-                            <span class="error">{{$errors->first('ar_review')}}</span>
+                            <textarea type="text" class="form-control" name="ar_description" >{{ old('ar_description', optional($company->translate('ar'))->description) }}</textarea>
+                            <span class="error">{{$errors->first('ar_description')}}</span>
                         </div>
 
                         

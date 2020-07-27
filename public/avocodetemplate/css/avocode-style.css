@@ -1,4 +1,16 @@
-body{ background-color:#F8F8FA;}
+@font-face {
+	font-family: "JF Flat Regular";
+	src: url(../fonts/JF-Flat-regular.eot);
+	src: url(../fonts/JF-Flat-regular.eot?#iefix) format('embedded-opentype'), url('../fonts/JF-Flat-regular.svg#JF Flat Regular') format('svg'), url(../fonts/JF-Flat-regular.woff) format('woff'), url(../fonts/JF-Flat-regular.ttf) format('truetype');
+	font-weight: bolder;
+	font-style: normal
+}
+
+body{ 
+    font-family: "JF Flat Regular", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:#F8F8FA;
+}
+
 .upper-nav .bg-light{
      background-color: #173460 !important;
 }
@@ -196,11 +208,8 @@ body{ background-color:#F8F8FA;}
     margin-bottom: 30px;
 }
 .sec-slider{
-    background-image: url('../image/sec-slider.png');
-     background-size: cover;
-    height:250px;
-    display: flex;
-     align-items: center;
+    /* background-image: url('../image/sec-slider.png'); */
+     background-size: cover; height:250px; display: flex; align-items: center;
 }
 .sec-slider h1{
     color: #fff;

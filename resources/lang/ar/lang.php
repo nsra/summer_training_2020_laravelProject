@@ -112,6 +112,15 @@ return [
     'en_description' => 'الوصف - انجليزي',
     'blog' => 'المدونة',
     'client_reviews' => 'آراء العملاء',
+    'related_articles' => 'مواضيع ذات علاقة',
+    'confirm_password' => 'تأكيد كلمة المرور',
+    'number' => 'الترتيب',
+    'ar_button' => 'نص الزر - عربي',
+    'en_button' => 'نص الزر - انجليزي',
+    'link' => 'الرابط',
+    'edit_company' => 'تعديل الشركة',
+
+
 
     /**
      *

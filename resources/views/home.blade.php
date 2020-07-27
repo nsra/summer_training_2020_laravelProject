@@ -8,9 +8,9 @@
     <div class="container">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <h1 data-aos="fade-down">شركة اڨوكود</h1>  
-                <h4 data-aos="fade-down">نسعى لخدماتكم في تطوير المواقع والتطبيقات</h4>
-                <button type="button" class="btn btn-light mt-4" data-aos="fade-down-left">اطلب خدمة</button>  
+                <h1 data-aos="fade-down">{{$first_ad->title}}</h1>  
+                <h4 data-aos="fade-down">{{$first_ad->description}}</h4>
+                <button type="button" href="{{$first_ad->link}}" class="btn btn-light mt-4" data-aos="fade-down-left">{{$first_ad->button}}</button>  
                 <div class="overlay"></div>
             <div class="item active"></div>
             </div>
@@ -108,10 +108,9 @@
     <div class="container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                    <h1 class="pr-4" data-aos="fade-down">هل تريد إنشاء شركة برمجيات؟</h1>  
-                    <h5 data-aos="fade-down">هل تريد لهذه الفكره أن تظهر للعالم؟ إذا, ماذا تنتظر؟</h5>
-                    <h5 class="mr-5" data-aos="fade-down"> لا تدع الفرصة تضيع من بين يديك!</h5>
-                    <button type="button" class="btn btn-light mt-2" data-aos="fade-down-left">اطلب خدمة</button>  
+                    <h1 class="pr-4" data-aos="fade-down">{{$second_ad->title}}</h1>  
+                    <h5 data-aos="fade-down">{{$second_ad->description}}</h5>
+                    <button type="button" href="{{$second_ad->link}}" class="btn btn-light mt-2" data-aos="fade-down-left">{{$second_ad->button}}</button>  
                 <div class="overlay"></div>
                 <div class="item active"></div>
            </div>
@@ -126,7 +125,7 @@
 <div class="container ">
     <div class="h-blog d-flex justify-content-between mb-5">
          <h2>{{__('article.titles.articles')}}</h2>
-         <h5><a href="#">{{__('lang.show_more')}}</a></h5>
+         <h5><a href="{{route('blogs')}}">{{__('lang.show_more')}}</a></h5>
     </div>
     <div class="row mb-5">
 
@@ -139,7 +138,7 @@
                          <p class="card-text">{{ \Illuminate\Support\Str::limit($article->description, 100, '...') }}</p>
                     <div class="d-flex justify-content-between">   
                          <span class="card-subtitle pr-2"><i class="fas fa-calendar-alt ml-2"></i>{{$article->updated_at}}</span>
-                         <h6><a href="many-other-blog.html" class="card-link pl-2">{{__('lang.show_more')}}</a></h6>
+                         <h6><a href="{{route('blog.show', $article->id)}}" class="card-link pl-2">{{__('lang.show_more')}}</a></h6>
                     </div>       
               </div>
             </div>      

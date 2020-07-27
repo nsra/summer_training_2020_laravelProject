@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Company;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
@@ -17,7 +21,7 @@ class CompanyController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index(Request $request )
+    public function index()
     {
        
         $company = Company::first();
@@ -30,7 +34,9 @@ class CompanyController extends Controller
     {
         try{
             $company = Company::findOrFail($id);
+
             $request->validate($this->rules($id), $this->messages());
+            // die();
 
             $company_data = [];
             $company_data['en'] = [
@@ -45,6 +51,7 @@ class CompanyController extends Controller
                 'description' => $request->ar_description,
                 'footer' => $request->ar_footer,            
             ];
+
             if($request->file('company_image')){
                 $company->image= parent::uploadImage($request->file('company_image'));
             }

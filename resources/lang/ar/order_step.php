@@ -12,6 +12,8 @@ return [
         'order_steps' => 'كيف تطلب مشروعك',
         'add_order_step' => 'إضافة خطوة ',
         'edit_order_step' => 'تعديل خطوة',
+        'create_order_step' => 'إضافة خطوة',
+
         'show_order_step' => 'عرض خطوة',
     ],
 
@@ -23,6 +25,7 @@ return [
     'fields' => [
         'title' => 'العنوان',
         'description' => 'الوصف',
+        'number' => 'الترتيب'
     ],
 
     /**

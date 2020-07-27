@@ -164,6 +164,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/clientreviews', ['as' => 'clientreviews', 'uses' => 'HomeController@client_reviews']);
     Route::get('/workingteam', ['as' => 'workingteam', 'uses' => 'HomeController@working_team']);
     Route::get('/about_us', ['as' => 'about_us', 'uses' => 'HomeController@about_us']);
+    Route::get('/blog/{id}', ['as' => 'blog.show', 'uses' => 'HomeController@show_blog']);
 
     Route::get('/articles', ['as' => 'articles.index', 'uses' => 'ArticlesController@index']);
     Route::post('/articles', ['as' => 'articles.store', 'uses' => 'ArticlesController@store']);
@@ -258,7 +259,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/admin/{id?}', ['as' => 'admin.destroy', 'uses' => 'AdminsController@destroy']);
     Route::get('/permission/{id?}', ['as' => 'permission.destroy', 'uses' => 'PermissionsController@destroy']);
     Route::get('/order_step/{id?}', ['as' => 'order_step.destroy', 'uses' => 'Order_stepsController@destroy']);
-
+    Route::get('/ad/{id?}', ['as' => 'ad.destroy', 'uses' => 'AdsController@destroy']);
 
     Route::get('cms/admins/permissions/{id}', ['as' => 'admin.view_permissions', 'uses' => 'AdminsController@view_permissions']);
     Route::post('/update/admin/permissions', ['as'=>'update_admin_permissions','uses'=>'AdminsController@update_admin_permissions']);
@@ -280,7 +281,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::put('/company/{id}/update', ['as'=>'company.update','uses'=>'CompanyController@update']);
 
-    Route::put('/company', ['as'=>'company.index','uses'=>'CompanyController@index']);
+    Route::get('/company', ['as'=>'company.index','uses'=>'CompanyController@index']);
 
       //Route::resource('order_steps', 'Order_stepsController');
       Route::get('/order_steps', ['as' => 'order_steps.index', 'uses' => 'Order_stepsController@index']);
@@ -290,3 +291,13 @@ use Illuminate\Support\Facades\Route;
       Route::get('/order_steps/{order_step}', ['as' => 'order_steps.show', 'uses' => 'Order_stepsController@show']);
       Route::get('/order_steps/{order_step}/edit', ['as' => 'order_steps.edit', 'uses' => 'Order_stepsController@edit']);
   
+
+       //Route::resource('ads', 'AdsController');
+       Route::get('/ads', ['as' => 'ads.index', 'uses' => 'AdsController@index']);
+       Route::post('/ads', ['as' => 'ads.store', 'uses' => 'AdsController@store']);
+       Route::get('/ads/create', ['as' => 'ads.create', 'uses' => 'AdsController@create']);
+       Route::put('/ads/{order_step}', ['as' => 'ads.update', 'uses' => 'AdsController@update']);
+       Route::get('/ads/{order_step}', ['as' => 'ads.show', 'uses' => 'AdsController@show']);
+       Route::get('/ads/{ad}/edit', ['as' => 'ads.edit', 'uses' => 'AdsController@edit']);
+   
+ 
