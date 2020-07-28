@@ -26,11 +26,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name">{{__('lang.client_review_name')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="name" value="{{old('name')}}">
-                            <span class="error">{{$errors->first('name')}}</span>
+                            <label for="en_name">{{__('lang.en_name')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="en_name" value="{{old('en_name')}}">
+                            <span class="error">{{$errors->first('en_name')}}</span>
                         </div>
 
+                        <div class="form-group">
+                            <label for="ar_name">{{__('lang.ar_name')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="ar_name" value="{{old('ar_name')}}">
+                            <span class="error">{{$errors->first('ar_name')}}</span>
+                        </div>
 
                         <div class="form-group">
                             <label for="en_review">{{__('lang.client_review_review_en')}} <span class="required">*</span></label>

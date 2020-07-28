@@ -159,6 +159,13 @@ use Illuminate\Support\Facades\Route;
 //});
 
 
+    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@home']);
+
+    Route::get('/blogs', ['as' => 'blogs', 'uses' => 'HomeController@blogs']);
+    Route::get('/clientreviews', ['as' => 'clientreviews', 'uses' => 'HomeController@client_reviews']);
+    Route::get('/workingteam', ['as' => 'workingteam', 'uses' => 'HomeController@working_team']);
+    Route::get('/about_us', ['as' => 'about_us', 'uses' => 'HomeController@about_us']);
+    Route::get('/blog/{id}', ['as' => 'blog.show', 'uses' => 'HomeController@show_blog']);
 
     Route::put('/company/{id}/update', ['as'=>'company.update','uses'=>'CompanyController@update'])->middleware('permission:edit company')->middleware('permission:edit company');
     Route::get('/company', ['as'=>'company.index','uses'=>'CompanyController@index'])->middleware('permission:read company')->middleware('permission:read company');

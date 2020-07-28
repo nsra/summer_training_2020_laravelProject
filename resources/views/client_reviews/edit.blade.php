@@ -30,9 +30,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="nmae">{{__('lang.client_review_name')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="name" value="{{ old('name', optional($client_review)->name) }}">
-                            <span class="error">{{$errors->first('name')}}</span>
+                            <label for="en_name">{{__('lang.en_name')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="en_name" value="{{old('en_name', optional($client_review->translate('en'))->review) }}">
+                            <span class="error">{{$errors->first('en_name')}}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ar_name">{{__('lang.ar_name')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="ar_name" value="{{old('ar_name', optional($client_review->translate('ar'))->review) }}">
+                            <span class="error">{{$errors->first('ar_name')}}</span>
                         </div>
 
 

@@ -53,8 +53,7 @@
                         @foreach($client_reviews as $client_review)
                             <tr>
                                 <td class="text-center">{{$client_review->name}}</td>
-                                <td class="text-center">{{$client_review->review}}</td>
-
+                                <td class="text-center">{{\Illuminate\Support\Str::limit($client_review->review, 50, '...') }}</td>
                                 <td class="text-center">
                                     <a href="{{route('client_reviews.edit', $client_review->client_review_id)}}" class="btn btn-primary ">
                                         <i class="fa fa-edit"></i>

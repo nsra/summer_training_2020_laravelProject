@@ -19,8 +19,13 @@
                         </div>
                         </div>
                         <div class="form-group">
-                            <label for="name">{{__('lang.client_review_name')}} <span class="required">*</span></label>
-                            <input type="text" class="form-control" name="name" value="{{ $client_review->name }}">
+                            <label for="name">{{__('lang.en_name')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="en_name" value="{{ $client_review->translate('en')->name }}">
+                            <span class="error">{{$errors->first('name')}}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">{{__('lang.ar_name')}} <span class="required">*</span></label>
+                            <input type="text" class="form-control" name="ar_name" value="{{ $client_review->translate('ar')->name }}">
                             <span class="error">{{$errors->first('name')}}</span>
                         </div>
 

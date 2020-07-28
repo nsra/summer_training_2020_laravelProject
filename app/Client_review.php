@@ -12,8 +12,8 @@ class Client_review extends Model implements TranslatableContract
 
     protected $table = 'client_reviews';
 
-    public $translatedAttributes = ['review'];
-    protected  $fillable = ['name', 'image'];
+    public $translatedAttributes = ['name', 'review'];
+    protected  $fillable = ['image'];
 
     public function getImage()
     {

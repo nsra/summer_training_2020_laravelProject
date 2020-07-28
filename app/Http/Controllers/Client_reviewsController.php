@@ -21,7 +21,7 @@ class Client_reviewsController extends Controller
     public function index(Request $request )
     {
         $client_reviews = Client_review::join('client_review_translations', 'client_reviews.id', '=', 'client_review_translations.client_review_id')
-            ->select('client_reviews.name', 'client_review_translations.*')
+            ->select('client_reviews.id', 'client_review_translations.*')
             ->where([]);
 
         if ($request->has('name')){
@@ -59,9 +59,11 @@ class Client_reviewsController extends Controller
         $request->validate($this->rules(), $this->messages());
         $client_review_data = [];
         $client_review_data['en'] = [
+            'name' => $request->en_name,
             'review' => $request->en_review,
         ];
         $client_review_data['ar'] = [
+            'name' => $request->ar_name,
             'review' => $request->ar_review,
         ];
 
@@ -116,9 +118,11 @@ class Client_reviewsController extends Controller
 
             $client_review_data = [];
             $client_review_data['en'] = [
+                'name' => $request->en_name,
                 'review' => $request->en_review,
             ];
             $client_review_data['ar'] = [
+                'name' => $request->ar_name,
                 'review' => $request->ar_review,
             ];
             if($request->file('client_review_image')){
@@ -153,7 +157,8 @@ class Client_reviewsController extends Controller
     private function rules($id = null)
     {
         $rules = [
-            'name' => 'required|max:50',
+            'en_name' => 'required|max:50',
+            'ar_name' => 'required|max:50',
             'en_review' => 'required',
             'ar_review' => 'required',
             'client_review_image' => 'image',
@@ -173,11 +178,13 @@ class Client_reviewsController extends Controller
     private function messages()
     {
         return [
-            'name.required' => trans('client_review.validations.name_required'),
-            'name.max' => trans('client_review.validations.name_max'),
+            'en_name.required' => trans('client_review.validations.name_required'),
+            'en_name.max' => trans('client_review.validations.name_max'),
+            'ar_name.required' => trans('client_review.validations.name_required'),
+            'ar_name.max' => trans('client_review.validations.name_max'),
             'en_review.required' => trans('client_review.validations.rview_required'),
+            'ar_review.required' => trans('client_review.validations.rview_required'),
             'client_review_image.required' => trans('client_review.validations.image_required'),
-
         ];
     }
 }
