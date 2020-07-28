@@ -36,7 +36,7 @@ class ProjectsController extends Controller
                 'service_type_translations.service_type_locale')
             ->where([]);
 
-        $locale= Session::get('locale');
+        $locale= app()->getLocale();
         if ($request->has('title'))
             $projects = $projects->where('title', 'like', '%' . $request->input('title') . '%');
         if ($request->has('description'))

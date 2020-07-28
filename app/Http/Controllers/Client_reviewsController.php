@@ -32,7 +32,7 @@ class Client_reviewsController extends Controller
             $client_reviews = $client_reviews->where('review', 'like', '%' . $request->input('review') . '%');
         }
 
-        $client_reviews = $client_reviews->where('locale', Session::get('locale'))->paginate(5);
+        $client_reviews = $client_reviews->where('locale', app()->getLocale())->paginate(5);
         return view('client_reviews.index', compact('client_reviews'));
     }
 

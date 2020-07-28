@@ -33,7 +33,7 @@ class Order_stepsController extends Controller
             $order_steps = $order_steps->where('description', 'like', '%' . $request->input('description') . '%');
         }
 
-        $order_steps = $order_steps->where('locale', Session::get('locale'))->paginate(5);
+        $order_steps = $order_steps->where('locale', app()->getLocale())->paginate(5);
         return view('order_steps.index', compact('order_steps'));
     }
 

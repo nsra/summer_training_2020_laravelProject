@@ -24,20 +24,23 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
 
-        $articles = Article::join('article_translations', 'articles.id', '=', 'article_translations.article_id')
+        $items = Article::join('article_translations', 'articles.id', '=', 'article_translations.article_id')
             ->join('admins', 'articles.admin_id', '=', 'admins.id')
             ->select('articles.id', 'article_translations.*', 'admins.name')
             ->where([]);
+
         if ($request->has('title'))
-            $articles = $articles->where('title', 'like', '%' . $request->input('title') . '%');
+            $items = $articles->where('title', 'like', '%' . $request->input('title') . '%');
 
         if ($request->has('description'))
-            $articles = $articles->where('description', 'like', '%' . $request->input('description') . '%');
+            $items = $items->where('description', 'like', '%' . $request->input('description') . '%');
 
         if ($request->has('admin_id')){
-            $articles= $articles->where('name', 'like', '%' . $request->input('admin_id') . '%');
+            $items= $items->where('name', 'like', '%' . $request->input('admin_id') . '%');
         }
-        $articles = $articles->where('locale', '=', Session::get('locale'))->paginate(5);
+        $articles = $items->where('locale', app()->getLocale())->paginate(5);
+        // dd($items->first());
+
         return view('articles.index', compact('articles'));
 
     }

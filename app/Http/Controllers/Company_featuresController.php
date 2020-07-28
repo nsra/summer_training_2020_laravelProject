@@ -29,7 +29,7 @@ class Company_featuresController extends Controller
             $company_features = $items->where('description', 'like', '%' . $request->input('description') . '%');
         }
 
-        $items = $items->where('locale', Session::get('locale'))->paginate(5);
+        $items = $items->where('locale', app()->getLocale())->paginate(5);
         return view('company_features.index', compact('items'));
     }
 

@@ -28,7 +28,7 @@ class TeamsController extends Controller
         if ($request->has('bio')){
             $teams = $teams->where('bio', 'like', '%' . $request->input('bio') . '%');
         }
-        $teams = $teams->where('locale', '=', Session::get('locale'))->paginate(5);
+        $teams = $teams->where('locale', '=', app()->getLocale())->paginate(5);
         return view('teams.index', compact('teams'));
     }
 

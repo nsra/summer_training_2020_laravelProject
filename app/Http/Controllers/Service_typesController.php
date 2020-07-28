@@ -35,7 +35,7 @@ class Service_typesController extends Controller
             $service_types = $service_types->where('about_service', 'like', '%' . $request->input('about_service') . '%');
         }
 
-        $service_types = $service_types->where('locale', '=', Session::get('locale'))->paginate(5);
+        $service_types = $service_types->where('locale', '=', app()->getLocale())->paginate(5);
         return view('service_types.index', compact('service_types'));
 
     }
