@@ -71,6 +71,7 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate($this->rules(), $this->messages());
         $project_data = [];
         $project_data['en'] = [
@@ -89,9 +90,6 @@ class ProjectsController extends Controller
         if ($request->file('project_images') !== null ) {
             $images = $request->file('project_images');
             foreach($images as $image) {
-//                $image->validate(['image' => 'image|required'],
-//                    ['project_images.required' => trans('lang.required_valid_image'), 'project_images.image' => trans('lang.required_valid_image')]);
-//                $imageValidator = Validator::make($image, ['image' => 'image|required']);
                 $path = parent::uploadImage($image);
                 $project_image = new Image();
                 $project_image->project_id = $project->id;
@@ -146,7 +144,6 @@ class ProjectsController extends Controller
     {
         $project = Project::find($id);
         $request->validate($this->rules($id), $this->messages());
-
         $project_data = [];
         $project_data['en'] = [
             'title' => $request->en_title,
@@ -161,33 +158,36 @@ class ProjectsController extends Controller
         ];
         // dd($request);
         $project->service_type_id= $request->project_service_type_id;
-        //$project->update($project_data);
+        // $project->update($project_data);
 
-        // if ($request->file('project_images') !== null ) {
-        //     $old_project_images= Image::where('project_id', $id)->delete();;
-        //     $images = $request->file('project_images');
-        //     foreach($images as $image) {
-        //         $path = parent::uploadImage($image);
-        //         $project_image = new Image();
-        //         $project_image->project_id = $project->id;
-        //         $project_image->name = $path;
-        //         $project_image->save();
-        //     }
 
-        $project->update($project_data);
+        if ($request->file('project_images')) {
+            $old_project_images= Image::where('project_id', $id)->get();
 
-        if($request->file('project_image')){
-            $path= parent::uploadImage($request->file('project_image'));
-            $project_image = new Image();
-            $project_image->project_id = $project->id;
-            $project_image->name = $path;
-            $project_image->save();
+            foreach($old_project_images as $old_project_image){
+                $old_project_image->delete();
+            }
+          
+            $images = $request->file('project_images');
+            foreach($images as $image) {
 
-        } 
-        
-        return redirect()->back()->with('success', trans('project.success.updated'));
-      
-            // return redirect()->back()->with('error', trans('project.error.updated'));
+                $path = parent::uploadImage($image);
+                $project_image = new Image();
+                $project_image->project_id = $project->id;
+                $project_image->name = $path;
+                $project_image->save();
+
+            }
+
+        } else {
+            return redirect()->back()->with('errors', ' Image file not found!');
+        }
+        if ($project->update($project_data)){
+            return redirect()->back()->with('success', trans('project.success.stored'));
+        }
+        else
+            return redirect()->back()->with('error', trans('project.error.stored'));
+          
     }
 
     /**
@@ -215,14 +215,14 @@ class ProjectsController extends Controller
             'ar_title' => 'required|max:100',
             'en_description' => 'required',
             'ar_description' => 'required',
-            'project_images' => 'array|image',
-            'project_images*' => 'required',
+            'project_images' => 'array',
+            'project_images.*' => 'image',
         ];
         if (!$id) {
-            die();
-            $rules['project_images.*'] = '';
-            $rules['project_images'] = 'array|image';
-
+            // $rules['project_images.*'] = 'required|image';
+            // $rules['project_images'] = 'array|image';
+            $rules['project_images.*'] = 'image';
+            $rules['project_images'] = 'array|required';
         }
         return $rules;
     }

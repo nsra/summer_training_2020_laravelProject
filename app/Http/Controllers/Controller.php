@@ -24,7 +24,7 @@ class Controller extends BaseController
     {
         $dir= 'image';
         $uploadedImage = $image;
-        $imageName = time() . '.' . $uploadedImage->getClientOriginalExtension();
+        $imageName = time() . $uploadedImage->getClientOriginalName();
         $direction = public_path($dir . '/');
         $uploadedImage->move($direction, $imageName);
         return 'image/' . $imageName;

@@ -19,7 +19,7 @@
                                     <span class="btn red btn-outline btn-file">
                                         <span class="fileinput-new"> {{__('lang.select_image')}} </span>
                                         <span class="fileinput-exists"> {{__('lang.change')}} </span>
-                                        <input type="file" name="project_images[]" multiple accept="image/*">
+                                        <input type="file" name="project_images[]" multiple >
                                     </span>
                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> {{__('lang.remove')}} </a>
                                     <span class="error col-md-12">{{$errors->first('project_images.*')}}</span>

@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="card-header">
                     <h3>{{ __('lang.edit_project') }}</h3>
-
                 </div>
                 <div class="card-body">
                     <form action="{{route('projects.update', $project->id)}}" method="POST" enctype="multipart/form-data">
@@ -16,13 +15,15 @@
                         <div class="form-group " style="text-align: center">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                    <img src="{{$project->images->first()->getImage()}}" alt="">
                                 </div>
                                 <div>
                                     <span class="btn red btn-outline btn-file">
                                     <span class="fileinput-new"> {{__('lang.select_image')}} </span>
                                     <span class="fileinput-exists"> {{__('lang.change')}} </span>
-                                    <input type="file" name="project_image" multiple> </span>
+                                    <input type="file" name="project_images[]" multiple> </span>
                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> {{__('lang.remove')}} </a>
+                                    <span class="error col-md-12">{{$errors->first('project_images.*')}}</span>
                                 </div> 
                             </div>
                         </div>

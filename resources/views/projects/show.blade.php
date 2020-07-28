@@ -14,7 +14,7 @@
                             <div class="fileinput fileinput-new" data-provides="fileinput">
 
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                        <img src="{{$project->getImage()}}" alt="">
+                                        <img src="{{$project->images->first()->getImage()}}" alt="">
                                     </div>
                             </div>
                         </div>
