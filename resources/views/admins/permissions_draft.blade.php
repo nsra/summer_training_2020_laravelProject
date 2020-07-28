@@ -18,18 +18,7 @@
             <h3>{{ __('lang.permissions') }}</h3>
         </div>
         <div class="card-body">
-{{--            <form method="post" action="{{route('get_permissions_by_role')}}">--}}
-{{--                @csrf--}}
-{{--                <div class="form-group" style="width:50%; margin-left:23%; margin-right:23%">--}}
-{{--                        <label for="role_id" class="panel-title ">{{__('lang.choose_role')}} </label>--}}
-{{--                        <select name="role_id" id="role_id" class="form-control">--}}
-{{--                            <option value=""> {{__('lang.options')}} </option>--}}
-{{--                            @foreach($roles as $role)--}}
-{{--                                <option value="{{$role->id}}" {{ $role->id == $admin->role_id ? "selected" : "" }}> {{$role->name}} </option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--            </form>--}}
+
 
 
             <div class="panel-body">
@@ -42,25 +31,19 @@
                                     <select name="role_id" id="role_id" class="form-control">
                                         <option value=""> {{__('lang.options')}} </option>
                                         @foreach($admin_roles as $admin_roles)
-{{--                                            <option value="{{$role->id}}" {{ $role->id == $admin->role_id ? "selected" : "" }}> {{$role->name}} </option>--}}
                                             <option value="{{$admin_roles}}" selected> {{$admin_roles}} </option>
 
                                         @endforeach
                                     </select>
                             </div>
-{{--                            <div class="col-sm-6 form-group " style="margin-top:2%">--}}
-{{--                                <input type="submit" value="{{trans('lang.select')}}" class="btn btn-primary">--}}
 
-{{--                            </div>--}}
 
                             </br></br></br></br>
                                 <div class=" form-group">
-{{--                                    @foreach($permissions as $permission)--}}
                                     @foreach($admin_permissions as $admin_permission)
 
                                         <div class="form-group col-lg-3">
                                             <label for="permission">
-{{--                                                <input type="checkbox" class="" name="permissions[]" value="{{$admin_permission->id}}" {{$admin_permission->roles()->find($admin_permission->role_id)? 'checked' : ''}}>--}}
                                                 <input type="checkbox" class="" name="permissions[]" value="{{$admin_permission}}" checked>
 
                                                 {{$admin_permission}}

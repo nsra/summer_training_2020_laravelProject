@@ -25,8 +25,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest:admin')->except('logout');
-        // $this->middleware('guest:web')->except('logout');
+       
     }
 
     /**

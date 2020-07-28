@@ -29,6 +29,8 @@
                     <div class="col-md-12">
                         <form action="{{route('update_admin_permissions')}}" method="POST">
                             @csrf
+                            <input type="hidden" class="" name="admin_id" value="{{$admin->id}}" >
+
                             @foreach($permissions as $permission)
                                 <div class="form-group col-lg-3">
                                     <label for="permission">
@@ -48,7 +50,4 @@
             </div>
         </div>
 @endsection
-{{--@elsecannot('read permissions')--}}
-{{--    <h1>error</h1>--}}
-{{--@endcan--}}
 

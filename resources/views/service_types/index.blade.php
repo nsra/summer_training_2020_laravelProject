@@ -22,11 +22,7 @@
                                            value="{{app('request')->get('about_service')}}">
                                 </div>
 
-{{--                                <div class="col-sm-4 form-group">--}}
-{{--                                    <label for="user_id">@lang('service_type.fields.user_id')</label>--}}
-{{--                                    <input type="text" name="user_id" class="form-control"--}}
-{{--                                           value="{{app('request')->get('user_id')}}">--}}
-{{--                                </div>--}}
+
                                 <div class="form-action col-sm-12 text-right">
                                     <input type="submit" value="{{trans('lang.search')}}" class="btn btn-primary">
                                     <a class="btn btn-default"
@@ -50,7 +46,6 @@
                         <tr>
                             <th class="text-center">@lang('service_type.fields.name')</th>
                             <th class="text-center">@lang('service_type.fields.about_service')</th>
-{{--                            <th class="text-center">@lang('service_type.fields.user_id')</th>--}}
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>
@@ -59,10 +54,7 @@
                             <tr>
                                 <td class="text-center">{{$service_type->name}}</td>
                                 <td class="text-center">{{$service_type->about_service}}</td>
-{{--                                <td class="text-center">--}}
-{{--                                    {{$article->name}}--}}
 
-{{--                                </td>--}}
                                 <td class="text-center">
                                     <a href="{{route('service_types.edit', $service_type->service_type_id)}}" class="btn btn-primary ">
                                         <i class="fa fa-edit"></i>

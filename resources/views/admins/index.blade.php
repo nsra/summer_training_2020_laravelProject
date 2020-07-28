@@ -22,11 +22,7 @@
                                            value="{{app('request')->get('email')}}">
                                 </div>
 
-{{--                                <div class="col-sm-4 form-group">--}}
-{{--                                    <label for="user_id">@lang('service_type.fields.user_id')</label>--}}
-{{--                                    <input type="text" name="user_id" class="form-control"--}}
-{{--                                           value="{{app('request')->get('user_id')}}">--}}
-{{--                                </div>--}}
+
                                 <div class="form-action col-sm-12 text-right">
                                     <input type="submit" value="{{trans('lang.search')}}" class="btn btn-primary">
                                     <a class="btn btn-default"
@@ -50,7 +46,6 @@
                         <tr>
                             <th class="text-center">@lang('lang.name')</th>
                             <th class="text-center">@lang('lang.email')</th>
-{{--                            <th class="text-center">@lang('service_type.fields.user_id')</th>--}}
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>
@@ -59,10 +54,7 @@
                             <tr>
                                 <td class="text-center">{{$admin->name}}</td>
                                 <td class="text-center">{{$admin->email}}</td>
-{{--                                <td class="text-center">--}}
-{{--                                    {{$article->name}}--}}
 
-{{--                                </td>--}}
                                 <td class="text-center">
                                     <a href="{{route('admin.view_permissions', $admin->id)}}" class="btn btn-primary ">
                                         <i class="fa fa-lock"></i>
@@ -113,7 +105,6 @@
                     $.ajax({
                         url: '{{route('admin.destroy')}}/' + id,
                         method: 'GET',
-                        {{--url: "{{url('/destroy')}}",--}}
                         data: {body: '', _token: '{{csrf_token()}}'}
                     }).success(function (response) {
                         if (response.status == 200) {

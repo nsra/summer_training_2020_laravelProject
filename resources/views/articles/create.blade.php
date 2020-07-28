@@ -1,19 +1,8 @@
 @extends('base_layout._layout')
-{{--@section('style')--}}
-{{--    <style>--}}
-{{--        .my-d-none{--}}
-{{--            display:none;--}}
-{{--        }--}}
-{{--    </style>--}}
-{{--@endsection--}}
+
 @section('body')
     <div class="row">
-{{--        @if(session('success'))--}}
-{{--            <div class="alert alert-success">--}}
-{{--                {{session('success')}}--}}
-{{--            </div>--}}
-{{--        @endif--}}
-        <div class="col-md-11">
+
             <div class="card">
                 <div class="card-header">
                     <h3>{{ __('lang.create_article') }}</h3>
@@ -58,7 +47,6 @@
                         </div>
 
 
-{{--
 </div>
     <br>
     <hr>
@@ -100,10 +88,7 @@
                 <input type="text" class="form-control" name="ar_description" value="{{old('ar_description')}}">
                 <span class="error">{{$errors->first('title_required')}}</span>
             </div>
-{{--<div class="form-action " >--}}
-{{--                <button type="submit"  value="" class="btn btn-primary">{{__('lang.store')}}</button>--}}
-{{--                <button type="reset"  value="" class="btn btn-default">{{__('lang.cancel')}}</button>--}}
-{{--            </div>--}}
+
 
 
                 </div>

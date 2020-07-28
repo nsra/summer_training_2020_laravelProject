@@ -58,7 +58,7 @@
                         @foreach($articles as $article)
                             <tr>
                                 <td class="text-center">{{$article->title}}</td>
-                                <td class="text-center">{{$article->description}}</td>
+                                <td class="text-center">{{ \Illuminate\Support\Str::limit($article->description, 20, '...') }}</td>
                                 <td class="text-center">
                                     {{$article->name}}
 

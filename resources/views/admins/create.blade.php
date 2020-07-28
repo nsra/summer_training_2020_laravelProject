@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="card-header">
                     <h3>{{ __('lang.create_admin') }}</h3>
-
                 </div>
                 <div class="card-body">
                     <form action="{{route('admins.store')}}" method="POST" enctype="multipart/form-data">
@@ -35,16 +34,7 @@
                             <input type="email" class="form-control" name="email" value="{{old('email')}}">
                             <span class="error">{{$errors->first('email')}}</span>
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <label for="password">{{__('lang.password')}} <span class="required">*</span></label>--}}
-{{--                            <input type="password" class="form-control" name="password" value="{{old('password')}}">--}}
-{{--                            <span class="error">{{$errors->first('password')}}</span>--}}
-{{--                        </div>--}}
 
-{{--                        <div class="form-group ">--}}
-{{--                            <label for="password-confirm" >{{ __('lang.confirm_password') }}<span class="required">*</span></label>--}}
-{{--                            <input id="password-confirm" type="password" class="form-control" name="password-confirmation" required autocomplete="new-password">--}}
-{{--                        </div>--}}
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('lang.password') }}</label>

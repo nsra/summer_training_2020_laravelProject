@@ -62,8 +62,9 @@ class AdminsController extends Controller
 
     public function update_admin_permissions(Request $request){
         try{
-            $role=Role::find($request->role_id);
-            $role->syncPermissions($request->permissions);
+            //$role=Role::find($request->role_id);
+            $admin= Admin::find($request->admin_id);
+            $admin->syncPermissions($request->permissions);
             return redirect()->back()->with('success', trans('permission.success.updated'));
         } catch (ModelNotFoundException $modelNotFoundException) {
             return redirect()->back()->with('error', trans('permission.error.updated'));
@@ -176,7 +177,6 @@ class AdminsController extends Controller
         $rules = [
             'name' => 'required|max:100',
             'email' => 'required|email',
-//            'permissions' => ['required', 'array'],
             'admin_image' => 'image',
             ];
         if (!$id) {

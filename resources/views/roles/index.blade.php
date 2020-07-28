@@ -13,7 +13,6 @@
                         <thead class="flip-content">
                         <tr>
                             <th class="text-center">@lang('lang.name')</th>
-{{--                                                        <th class="text-center">@lang('service_type.fields.user_id')</th>--}}
                             <th style="text-align: center" class="text-center">@lang('lang.options')</th>
                         </tr>
                         </thead>
@@ -21,10 +20,7 @@
                         @foreach($roles as $role)
                             <tr>
                                 <td class="text-center">{{$role->name}}</td>
-                                {{--                                <td class="text-center">--}}
-                                {{--                                    {{$article->name}}--}}
-
-                                {{--                                </td>--}}
+                              
                                 <td class="text-center">
                                     <a href="{{route('role.view_permissions', $role->id)}}" class="btn btn-primary ">
                                         <i class="fa fa-lock"></i>

@@ -242,12 +242,7 @@
                         <span class="title">@lang('lang.add')</span>
                     </a>
                 </li>
-{{--                <li class="nav-item start">--}}
-{{--                    <a href="{{route('admin.view_permissions')}}" class="nav-link ">--}}
-{{--                        <i class="fa fa-lock"></i>--}}
-{{--                        <span class="title">@lang('lang.permissions')</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+
             </ul>
         </li>
         <li class="nav-item ">

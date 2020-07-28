@@ -25,7 +25,7 @@
                         @foreach($ads as $ad)
                             <tr>
                                 <td class="text-center">{{$ad->title}}</td>
-                                <td class="text-center">{{$ad->description}}</td>
+                                <td class="text-center">{{ \Illuminate\Support\Str::limit($ad->description, 20, '...') }}</td>
                                 <td class="text-center">{{$ad->number}}</td>
                                 <td class="text-center">{{$ad->button}}</td>
                                 <td class="text-center">{{$ad->link}}</td>
@@ -75,7 +75,7 @@
                      *
                      */
                     $.ajax({
-                        url: '{{route('ad.destroy')}}/' + id,
+                        url: '{{ route('ad.destroy')}}/' + id ,
                         method: 'GET',
                         data: {body: '', _token: '{{csrf_token()}}'}
                     }).success(function (response) {
