@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2020 at 12:51 PM
+-- Generation Time: Jul 28, 2020 at 02:01 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -93,8 +93,8 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `email`, `image`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'nasora', 'nasora@gmail.com', 'image/1593869673.jpg', NULL, '$2y$10$cyQq/8pjSZWBel05jGziu.e7vVOEBfEyaRBQaHRdVs5tXI3EeEkm2', NULL, '2020-07-04 10:34:33', '2020-07-04 10:34:33'),
-(38, 'avocodesuperadmin', 'avocodesuperadmin@gmail.com', 'image/1595926141Layer-0.png', NULL, '$2y$10$Bj1p1nJO8Pv.okGNdH9cyO78pt7dQWEVLY5DmV7sLKceDQ388KjqO', NULL, '2020-07-28 05:49:02', '2020-07-28 05:49:02'),
-(39, 'avocodesubadmin', 'avocodesubadmin@gmail.com', 'image/1595926187fet2.png', NULL, '$2y$10$8MHGaszunABK8R88ITR4x.hFe2pEVn2B2iFrnbJU0uyJZS5nm2UZi', NULL, '2020-07-28 05:49:47', '2020-07-28 05:49:47');
+(38, 'superadmin', 'avocodesuperadmin@gmail.com', 'image/1595926141Layer-0.png', NULL, '$2y$10$Bj1p1nJO8Pv.okGNdH9cyO78pt7dQWEVLY5DmV7sLKceDQ388KjqO', NULL, '2020-07-28 05:49:02', '2020-07-28 05:49:02'),
+(39, 'subadmin', 'avocodesubadmin@gmail.com', 'image/1595926187fet2.png', NULL, '$2y$10$8MHGaszunABK8R88ITR4x.hFe2pEVn2B2iFrnbJU0uyJZS5nm2UZi', NULL, '2020-07-28 05:49:47', '2020-07-28 05:49:47');
 
 -- --------------------------------------------------------
 
@@ -213,7 +213,6 @@ INSERT INTO `article_translations` (`id`, `locale`, `title`, `description`, `art
 
 CREATE TABLE `client_reviews` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -223,13 +222,13 @@ CREATE TABLE `client_reviews` (
 -- Dumping data for table `client_reviews`
 --
 
-INSERT INTO `client_reviews` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
-(6, 'د. أنور الذرفي 1', 'image/1595183224.png', NULL, '2020-07-19 15:27:04'),
-(7, 'د. أنور الذرفي 2', 'image/1595183243.png', NULL, '2020-07-19 15:27:23'),
-(8, 'د. أنور الذرفي 3', 'image/1595183264.png', NULL, '2020-07-19 15:27:44'),
-(9, 'د. أنور الذرفي 4', 'image/1595183289.png', NULL, '2020-07-19 15:28:09'),
-(10, 'د. أنور الذرفي 5', 'image/1595183315.png', NULL, '2020-07-19 15:28:35'),
-(11, 'د. أنور الذرفي 6', 'image/1595183330.png', NULL, '2020-07-19 15:28:50');
+INSERT INTO `client_reviews` (`id`, `image`, `created_at`, `updated_at`) VALUES
+(6, 'image/1595183224.png', NULL, '2020-07-19 15:27:04'),
+(7, 'image/1595183243.png', NULL, '2020-07-19 15:27:23'),
+(8, 'image/1595183264.png', NULL, '2020-07-19 15:27:44'),
+(9, 'image/1595183289.png', NULL, '2020-07-19 15:28:09'),
+(10, 'image/1595183315.png', NULL, '2020-07-19 15:28:35'),
+(11, 'image/1595183330.png', NULL, '2020-07-19 15:28:50');
 
 -- --------------------------------------------------------
 
@@ -240,6 +239,7 @@ INSERT INTO `client_reviews` (`id`, `name`, `image`, `created_at`, `updated_at`)
 CREATE TABLE `client_review_translations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `review` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `client_review_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -250,19 +250,19 @@ CREATE TABLE `client_review_translations` (
 -- Dumping data for table `client_review_translations`
 --
 
-INSERT INTO `client_review_translations` (`id`, `locale`, `review`, `client_review_id`, `created_at`, `updated_at`) VALUES
-(7, 'en', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 6, NULL, NULL),
-(8, 'ar', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 6, NULL, NULL),
-(11, 'en', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 7, NULL, NULL),
-(12, 'ar', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 7, NULL, NULL),
-(15, 'en', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 8, NULL, NULL),
-(16, 'ar', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 8, NULL, NULL),
-(17, 'en', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 9, NULL, NULL),
-(18, 'ar', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 9, NULL, NULL),
-(19, 'en', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 10, NULL, NULL),
-(20, 'ar', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 10, NULL, NULL),
-(21, 'en', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 11, NULL, NULL),
-(22, 'ar', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 11, NULL, NULL);
+INSERT INTO `client_review_translations` (`id`, `locale`, `name`, `review`, `client_review_id`, `created_at`, `updated_at`) VALUES
+(7, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 6, NULL, NULL),
+(8, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 6, NULL, NULL),
+(11, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 7, NULL, NULL),
+(12, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 7, NULL, NULL),
+(15, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 8, NULL, NULL),
+(16, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 8, NULL, NULL),
+(17, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 9, NULL, NULL),
+(18, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 9, NULL, NULL),
+(19, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 10, NULL, NULL),
+(20, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 10, NULL, NULL),
+(21, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 11, NULL, NULL),
+(22, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 11, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1336,13 +1336,13 @@ ALTER TABLE `article_translations`
 -- AUTO_INCREMENT for table `client_reviews`
 --
 ALTER TABLE `client_reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `client_review_translations`
 --
 ALTER TABLE `client_review_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `company`
