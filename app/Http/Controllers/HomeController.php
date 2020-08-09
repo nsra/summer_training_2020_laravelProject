@@ -46,7 +46,7 @@ class HomeController extends Controller
 
     public function home(){
 
-        $projects = Project::with('images')->get();
+        $projects = Project::has('images')->orderBy('id', 'desc')->take(8)->get();
         $service_types = Service_type::all();
         $company_features = Company_feature::all();
         $articles = Article::query()->take(4)->get()->sortByDesc('id');
