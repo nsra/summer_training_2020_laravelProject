@@ -73,7 +73,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 @yield('body')
                 <div class="row col-12 avocode" >
-                    <img src="{{asset('/control/assets/layouts/layout/img/avocode_logo.jpg')}}" width="45%"/>
+                    <img src="{{asset('/control/assets/layouts/layout/img/toptech.jpg')}}" width="45%"/>
                 </div>
                 <!-- END PAGE HEADER-->
             </div>

@@ -37,7 +37,7 @@
                             <a href="{{route('user_password.change')}}"
                                class="btn btn-default">@lang('lang.change_password')</a>
                         </div>
-                </div>
+                    </div>
                 </form>
                 <br>
                 <br>

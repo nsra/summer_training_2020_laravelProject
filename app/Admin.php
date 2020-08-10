@@ -10,9 +10,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasPermissions;
+use Laravel\Passport\HasApiTokens;
+
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     use HasRoles, HasPermissions;
     protected $guard = 'admin';

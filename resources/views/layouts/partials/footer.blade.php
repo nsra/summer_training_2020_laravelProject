@@ -5,7 +5,7 @@
 
   <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
       <div class="d-flex flex-nowrap">
-         <img src="{{asset('/avocodetemplate/image/Layer-0.png')}}" class="mr-5"/> 
+         <img src="{{asset('/control/assets/layouts/layout/img/toptech.jpg')}}" style="width: 125px" class="mr-2"/> 
          <h6 class="mr-2 mt-2">{{$company->name}}</h6>
       </div>
     <p class="mt-2">{{$company->description}}</p>

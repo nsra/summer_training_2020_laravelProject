@@ -119,13 +119,13 @@
         
          @if(app()->getLocale() == 'ar')
         <div class="d-flex flex-nowrap">
-            <img src="{{asset('/avocodetemplate/image/Layer-0.png')}}" style="width:40px" class="mr-5"/> 
+            <img src="{{asset('/control/assets/layouts/layout/img/toptech.jpg')}}" style="width:40px" class="mr-5"/> 
             <h6 class="mr-2 mt-2">{{$company->name}}</h6>
         </div>
         @else
 
         <div class="d-flex flex-nowrap">
-            <img src="{{asset('/avocodetemplate/image/Layer-0.png')}}" style="width:40px" class="ml-5"/> 
+            <img src="{{asset('/control/assets/layouts/layout/img/toptech.jpg')}}" style="width:40px" class="ml-5"/> 
             <h6 class="mr-2 mt-2">{{$company->name}}</h6>
         </div>
         @endif

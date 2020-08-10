@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="/">
-                <img src="{{asset('/control/assets/layouts/layout/img/avocode.png')}}" alt="logo" width="120px" style="margin-top:7%" height="33px" class="logo-default"/> </a>
+                <img src="{{asset('/control/assets/layouts/layout/img/topTech.png')}}" alt="logo" width="120px" style="margin-top:7%" height="33px" class="logo-default"/> </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
             </div>
