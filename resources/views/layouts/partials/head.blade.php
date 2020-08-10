@@ -8,7 +8,7 @@
 @else
     <link rel="stylesheet" href="{{asset('/avocodetemplate/css/bootstrap.min.css')}}">
 @endif
-<link rel="stylesheet" href="{{asset('/avocodetemplate/css/avocode-style.css')}}">
+<link rel="stylesheet" href="{{asset('/avocodetemplate/css/style.css')}}">
 <script src="{{asset('/avocodetemplate/js/jquery.min.js')}}"></script>
 <script src="{{asset('/avocodetemplate/js/popper.min.js')}}"></script>
 <script src="{{asset('/avocodetemplate/js/bootstrap.min.js')}}"></script>

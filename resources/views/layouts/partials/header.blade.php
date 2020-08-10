@@ -64,7 +64,7 @@
                         </li>
                     @elseauth('web')
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-user"><span>{{ Auth::guard('web')->user()->name }}</span></i></a>
+                            <a class="nav-link" href="{{route('user_profile.update')}}"><i class="fa fa-user"><span>{{ Auth::guard('web')->user()->name }}</span></i></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('logout.custom')}}"><i class="fas fa-sign-out-alt" ></i></a>

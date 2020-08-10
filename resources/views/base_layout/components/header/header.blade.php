@@ -337,7 +337,6 @@
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <img alt="" class="img-circle" src="../assets/layouts/layout/img/avatar3_small.jpg"/>
                         @auth('admin')
                         <span class="username username-hide-on-mobile"> {{ Auth::guard('admin')->user()->name }} </span>
                         @endauth
@@ -351,10 +350,7 @@
                             <a href="{{route('admin_profile.edit')}}">
                                 <i class="icon-user"></i> My Profile </a>
                         </li>
-                        <li>
-                            <a href="app_calendar.html">
-                                <i class="icon-calendar"></i> My Calendar </a>
-                        </li>
+
                         <li>
                             <a href="app_inbox.html">
                                 <i class="icon-envelope-open"></i> My Inbox
@@ -367,15 +363,7 @@
                                 <span class="badge badge-success"> 7 </span>
                             </a>
                         </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="page_user_lock_1.html">
-                                <i class="icon-lock"></i> Lock Screen </a>
-                        </li>
-                        <li>
-                            <a href="page_user_login_1.html">
-                                <i class="icon-key"></i> Log Out </a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="dropdown dropdown-user">
