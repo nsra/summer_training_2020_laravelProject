@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/clientreviews', ['as' => 'clientreviews', 'uses' => 'API\HomeController@client_reviews']);
     Route::get('/workingteam', ['as' => 'workingteam', 'uses' => 'API\HomeController@working_team']);
     Route::get('/about_us', ['as' => 'about_us', 'uses' => 'API\HomeController@about_us']);
-    Route::get('/blog/{id}', ['as' => 'blog.show', 'uses' => 'API\HomeController@show_blog']);
+    Route::get('/blog/{id}','API\HomeController@show_blog');
 
     Route::post('/multiguard_login', 'API\LoginController@multiguardLogin')->name('multiguard_login');
 

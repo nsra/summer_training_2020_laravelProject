@@ -116,21 +116,7 @@ class HomeController extends Controller
                                 ], $this->successStatus); 
     }
 
-    // public function blogs(){
-    //     dd('asd');
-    //     $company = Company::first();
-
-    //     $blogs = Article::paginate(16);
-    //     $service_types = Service_type::all();
-
-    //     return response()->json(['success' => [ 'blogs' => $blogs,
-    //                                             'company' => $company,
-    //                                             'service_types' =>$service_types
-    //                                           ]
-    //                             ], $this->successStatus); 
-    //     // return view('blogs', compact('blogs', 'company', 'service_types'));
-
-    // }
+  
 
     public function show_blog($id){
         $company = Company::first();

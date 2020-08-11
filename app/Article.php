@@ -11,11 +11,12 @@ class Article extends Model implements TranslatableContract
     use Translatable;
     protected  $table = 'articles';
     protected $hidden = ['translations', 'image'];
+    protected $appends = ['image_link'];
+
 
     public $translatedAttributes = ['title', 'description'];
     protected  $fillable = ['user_id', 'image'];
 
-    protected $appends = ['image_link'];
 
     public function admin()
     {

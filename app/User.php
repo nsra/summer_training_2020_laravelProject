@@ -33,7 +33,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'image',
     ];
 
     /**
@@ -46,6 +46,13 @@ class User extends Authenticatable
     ];
 
 
+    protected $appends = ['image_link'];
+
+    public function getImageLinkAttribute(){
+        if (!$this->image)
+            return asset('no_image.png');
+        return asset($this->image);
+    }
 
 
      public function getImage()
