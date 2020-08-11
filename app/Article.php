@@ -10,9 +10,12 @@ class Article extends Model implements TranslatableContract
 //    use SoftDeletes;
     use Translatable;
     protected  $table = 'articles';
+    protected $hidden = ['translations', 'image'];
 
     public $translatedAttributes = ['title', 'description'];
     protected  $fillable = ['user_id', 'image'];
+
+    protected $appends = ['image_link'];
 
     public function admin()
     {
@@ -23,6 +26,12 @@ class Article extends Model implements TranslatableContract
     public function getImage()
     {
         if (!$this->image)
+            return asset('no_image.png');
+        return asset($this->image);
+    }
+
+    public function getImageLinkAttribute(){
+            if (!$this->image)
             return asset('no_image.png');
         return asset($this->image);
     }

@@ -24,12 +24,20 @@ use Illuminate\Support\Facades\Route;
     ]);
 
 
-    Route::get('/register/user', 'Auth\RegisterController@showUserRegisterForm')->name('user_register');
+    Route::get('/index', ['as' => 'index', 'uses' => 'API\HomeController@home']);
 
+    Route::get('/', function () {
+        return redirect()->route('index');
+    });
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    // Route::get('/blogs', ['as' => 'blogs', 'uses' => 'API\HomeController@blogs']);
+    Route::get('/blogs', 'API\HomeController@blogs');
 
-    Route::get('/multiguard_login', 'API\LoginController@showLoginForm')->name('show.multiguard_login');
+    Route::get('/clientreviews', ['as' => 'clientreviews', 'uses' => 'API\HomeController@client_reviews']);
+    Route::get('/workingteam', ['as' => 'workingteam', 'uses' => 'API\HomeController@working_team']);
+    Route::get('/about_us', ['as' => 'about_us', 'uses' => 'API\HomeController@about_us']);
+    Route::get('/blog/{id}', ['as' => 'blog.show', 'uses' => 'API\HomeController@show_blog']);
+
     Route::post('/multiguard_login', 'API\LoginController@multiguardLogin')->name('multiguard_login');
 
     Route::post('/register/user', 'API\RegisterController@createUser')->name('user_register');
@@ -38,22 +46,14 @@ use Illuminate\Support\Facades\Route;
 
     Route::group(['middleware' => ['auth:api']], function(){
 
-        Route::get('/user', 'API\UserController@userDashboard')->name('user_dashboard');
         Route::get('/logout/custom', ['as' => 'logout.custom', 'uses' => 'API\Controller@userLogout']);
     
         Route::post('/user_changepassword', ['as'=>'user_password.update','uses'=>'API\UserController@update_user_password']);
-        Route::put('/user_editprofile', ['as'=>'user_profile.update','uses'=>'API\UserController@update_user_profile']);
+        Route::post('/user_editprofile', ['as'=>'user_profile.update','uses'=>'API\UserController@update_user_profile']);
         Route::get('/user_editprofile', ['as' => 'user_profile.edit', 'uses' => 'API\UserController@edit_user_profile']);
-        Route::get('/user_changepassword', ['as' => 'user_password.change', 'uses' => 'API\UserController@change_user_password']);
     });
 
     
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@home']);
-
-    Route::get('/blogs', ['as' => 'blogs', 'uses' => 'HomeController@blogs']);
-    Route::get('/clientreviews', ['as' => 'clientreviews', 'uses' => 'HomeController@client_reviews']);
-    Route::get('/workingteam', ['as' => 'workingteam', 'uses' => 'HomeController@working_team']);
-    Route::get('/about_us', ['as' => 'about_us', 'uses' => 'HomeController@about_us']);
-    Route::get('/blog/{id}', ['as' => 'blog.show', 'uses' => 'HomeController@show_blog']);
 
    

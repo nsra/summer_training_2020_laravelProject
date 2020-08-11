@@ -40,6 +40,10 @@ class UserController extends Controller
             $user = User::findOrFail($user_id);
             $request->validate($this->rules($user_id), $this->messages());
             $user->fill($request->all());
+
+            if($request->file('user_image')){
+                $user->image= parent::uploadImage($request->file('user_image'));
+            }
             $user->update();
             return redirect()->back()->with('success', trans('lang.updateprofile_done'));
         } catch (ModelNotFoundException $modelNotFoundException) {
@@ -64,10 +68,13 @@ class UserController extends Controller
 
     private function rules($id){
         $rules = [
-            'name' => ['string'],
-            'email' => 'unique:users,email,'.$id
-        ];
-
+            'name' => 'required|max:100',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'user_image' => 'image',
+            ];
+        if (!$id) {
+            $rules['user_image'] = 'required|image';
+        }
         return $rules;
     }
 

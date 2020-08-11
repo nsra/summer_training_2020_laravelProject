@@ -8,8 +8,21 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user_register') }}" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-group " style="text-align: center">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                <div>
+                                    <span class="btn red btn-outline btn-file">
+                                    <span class="fileinput-new"> {{__('lang.select_image')}} </span>
+                                    <span class="fileinput-exists"> {{__('lang.change')}} </span>
+                                    <input type="file" name="user_image" value="{{old('user_image')}}"> </span>
+                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> {{__('lang.remove')}} </a>
+                                    <span class="error col-md-12">{{$errors->first('user_image')}}</span>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>

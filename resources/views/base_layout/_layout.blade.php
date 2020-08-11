@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--[if IE 9]>
 <html lang="{{app()->getLocale()}}" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="{{app()->getLocale()}}" dir="{{app()->getLocale() == 'ar' ? 'rtl' : 'ltr'}}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{app()->getLocale() == 'ar' ? 'rtl' : 'ltr'}}">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 

@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'image'
     ];
 
     protected $guard = 'web';
@@ -45,5 +45,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-   
+
+
+
+     public function getImage()
+    {
+        if (!$this->image)
+            return asset('no_image.png');
+        return asset($this->image);
+    }
 }

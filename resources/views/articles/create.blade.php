@@ -37,75 +37,27 @@
 
                         <div class="form-group">
                             <label for="en_description">{{__('lang.article_description_en')}} <span class="required">*</span></label>
-                            <textarea type="text" class="form-control" name="en_description" >{{old('en_description')}}</textarea>
+                            <textarea type="text" class="form-control " name="en_description" >{{old('en_description')}}</textarea>
                             <span class="error">{{$errors->first('en_description')}}</span>
                         </div>
                         <div class="form-group">
                             <label for="ar_description">{{__('lang.article_description_ar')}} <span class="required">*</span></label>
-                            <textarea type="text" class="form-control" name="ar_description" >{{old('ar_description')}}</textarea>
+                            <textarea type="text" class="form-control " name="ar_description" >{{old('ar_description')}}</textarea>
                             <span class="error">{{$errors->first('ar_description')}}</span>
                         </div>
 
-
-</div>
-    <br>
-    <hr>
-    <br>
-<div id="arabic-form" style="direction:rtl">
-
-    <div class="form-group">
-        <label for="ar_title">العنوان <span class="required">*</span></label>
-        <input type="text" class="form-control" name="ar_title" value="{{old('ar_title')}}">
-        <span class="error">{{$errors->first('ar_title')}}</span>
-    </div>
-    <div class="form-group">
-        <label for="ar_description">الوصف <span class="required">*</span></label>
-        <input type="text" class="form-control" name="ar_description" value="{{old('ar_description')}}">
-        <span class="error">{{$errors->first('ar_description')}}</span>
-    </div>
-    <div class="form-action">
-        <input type="submit" name="store" value="{{__('lang.store')}}" class="btn btn-primary">
-        <input type="reset" name="cancel" value="{{__('lang.cancel')}}" class="btn btn-default">
-    </div>
-    <br>
-    <br>
-</div>
-</form>
-</div>
-@elseif(Session::get('locale')=='ar')
-<div class="card-body">
-    <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div id="arabic-form">
-
-            <div class="form-group">
-                <label for="ar_title">{{__('article.fields.title')}} <span class="required">*</span></label>
-                <input type="text" class="form-control" name="ar_title" value="{{old('ar_title')}}">
-                <span class="error">{{$errors->first('ar_title')}}</span>
-            </div>
-            <div class="form-group">
-                <label for="ar_description">{{__('article.fields.description')}} <span class="required">*</span></label>
-                <input type="text" class="form-control" name="ar_description" value="{{old('ar_description')}}">
-                <span class="error">{{$errors->first('title_required')}}</span>
-            </div>
-
-
-
+                        <div class="form-action " >
+                            <button type="submit"  value="" class="btn btn-primary">{{__('lang.store')}}</button>
+                            <button type="reset"  value="" class="btn btn-default">{{__('lang.cancel')}}</button>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
                 </div>
-
-                <div class="form-action " >
-                    <button type="submit"  value="" class="btn btn-primary">{{__('lang.store')}}</button>
-                    <button type="reset"  value="" class="btn btn-default">{{__('lang.cancel')}}</button>
-                </div>
-        </div>
-    </form>
-    <br>
-    <br>
-</div>
-</div>
-</div>
-</div>
+            </div>
+     </div>
 
 
 @endsection
+
 

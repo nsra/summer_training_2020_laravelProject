@@ -16,7 +16,21 @@
                     <form action="{{route('user_profile.update', $user->id)}}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
-
+                        <div class="form-group " style="text-align: center">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                    <img src="{{$user->getImage()}}" alt="">
+                                </div>
+                                <div>
+                                    <span class="btn red btn-outline btn-file">
+                                    <span class="fileinput-new"> {{__('lang.select_image')}} </span>
+                                    <span class="fileinput-exists"> {{__('lang.change')}} </span>
+                                    <input type="file" name="user_image"> </span>
+                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> {{__('lang.remove')}} </a>
+                                    <span class="error col-md-12">{{$errors->first('user_image')}}</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="name">{{__('lang.name')}} <span class="required">*</span></label>
                             <input type="text" class="form-control" name="name" value="{{ old('name', optional($user)->name) }}">

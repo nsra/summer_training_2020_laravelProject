@@ -55,8 +55,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_image' => ['required', 'image'],
         ]);
     }
 
@@ -96,12 +97,21 @@ class RegisterController extends Controller
      */
     protected function createUser(Request $request)
     {
+       
         $this->validator($request->all())->validate();
-        User::create([
+        if($request->file('user_image')){
+            $request['image'] = parent::uploadImage($request->file('user_image'));
+        }
+        $user= User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'image' => $request['image'],
         ]);
-        return redirect()->route('multiguard_login');
+        if ($user->save() === TRUE)
+            return redirect()->route('multiguard_login');
+        else return redirect()->back()->with('error', trans('user.error.stored'));
+
+        
     }
 }

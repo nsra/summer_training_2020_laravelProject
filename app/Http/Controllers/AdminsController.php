@@ -82,6 +82,7 @@ class AdminsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        
         $request->validate($this->rules(), $this->messages());
 
         $request['image'] = parent::uploadImage($request->file('admin_image'));
@@ -176,7 +177,7 @@ class AdminsController extends Controller
     {
         $rules = [
             'name' => 'required|max:100',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:admins,email,'.$id,
             'admin_image' => 'image',
             ];
         if (!$id) {
@@ -197,7 +198,7 @@ class AdminsController extends Controller
             'name.required' => trans('admin.validations.name_required'),
             'name.max' => trans('admin.validations.name_max'),
             'email.required' => trans('admin.validations.email_required'),
-            'admin_image.required' => trans('admins.validations.image_required'),
+            'admin_image.required' => trans('admin.validations.image_required'),
 
         ];
     }

@@ -44,6 +44,8 @@
         type="text/javascript"></script>
 <script src="{{asset('/control/assets/pages/scripts/ui-sweetalert.min.js')}}"
         type="text/javascript"></script>
+<script src="{{asset('/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
+
 
 <script>
     $("#publish_date").datepicker({dateFormat: 'yy-mm-dd'});
