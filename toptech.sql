@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2020 at 08:54 AM
+-- Generation Time: Aug 12, 2020 at 09:39 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -92,9 +92,10 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `image`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'nasora', 'nasora@gmail.com', 'image/1593869673.jpg', NULL, '$2y$10$cyQq/8pjSZWBel05jGziu.e7vVOEBfEyaRBQaHRdVs5tXI3EeEkm2', NULL, '2020-07-04 10:34:33', '2020-07-04 10:34:33'),
-(38, 'superadmin', 'toptechsuperadmin@gmail.com', 'image/1595926141Layer-0.png', NULL, '$2y$10$Bj1p1nJO8Pv.okGNdH9cyO78pt7dQWEVLY5DmV7sLKceDQ388KjqO', NULL, '2020-07-28 05:49:02', '2020-07-28 05:49:02'),
-(39, 'subadmin', 'toptechsubadmin@gmail.com', 'image/1595926187fet2.png', NULL, '$2y$10$8MHGaszunABK8R88ITR4x.hFe2pEVn2B2iFrnbJU0uyJZS5nm2UZi', NULL, '2020-07-28 05:49:47', '2020-07-28 05:49:47');
+(2, 'nasora', 'nasora@gmail.com', 'image/1597062448toptech.jpg', NULL, '$2y$10$cyQq/8pjSZWBel05jGziu.e7vVOEBfEyaRBQaHRdVs5tXI3EeEkm2', NULL, '2020-07-04 10:34:33', '2020-08-10 09:27:28'),
+(38, 'superadmin', 'toptechsuperadmin@gmail.com', 'image/1597062296toptech.jpg', NULL, '$2y$10$Bj1p1nJO8Pv.okGNdH9cyO78pt7dQWEVLY5DmV7sLKceDQ388KjqO', NULL, '2020-07-28 05:49:02', '2020-08-10 09:24:56'),
+(39, 'subadmin', 'toptechsubadmin@gmail.com', 'image/1597062342toptech.jpg', NULL, '$2y$10$8MHGaszunABK8R88ITR4x.hFe2pEVn2B2iFrnbJU0uyJZS5nm2UZi', NULL, '2020-07-28 05:49:47', '2020-08-10 09:25:42'),
+(40, 'new', 'new@gmail.com', 'image/1597062514avatar3.jpg', NULL, '$2y$10$M4XdY019jlpbOPOudaKrreWSA1w3jDWRqv2uoz.AizpFYIdcLH/26', NULL, '2020-08-10 09:28:35', '2020-08-10 09:28:35');
 
 -- --------------------------------------------------------
 
@@ -156,7 +157,7 @@ INSERT INTO `ad_translations` (`id`, `locale`, `title`, `description`, `button`,
 CREATE TABLE `articles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `admin_id` bigint(20) UNSIGNED NOT NULL,
+  `admin_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -228,7 +229,8 @@ INSERT INTO `client_reviews` (`id`, `image`, `created_at`, `updated_at`) VALUES
 (8, 'image/1595183264.png', NULL, '2020-07-19 15:27:44'),
 (9, 'image/1595183289.png', NULL, '2020-07-19 15:28:09'),
 (10, 'image/1595183315.png', NULL, '2020-07-19 15:28:35'),
-(11, 'image/1595183330.png', NULL, '2020-07-19 15:28:50');
+(11, 'image/1595183330.png', NULL, '2020-07-19 15:28:50'),
+(13, 'image/1597136600avatar3_small.jpg', '2020-08-11 06:03:20', '2020-08-11 06:03:20');
 
 -- --------------------------------------------------------
 
@@ -262,7 +264,9 @@ INSERT INTO `client_review_translations` (`id`, `locale`, `name`, `review`, `cli
 (19, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 10, NULL, NULL),
 (20, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 10, NULL, NULL),
 (21, 'en', 'D. ayman thawki', 'It is my pleasure to deal with Avocode Interior Design because of its distinctive credibility in presenting designs and working on them in a timely manner, in addition to the accuracy and taste in meeting the needs of its customers and the wonderful ideas', 11, NULL, NULL),
-(22, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 11, NULL, NULL);
+(22, 'ar', 'د. أيمن الذوقي', 'إنه من دواعي سروري تعاملي مع شركة أفوكود للتصميم الداخلي بسبب مصداقيتها المميزة في تقديم التصاميم والعمل عليها في وقتها المناسب، بالإضافة إلى الدقة والذوق في تلبية حاجات عملائها وأفكارها الرائعة التي تقدمها لعملائها أيضا وأتمنى لهم كل التوفيق مستقبلاً', 11, NULL, NULL),
+(25, 'en', NULL, 'n', 13, NULL, NULL),
+(26, 'ar', 'lkb', 'klb', 13, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -486,6 +490,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (1, 'App\\Admin', 2),
 (1, 'App\\Admin', 38),
 (1, 'App\\Admin', 39),
+(1, 'App\\Admin', 40),
 (2, 'App\\Admin', 2),
 (3, 'App\\Admin', 2),
 (4, 'App\\Admin', 2),
@@ -493,6 +498,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (33, 'App\\Admin', 2),
 (33, 'App\\Admin', 38),
 (33, 'App\\Admin', 39),
+(33, 'App\\Admin', 40),
 (34, 'App\\Admin', 2),
 (34, 'App\\Admin', 38),
 (35, 'App\\Admin', 2),
@@ -502,6 +508,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (37, 'App\\Admin', 2),
 (37, 'App\\Admin', 38),
 (37, 'App\\Admin', 39),
+(37, 'App\\Admin', 40),
 (38, 'App\\Admin', 2),
 (38, 'App\\Admin', 38),
 (39, 'App\\Admin', 2),
@@ -510,6 +517,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (41, 'App\\Admin', 2),
 (41, 'App\\Admin', 38),
 (41, 'App\\Admin', 39),
+(41, 'App\\Admin', 40),
 (42, 'App\\Admin', 2),
 (42, 'App\\Admin', 38),
 (43, 'App\\Admin', 2),
@@ -518,6 +526,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (45, 'App\\Admin', 2),
 (45, 'App\\Admin', 38),
 (45, 'App\\Admin', 39),
+(45, 'App\\Admin', 40),
 (46, 'App\\Admin', 2),
 (46, 'App\\Admin', 38),
 (47, 'App\\Admin', 2),
@@ -527,6 +536,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (49, 'App\\Admin', 2),
 (49, 'App\\Admin', 38),
 (49, 'App\\Admin', 39),
+(49, 'App\\Admin', 40),
 (50, 'App\\Admin', 2),
 (51, 'App\\Admin', 2),
 (51, 'App\\Admin', 38),
@@ -535,6 +545,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (53, 'App\\Admin', 2),
 (53, 'App\\Admin', 38),
 (53, 'App\\Admin', 39),
+(53, 'App\\Admin', 40),
 (54, 'App\\Admin', 2),
 (54, 'App\\Admin', 38),
 (55, 'App\\Admin', 2),
@@ -544,6 +555,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (57, 'App\\Admin', 2),
 (57, 'App\\Admin', 38),
 (57, 'App\\Admin', 39),
+(57, 'App\\Admin', 40),
 (58, 'App\\Admin', 2),
 (58, 'App\\Admin', 38),
 (59, 'App\\Admin', 2),
@@ -553,6 +565,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (69, 'App\\Admin', 2),
 (69, 'App\\Admin', 38),
 (69, 'App\\Admin', 39),
+(69, 'App\\Admin', 40),
 (70, 'App\\Admin', 2),
 (70, 'App\\Admin', 38),
 (71, 'App\\Admin', 2),
@@ -562,6 +575,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (73, 'App\\Admin', 2),
 (73, 'App\\Admin', 38),
 (73, 'App\\Admin', 39),
+(73, 'App\\Admin', 40),
 (74, 'App\\Admin', 2),
 (74, 'App\\Admin', 38),
 (75, 'App\\Admin', 2),
@@ -571,6 +585,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (77, 'App\\Admin', 2),
 (77, 'App\\Admin', 38),
 (77, 'App\\Admin', 39),
+(77, 'App\\Admin', 40),
 (78, 'App\\Admin', 2),
 (78, 'App\\Admin', 38),
 (79, 'App\\Admin', 2),
@@ -580,6 +595,7 @@ INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) 
 (81, 'App\\Admin', 2),
 (81, 'App\\Admin', 38),
 (81, 'App\\Admin', 39),
+(81, 'App\\Admin', 40),
 (82, 'App\\Admin', 2),
 (82, 'App\\Admin', 38),
 (83, 'App\\Admin', 2),
@@ -604,7 +620,8 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'APP\\Admin', 2),
 (1, 'App\\Admin', 38),
-(2, 'App\\Admin', 39);
+(2, 'App\\Admin', 39),
+(2, 'App\\Admin', 40);
 
 -- --------------------------------------------------------
 
@@ -629,11 +646,19 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('18392c40d9414899fdcd92485f53fed660d6c5b272a573bce59c89bbb56a8a1f382caf9cb9e42818', 31, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-10 11:11:23', '2020-08-10 11:11:23', '2021-08-10 14:11:23'),
+('55f4bacf37ddaf32807506782ff17f5ec87eaf3a6bbd6dec508c57c1522c95a2d6757e640e76b7c1', 32, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-11 07:46:51', '2020-08-11 07:46:51', '2021-08-11 10:46:51'),
 ('5b63e82249c43df0046f805d54319e7058226bbcd5eb256d9295e89c966da31c3fb972cafa734191', 17, '9130', 'MyApp', '[]', 0, '2020-08-09 09:08:13', '2020-08-09 09:08:13', '2021-08-09 12:08:13'),
+('6cc5786bb3e739cf52279faaf063e0dbccfddb97c3ae09c65847c0f1dad40108d4279dcf8fef1e19', 31, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-11 06:12:02', '2020-08-11 06:12:02', '2021-08-11 09:12:02'),
 ('79b3c3624a34e85ded9cc2ab33eab0fc443b72de20640e4d549c2d830afbe5000b37e1e0b33be8a5', 17, '9130', 'MyApp', '[]', 0, '2020-08-09 13:29:20', '2020-08-09 13:29:20', '2021-08-09 16:29:20'),
+('8bb541637a9bb6baa4045c914f9ba1a311f9b0eac7cdcc640a7001ecf0d96dbb9a23bbc63cb81bc3', 31, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-10 10:29:05', '2020-08-10 10:29:05', '2021-08-10 13:29:05'),
 ('938d98a9bc7ad8cda62f9138fa0ff3161875ba71dfcb348be85c24c201a53b7ad9667a3f037d55e6', 1, '913e1f19-4096-45d2-9482-0eb841f92691', NULL, '[]', 0, '2020-08-09 06:00:24', '2020-08-09 06:00:24', '2021-08-09 09:00:24'),
 ('9cdd406be33ce1596d1e90c277023579096829dee32e50e9dc16ea05cb3b903d2c67714805674913', 17, '9130', 'MyApp', '[]', 0, '2020-08-09 08:44:18', '2020-08-09 08:44:18', '2021-08-09 11:44:18'),
-('b43376978903f910f9b34774f8ea6fe874d22b4399126958c9fab6df77a2b39cd4780959d3719e6a', 17, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-09 15:35:28', '2020-08-09 15:35:28', '2021-08-09 18:35:28');
+('b43376978903f910f9b34774f8ea6fe874d22b4399126958c9fab6df77a2b39cd4780959d3719e6a', 17, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-09 15:35:28', '2020-08-09 15:35:28', '2021-08-09 18:35:28'),
+('c28edce69fab44fddb4bd3fcf9d30b5d2a9ac68c2c1da4788f26769eefae1f05f2dbd39c8d006b18', 32, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-11 07:48:04', '2020-08-11 07:48:04', '2021-08-11 10:48:04'),
+('c9b7835c164c0234e88e5bc07fadc5ccc266de65e5a84d4521df8e943c7334fa4a51d21076b5701e', 31, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-10 11:10:56', '2020-08-10 11:10:56', '2021-08-10 14:10:56'),
+('d30c2a56f200fbf8fa5d54cdf8eb9ff61d571db7a9ff7643ff91f1a90d96f9de514a4eafa7ab72d1', 32, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-11 07:48:11', '2020-08-11 07:48:11', '2021-08-11 10:48:11'),
+('f439755845a0019d49bdde7138510fee6212cefba52490a1211fdd41b3c79accdbf2323d0d3dc757', 31, '913e1f18-a699-4595-964f-b596c9c17d6c', 'MyApp', '[]', 0, '2020-08-10 11:11:33', '2020-08-10 11:11:33', '2021-08-10 14:11:33');
 
 -- --------------------------------------------------------
 
@@ -1176,9 +1201,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'entesar', 'entesar.2000banna@gmail.com', NULL, '$2y$10$fZ47kOaaTb/9//MQEDvp2e0LkPSWQTqesITvtAv2q1qKlZeNEjSKy', NULL, NULL, '2020-06-20 16:29:39', '2020-08-09 15:51:45'),
-(2, 'maha', 'maha.2000banna@gmail.com', NULL, '$2y$10$YiGJFwK0Jz1PcjBdhg2o4eqlYFZ51FgdqzD9OrKlg0rFZ3F/V7gqa', NULL, NULL, '2020-07-04 14:00:36', '2020-07-04 14:00:36'),
-(17, 'entesar', 'entesar.20banna@gmail.com', NULL, '$2y$10$0i7fX5uSb13s47mNvT9/zeXWRCF05qd.6hpCiR7wRsUkZ3eW5kIlq', NULL, NULL, '2020-08-09 08:44:14', '2020-08-09 16:03:47');
+(2, 'maha', 'maha.2000banna@gmail.com', NULL, '$2y$10$YiGJFwK0Jz1PcjBdhg2o4eqlYFZ51FgdqzD9OrKlg0rFZ3F/V7gqa', 'image/1597064119avatar3.jpg', NULL, '2020-07-04 14:00:36', '2020-07-04 14:00:36'),
+(17, 'entesar', 'entesar.2000banna@gmail.com', NULL, '$2y$10$q/IdSySrdmdSS6Z7hSF73.8gXRW1cLKNw3SXFfbFfQjaShHygDNFO', 'image/1597065848avatar1.jpg', NULL, '2020-08-09 08:44:14', '2020-08-10 08:22:03'),
+(31, 'entesarupdate', 'newuser@gmail.com', NULL, '$2y$10$QFFDEDAI9HGCQMLl1N3rC./2jLIyn0z23CX6oBUfJ/iGVa6rAIr32', 'image/1597139175avatar8.jpg', NULL, '2020-08-10 10:29:02', '2020-08-11 06:46:15'),
+(32, 'testapi', 'testapi@gmail.com', NULL, '$2y$10$eUVegyKJUs1pCv6b81aKcex7Z.bf9gDZRKjR8/RSXXDsTYRWW/WGm', 'image/1597142809avatar1.jpg', NULL, '2020-08-11 07:46:49', '2020-08-11 07:46:49');
 
 --
 -- Indexes for dumped tables
@@ -1460,7 +1486,7 @@ ALTER TABLE `about_translations`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `ads`
@@ -1478,25 +1504,25 @@ ALTER TABLE `ad_translations`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `article_translations`
 --
 ALTER TABLE `article_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `client_reviews`
 --
 ALTER TABLE `client_reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `client_review_translations`
 --
 ALTER TABLE `client_review_translations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -1616,7 +1642,7 @@ ALTER TABLE `team_translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables
